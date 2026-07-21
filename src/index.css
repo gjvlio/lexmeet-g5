@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Frosted glass surface — the core LexMeet component */
+  .glass {
+    @apply bg-white/55 border border-white/90 shadow-glass;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  .glass-dark {
+    @apply bg-white/[0.12] border border-white/30;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  /* Blurred ambient orb used behind sections */
+  .orb {
+    @apply pointer-events-none absolute rounded-full;
+    filter: blur(150px);
+  }
+}
