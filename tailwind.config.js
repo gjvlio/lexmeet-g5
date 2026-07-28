@@ -4,14 +4,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        // LexMeet palette (from the Figma color-palette section)
-        ink:    '#1C1F11',
-        deep:   '#2B2D19',
-        forest: '#3D4223',
-        olive:  '#555B2F',
-        sage:   '#949A6A',
-        mist:   '#DDDEC6',
-        cream:  '#F0F1E4',
+        // LexMeet palette — canonical 9-step scale (docs/NAMING_CONVENTIONS.md)
+        'carbon-black':  '#1D1F10',
+        'charcoal-brown': '#2A2C19',
+        'dark-khaki':    '#3C4222',
+        'olive-leaf':    '#545A2F',
+        'dusty-olive':   '#6F7742',
+        'palm-leaf':     '#959A6B',
+        'sage-mist':     '#BCC199',
+        'linen-olive':   '#DCDFC6',
+        parchment:       '#F0F1E4',
+
+        // legacy short aliases — existing components reference these,
+        // kept in sync with the scale above instead of rewriting every usage
+        ink:    '#1D1F10', // = carbon-black
+        deep:   '#2A2C19', // = charcoal-brown
+        forest: '#3C4222', // = dark-khaki
+        olive:  '#545A2F', // = olive-leaf
+        sage:   '#959A6B', // = palm-leaf
+        mist:   '#DCDFC6', // = linen-olive
+        cream:  '#F0F1E4', // = parchment
       },
       fontFamily: {
         // Spectral = display/headings, IBM Plex Sans = body/UI
@@ -27,13 +39,13 @@ export default {
         glass: '24px',
       },
       backgroundImage: {
-        'hero-fade': 'linear-gradient(180deg, #1C1F11 0%, #3D4223 100%)',
-        'services-fade': 'linear-gradient(180deg, #F0F1E4 0%, #DDDEC6 100%)',
-        'practice-fade': 'linear-gradient(180deg, #DDDEC6 0%, #F0F1E4 100%)',
-        'everyday-fade': 'linear-gradient(180deg, #F0F1E4 0%, #DDDEC6 100%)',
-        'footer-fade': 'linear-gradient(180deg, #2B2D19 0%, #1C1F11 100%)',
-        'olive-pill': 'linear-gradient(90deg, #555B2F 0%, #2B2D19 100%)',
-        'service-card': 'linear-gradient(180deg, rgba(85,91,47,0.96) 0%, rgba(43,45,25,0.98) 100%)',
+        'hero-fade': 'linear-gradient(180deg, #1D1F10 0%, #3C4222 100%)',
+        'services-fade': 'linear-gradient(180deg, #F0F1E4 0%, #DCDFC6 100%)',
+        'practice-fade': 'linear-gradient(180deg, #DCDFC6 0%, #F0F1E4 100%)',
+        'everyday-fade': 'linear-gradient(180deg, #F0F1E4 0%, #DCDFC6 100%)',
+        'footer-fade': 'linear-gradient(180deg, #2A2C19 0%, #1D1F10 100%)',
+        'olive-pill': 'linear-gradient(90deg, #545A2F 0%, #2A2C19 100%)',
+        'service-card': 'linear-gradient(180deg, rgba(84,90,47,0.96) 0%, rgba(42,44,25,0.98) 100%)',
       },
     },
   },

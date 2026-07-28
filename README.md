@@ -11,41 +11,13 @@ npm run dev      # http://localhost:5173
 npm run build    # type-check + production build
 ```
 
-## Project structure
+## Docs
 
-```
-src/
-├── assets/                 # exported Figma images (see assets/README.md)
-├── components/
-│   ├── layout/             # Header, Footer
-│   └── ui/                 # GlassCard, Button, Photo, Orb, SectionLabel, ScalesIcon
-├── contexts/               # React contexts (auth, etc.) — to come
-├── hooks/                  # custom hooks — to come
-├── pages/
-│   └── Home/               # Home page + its sections
-│       └── sections/       # Hero, Services, Practice, LawUpdates, EverydayLaw
-└── utils/                  # cn(), content.ts (copy), images.ts (asset map)
-```
+Project structure, projected directory layout, design tokens, naming
+conventions, and commit/branch conventions all live in
+**[`docs/DEV_GUIDE.md`](docs/DEV_GUIDE.md)** — read that first.
 
-## Design system
-
-The palette, type, and effects live in `tailwind.config.js` and `src/index.css`:
-
-| Token   | Hex       | Use                          |
-| ------- | --------- | ---------------------------- |
-| ink     | `#1C1F11` | darkest text / hero base     |
-| deep    | `#2B2D19` | footer, gradient ends        |
-| forest  | `#3D4223` | practice tiles               |
-| olive   | `#555B2F` | primary buttons, accents     |
-| sage    | `#949A6A` | strokes, rules, orbs         |
-| mist    | `#DDDEC6` | muted text on dark, fills    |
-| cream   | `#F0F1E4` | page background, light text  |
-
-- **Fonts:** Spectral (display/headings), IBM Plex Sans (body/UI) — loaded via
-  Google Fonts in `index.html`.
-- **`.glass` / `.glass-dark`** utility classes = the frosted panels.
-- **Gradients** (`bg-hero-fade`, `bg-service-card`, `bg-olive-pill`, …) are
-  defined in the Tailwind theme.
+Per-person build checklist: [`docs/PROGRESS.md`](docs/PROGRESS.md).
 
 ## Adding real photos
 
