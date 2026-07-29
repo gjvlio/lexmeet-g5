@@ -6,11 +6,12 @@
 
 export const NAV_ITEMS = [
   { label: 'Home', href: '/' },
-  { label: 'Lawyer Profile', href: '/lawyers' },
-  { label: 'Our Services', href: '/#services' },
-  { label: 'Law Practice', href: '/#practice' },
-  { label: 'Everyday Law', href: '/#everyday' },
-  { label: 'Contact Us', href: '/#contact' },
+  { label: 'Lawyers Profile', href: '/lawyer-profile' },
+  { label: 'Law Practice', href: '/law-practice' },
+  { label: 'Law Office', href: '/law-office' },
+  { label: 'Everyday Law', href: '/everyday-law' },
+  { label: 'Our Services', href: '/our-services' },
+  { label: 'Contact Us', href: '/contact-us' },
 ];
 
 export type Service = {
