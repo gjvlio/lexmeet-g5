@@ -3,6 +3,14 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        /*
+         * The Figma frames are 1440px and their absolute layouts are ~1296px
+         * wide, so they do not fit inside `lg` (1024px). Pixel-exact comp
+         * geometry goes behind `desktop:`; `lg:` stays for fluid steps.
+         */
+        desktop: '1440px',
+      },
       colors: {
         // LexMeet palette — canonical 9-step scale (docs/NAMING_CONVENTIONS.md)
         'carbon-black':  '#1D1F10',
