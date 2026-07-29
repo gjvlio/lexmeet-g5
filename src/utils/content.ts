@@ -90,7 +90,19 @@ export const CONTACT = {
     'ADB Avenue Corner, Garnet Road',
     'Ortigas Center, Pasig City',
   ],
-  tel: '(02) 8-451-1594',
+  tel: '(02) 8451-1594',
+  cel: '(+63) 999-999-9999',
+  viber: '(+63) 999-999-9999',
   email: 'contact@rizallawoffice.com',
-  quote: 'Justice you can actually reach.',
+  fax: '63203817',
+  quote: 'Justice you can actually reach',
 };
+
+export const WEBSITE_AGREEMENTS: { label: string; href: string }[] = [
+  { label: 'Terms of Use', href: '#' },
+  { label: 'Privacy Policy', href: '#' },
+  { label: 'Informed Consent for Services Performed', href: '#' },
+  { label: 'Disclaimer', href: '#' },
+  { label: 'Child Safety Standards Policy', href: '#' },
+  { label: 'Subscription Agreement', href: '#' },
+];
