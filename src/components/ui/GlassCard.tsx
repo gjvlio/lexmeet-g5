@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { cn } from '@/utils/cn';
 
 type GlassCardProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -8,25 +9,25 @@ type GlassCardProps = React.HTMLAttributes<HTMLDivElement> & {
 
 /**
  * Frosted glass container — the recurring surface across every LexMeet page.
+ * Forwards its ref so wrappers (Modal) can focus or measure the surface.
  */
-export default function GlassCard({
-  tone = 'light',
-  as: Tag = 'div',
-  className,
-  children,
-  ...props
-}: GlassCardProps) {
+const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(function GlassCard(
+  { tone = 'light', as = 'div', className, children, ...props },
+  ref,
+) {
+  // Narrowed to 'div' so the props/ref types stay concrete — TS can't represent
+  // the union of every intrinsic element's props once a ref is in play.
+  const Tag = as as 'div';
+
   return (
-    // @ts-expect-error dynamic tag
     <Tag
-      className={cn(
-        'rounded-3xl',
-        tone === 'light' ? 'glass' : 'glass-dark shadow-card',
-        className,
-      )}
+      ref={ref}
+      className={cn('rounded-3xl', tone === 'light' ? 'glass' : 'glass-dark shadow-card', className)}
       {...props}
     >
       {children}
     </Tag>
   );
-}
+});
+
+export default GlassCard;
