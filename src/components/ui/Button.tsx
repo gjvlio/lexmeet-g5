@@ -21,8 +21,8 @@ export default function Button({
   const base =
     'inline-flex items-center justify-center rounded-full font-sans font-bold transition-transform active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-olive/60';
   const sizes = {
-    md: 'px-6 h-11 text-sm',
-    lg: 'px-8 h-[58px] text-[22px]',
+    md: 'px-5 h-11 text-sm lg:px-6',
+    lg: 'px-6 h-12 text-base sm:h-14 sm:text-lg lg:px-8 lg:h-[58px] lg:text-[22px]',
   };
   const variants = {
     olive: 'bg-olive-pill text-cream shadow-pill hover:brightness-110',
