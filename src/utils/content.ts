@@ -9,8 +9,8 @@ export const NAV_ITEMS = [
   { label: 'Lawyers Profile', href: '/lawyer-profile' },
   { label: 'Law Practice', href: '/law-practice' },
   { label: 'Law Office', href: '/law-office' },
-  { label: 'Everyday Law', href: '/everyday-law' },
   { label: 'Our Services', href: '/our-services' },
+  { label: 'Everyday Law', href: '/everyday-law' },
   { label: 'Contact Us', href: '/contact-us' },
 ];
 
@@ -92,9 +92,9 @@ export const CONTACT = {
   ],
   tel: '(02) 8451-1594',
   cel: '(+63) 999-999-9999',
+  fax: '63203817',
   viber: '(+63) 999-999-9999',
   email: 'contact@rizallawoffice.com',
-  fax: '63203817',
   quote: 'Justice you can actually reach',
 };
 
