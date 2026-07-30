@@ -108,9 +108,9 @@ function ContactUsColumn() {
         children: [
           _jsx(ContactLine, { label: "Tel. No", value: CONTACT.tel }),
           _jsx(ContactLine, { label: "Cel. No", value: CONTACT.cel }),
+          _jsx(ContactLine, { label: "Fax", value: CONTACT.fax }),
           _jsx(ContactLine, { label: "Viber", value: CONTACT.viber }),
           _jsx(ContactLine, { label: "Email", value: CONTACT.email }),
-          _jsx(ContactLine, { label: "Fax", value: CONTACT.fax }),
         ],
       }),
     ],
