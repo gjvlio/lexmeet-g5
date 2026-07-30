@@ -29,16 +29,27 @@ export default function Awards() {
 
   return (
     <section className="relative flex flex-col items-center">
-      <Orb color="olive" className="-right-[150px] -top-[100px] h-[500px] w-[500px]" opacity={0.35} />
+      <Orb color="olive" className="-right-[150px] -top-[100px] h-[320px] w-[320px] lg:h-[500px] lg:w-[500px]" opacity={0.35} />
 
-      <h2 className="relative z-10 mb-12 max-w-xs text-center font-display text-[40px] font-bold leading-tight text-ink">
+      <h2 className="relative z-10 mb-10 max-w-xs text-center font-display text-[32px] font-bold leading-tight text-ink sm:text-[36px] lg:mb-12 lg:text-[40px]">
         Special Awards and Citations
       </h2>
 
-      <div className="relative z-10 flex w-full items-center justify-center gap-8">
-        
-        {/* Left Interactive Button */}
-        <button 
+      <div className="relative z-10 w-full lg:hidden">
+        <div className="mx-auto flex max-w-md flex-col gap-4 px-4 sm:px-0">
+          {AWARDS.map((text) => (
+            <GlassCard key={text} className="flex min-h-[240px] flex-col items-center justify-center gap-6 p-6 text-center !rounded-[24px]">
+              <img src={medalImg} alt="Award Ribbon" className="h-[80px] w-[80px] object-contain drop-shadow-sm" />
+              <p className="font-sans text-[14px] font-medium leading-relaxed text-ink/80">
+                {text}
+              </p>
+            </GlassCard>
+          ))}
+        </div>
+      </div>
+
+      <div className="relative z-10 hidden w-full items-center justify-center gap-8 lg:flex">
+        <button
           onClick={handlePrev}
           disabled={currentIndex === 0}
           className={`flex h-12 w-12 items-center justify-center rounded-full text-olive transition-transform hover:scale-110 active:scale-95 ${currentIndex === 0 ? 'opacity-30 cursor-not-allowed' : ''}`}
@@ -49,7 +60,6 @@ export default function Awards() {
           </svg>
         </button>
 
-        {/* Carousel Cards Viewport */}
         <div className="flex gap-8 transition-all duration-300">
           {visibleAwards.map((text, idx) => (
             <GlassCard key={currentIndex + idx} className="flex h-[320px] w-[260px] flex-col items-center justify-center gap-6 p-8 text-center !rounded-[24px]">
@@ -61,8 +71,7 @@ export default function Awards() {
           ))}
         </div>
 
-        {/* Right Interactive Button */}
-        <button 
+        <button
           onClick={handleNext}
           disabled={currentIndex >= maxIndex}
           className={`flex h-12 w-12 items-center justify-center rounded-full text-olive transition-transform hover:scale-110 active:scale-95 ${currentIndex >= maxIndex ? 'opacity-30 cursor-not-allowed' : ''}`}

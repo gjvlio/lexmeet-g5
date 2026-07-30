@@ -13,7 +13,7 @@ import offlineToggle from '@/assets/LawyersProfile/offline-toggle.png';
  * Base (phone): each lawyer is a stacked card — a row that places its cells by
  * x-coordinate has no phone equivalent.
  *
- * `desktop` and up: the 1440px Figma frames ("List of Lawyers / Ratings &
+ * `xl` and up: the 1440px Figma frames ("List of Lawyers / Ratings &
  * Feedback / Availability"), positioned to the pixel. Those offsets live in
  * breakpoint-prefixed arbitrary classes rather than inline styles, because an
  * inline style cannot be scoped to a breakpoint and would leak onto phones.
@@ -21,18 +21,18 @@ import offlineToggle from '@/assets/LawyersProfile/offline-toggle.png';
 
 /** Column anchors from the comp, relative to the card's left edge. */
 const DESKTOP = {
-  avatar: 'desktop:absolute desktop:left-[32px] desktop:top-1/2 desktop:-translate-y-1/2',
-  name: 'desktop:absolute desktop:left-[113px] desktop:top-1/2 desktop:-translate-y-1/2 desktop:whitespace-nowrap',
-  position: 'desktop:absolute desktop:left-[567px] desktop:top-1/2 desktop:-translate-x-1/2 desktop:-translate-y-1/2',
+  avatar: 'xl:absolute xl:left-[32px] xl:top-1/2 xl:-translate-y-1/2',
+  name: 'xl:absolute xl:left-[113px] xl:top-1/2 xl:-translate-y-1/2 xl:whitespace-nowrap',
+  position: 'xl:absolute xl:left-[567px] xl:top-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2',
   /** The third column re-centres slightly per tab, as drawn. */
-  action: 'desktop:absolute desktop:left-[829px] desktop:top-1/2 desktop:-translate-x-1/2 desktop:-translate-y-1/2',
-  ratings: 'desktop:absolute desktop:left-[809px] desktop:top-1/2 desktop:-translate-x-1/2 desktop:-translate-y-1/2',
-  availability: 'desktop:absolute desktop:left-[825px] desktop:top-1/2 desktop:-translate-x-1/2 desktop:-translate-y-1/2',
-  seeMore: 'desktop:absolute desktop:left-[1019px] desktop:top-1/2 desktop:-translate-x-1/2 desktop:-translate-y-1/2',
+  action: 'xl:absolute xl:left-[829px] xl:top-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2',
+  ratings: 'xl:absolute xl:left-[809px] xl:top-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2',
+  availability: 'xl:absolute xl:left-[825px] xl:top-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2',
+  seeMore: 'xl:absolute xl:left-[1019px] xl:top-1/2 xl:-translate-x-1/2 xl:-translate-y-1/2',
 };
 
 /** Tab pills tile at 222px intervals from x=623 in the comp. */
-const TAB_DESKTOP_POSITION = ['desktop:left-[623px]', 'desktop:left-[845px]', 'desktop:left-[1067px]'];
+const TAB_DESKTOP_POSITION = ['xl:left-[623px]', 'xl:left-[845px]', 'xl:left-[1067px]'];
 
 const COLUMN_HEADING_DESKTOP = [DESKTOP.action, DESKTOP.ratings, DESKTOP.availability];
 
@@ -50,7 +50,7 @@ export default function LawyerProfile() {
       <BackgroundOrb corner="top-left" size={720} />
       <BackgroundOrb corner="bottom-right" size={900} />
 
-      <div className="relative mx-auto w-full max-w-[1440px] px-4 sm:px-6 desktop:px-0">
+      <div className="relative mx-auto w-full max-w-[1440px] px-4 sm:px-6 xl:px-0">
         <PageHeading />
         <ControlsRow activeTab={activeTab} onTabChange={setActiveTab} />
         <LawyerTable activeTab={activeTab} onSeeMore={handleSeeMore} />
@@ -114,8 +114,8 @@ function PageHeading() {
 }
 
 /**
- * Stacked on a phone. At `desktop` the wrapper becomes the positioning context and
- * the tab group is dropped from layout with `desktop:contents`, so each pill can be
+ * Stacked on a phone. At `xl` the wrapper becomes the positioning context and
+ * the tab group is dropped from layout with `xl:contents`, so each pill can be
  * absolutely placed at its comp offset.
  */
 function ControlsRow({
@@ -126,17 +126,17 @@ function ControlsRow({
   onTabChange: (i: number) => void;
 }) {
   return (
-    <div className="mt-8 flex flex-col gap-3 desktop:relative desktop:mt-[46px] desktop:block desktop:h-[50px]">
+    <div className="mt-8 flex flex-col gap-3 xl:relative xl:mt-[46px] xl:block xl:h-[50px]">
       <SearchField />
 
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 desktop:contents">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 xl:contents">
         {TABS.map((tab, i) => (
           <button
             key={tab.label}
             type="button"
             onClick={() => onTabChange(i)}
             className={cn(
-              'h-[50px] rounded-full font-sans text-sm transition-colors desktop:absolute desktop:top-0 desktop:w-[200px] lg:text-[16px]',
+              'h-[50px] rounded-full font-sans text-sm transition-colors xl:absolute xl:top-0 xl:w-[200px] lg:text-[16px]',
               TAB_DESKTOP_POSITION[i],
               i === activeTab
                 ? 'bg-olive-pill font-semibold text-parchment shadow-pill'
@@ -153,7 +153,7 @@ function ControlsRow({
 
 function SearchField() {
   return (
-    <div className="flex h-[50px] w-full items-center gap-[15px] rounded-full border border-palm-leaf/90 bg-white/45 pl-[10px] backdrop-blur-glass desktop:absolute desktop:left-[145px] desktop:top-0 desktop:w-[420px]">
+    <div className="flex h-[50px] w-full items-center gap-[15px] rounded-full border border-palm-leaf/90 bg-white/45 pl-[10px] backdrop-blur-glass xl:absolute xl:left-[145px] xl:top-0 xl:w-[420px]">
       <img src={searchIcon} alt="" className="h-[30px] w-[30px] shrink-0" />
       <input
         type="search"
@@ -180,7 +180,7 @@ function LawyerTable({
      * its backdrops (plain page vs. over the orb) gives rgba(237,238,236,.6),
      * and pure white can only lighten, never desaturate.
      */
-    <div className="relative mt-6 overflow-hidden rounded-3xl border border-white/90 bg-[rgba(237,238,236,0.6)] shadow-glass backdrop-blur-glass desktop:ml-[146px] desktop:mt-[30px] desktop:h-[726px] desktop:w-[1150px]">
+    <div className="relative mt-6 overflow-hidden rounded-3xl border border-white/90 bg-[rgba(237,238,236,0.6)] shadow-glass backdrop-blur-glass xl:ml-[146px] xl:mt-[30px] xl:h-[726px] xl:w-[1150px]">
       <ColumnHeaders activeTab={activeTab} />
       {LAWYERS.map((lawyer, i) => (
         <LawyerRow
@@ -195,16 +195,16 @@ function LawyerTable({
   );
 }
 
-/** Column labels only mean anything once the rows are a table — desktop only. */
+/** Column labels only mean anything once the rows are a table — xl only. */
 function ColumnHeaders({ activeTab }: { activeTab: number }) {
   const label =
-    'font-sans text-[11px] font-semibold uppercase tracking-[0.09em] text-olive-leaf desktop:bottom-[10px]';
+    'font-sans text-[11px] font-semibold uppercase tracking-[0.09em] text-olive-leaf xl:bottom-[10px]';
 
   return (
-    <div className="relative hidden desktop:block desktop:h-[46px]">
-      <span className={cn(label, 'desktop:absolute desktop:left-[32px]')}>Lawyer</span>
-      <span className={cn(label, 'desktop:absolute desktop:left-[567px] desktop:-translate-x-1/2')}>Position</span>
-      <span className={cn(label, 'desktop:absolute desktop:-translate-x-1/2', COLUMN_HEADING_DESKTOP[activeTab])}>
+    <div className="relative hidden xl:block xl:h-[46px]">
+      <span className={cn(label, 'xl:absolute xl:left-[32px]')}>Lawyer</span>
+      <span className={cn(label, 'xl:absolute xl:left-[567px] xl:-translate-x-1/2')}>Position</span>
+      <span className={cn(label, 'xl:absolute xl:-translate-x-1/2', COLUMN_HEADING_DESKTOP[activeTab])}>
         {TABS[activeTab].column}
       </span>
       <Rule className="bg-[#C0C3A8]" />
@@ -212,12 +212,12 @@ function ColumnHeaders({ activeTab }: { activeTab: number }) {
   );
 }
 
-/** Hairline between rows — full-bleed on a phone, inset from the card at `lg`. */
+/** Hairline between rows — full-bleed on a phone, inset from the card at `xl`. */
 function Rule({ className }: { className?: string }) {
   return (
     <span
       aria-hidden
-      className={cn('absolute bottom-0 left-4 right-4 h-px desktop:left-[32px] desktop:right-[29px]', className)}
+      className={cn('absolute bottom-0 left-4 right-4 h-px xl:left-[32px] xl:right-[29px]', className)}
     />
   );
 }
@@ -234,14 +234,14 @@ function LawyerRow({
   onSeeMore: (lawyer: Lawyer) => void;
 }) {
   return (
-    <div className="relative flex flex-col gap-3 px-4 py-4 desktop:block desktop:h-[85px] desktop:px-0 desktop:py-0">
-      {/* Wrappers collapse to zero height at `lg`, where every child is absolute. */}
+    <div className="relative flex flex-col gap-3 px-4 py-4 xl:block xl:h-[85px] xl:px-0 xl:py-0">
+      {/* Wrappers collapse to zero height at `xl`, where every child is absolute. */}
       <div className="flex items-center gap-3">
         <Avatar lawyer={lawyer} />
         <div className="min-w-0">
           <p
             className={cn(
-              'font-display text-base font-semibold text-carbon-black desktop:text-[20px]',
+              'font-display text-base font-semibold text-carbon-black xl:text-[20px]',
               DESKTOP.name,
             )}
           >
@@ -249,7 +249,7 @@ function LawyerRow({
           </p>
           <p
             className={cn(
-              'font-sans text-[13px] text-carbon-black/70 desktop:whitespace-nowrap desktop:text-[18px] desktop:text-carbon-black',
+              'font-sans text-[13px] text-carbon-black/70 xl:whitespace-nowrap xl:text-[18px] xl:text-carbon-black',
               DESKTOP.position,
             )}
           >

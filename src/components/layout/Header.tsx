@@ -17,9 +17,9 @@ const PILL_WIDTH = 160;
 const PILL_HEIGHT = 43;
 
 /**
- * Site header. Two layouts rather than one fluid layout: below `lg` a compact
- * bar with a drawer, at `desktop` and up the 1440px comp positioned to the pixel.
- * The desktop half is `hidden desktop:block`, so its absolute offsets never reach a
+ * Site header. Two layouts rather than one fluid layout: below `xl` a compact
+ * bar with a drawer, at `xl` and up the desktop comp positioned to the pixel.
+ * The desktop half is `hidden xl:block`, so its absolute offsets never reach a
  * phone and the comp stays exact.
  */
 export default function Header() {
@@ -57,7 +57,7 @@ function MobileHeader({
   onToggleMenu: () => void;
 }) {
   return (
-    <div className="desktop:hidden">
+    <div className="xl:hidden">
       <div className="flex h-[72px] items-center justify-between px-4 sm:px-6">
         <button
           type="button"
@@ -130,7 +130,7 @@ function MobileNav() {
 /** The 1440px comp, reproduced to the pixel. Hidden below `lg`. */
 function DesktopHeader() {
   return (
-    <div className="hidden h-[220px] desktop:block">
+    <div className="hidden h-[220px] xl:block">
       <div className="relative mx-auto h-full w-[1440px]">
         <img
           src={logo}

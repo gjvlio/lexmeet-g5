@@ -12,27 +12,26 @@ const PROVINCES_RIGHT = ['Bulacan', 'Pangasinan', 'Rizal', 'Laguna', 'Camarines 
 
 export default function ProvincesMap() {
   return (
-    <section className="relative flex flex-col gap-12 md:flex-row md:gap-20">
-      <Orb color="olive" className="-left-[100px] top-[20%] h-[450px] w-[450px]" opacity={0.3} />
-      <Orb color="sage" className="-right-[200px] top-[10%] h-[500px] w-[500px]" opacity={0.4} />
+    <section className="relative flex flex-col gap-12 lg:flex-row lg:gap-20">
+      <Orb color="olive" className="-left-[100px] top-[20%] h-[300px] w-[300px] lg:h-[450px] lg:w-[450px]" opacity={0.3} />
+      <Orb color="sage" className="-right-[200px] top-[10%] h-[320px] w-[320px] lg:h-[500px] lg:w-[500px]" opacity={0.4} />
 
-      {/* Left Column: Provinces List */}
       <div className="relative z-10 flex flex-1 flex-col items-center">
-        <h2 className="mb-8 font-display text-4xl font-bold text-ink">
+        <h2 className="mb-6 font-display text-3xl font-bold text-ink sm:mb-8 sm:text-4xl">
           Provinces
         </h2>
         
-        <div className="flex w-full max-w-md justify-between gap-4">
+        <div className="flex w-full max-w-md flex-col gap-4 sm:flex-row sm:justify-between">
           <div className="flex flex-1 flex-col gap-4">
             {PROVINCES_LEFT.map((prov) => (
-              <div key={prov} className="flex h-12 items-center justify-center rounded-2xl bg-gradient-to-br from-olive to-forest px-4 text-center font-sans text-sm text-cream shadow-pill">
+              <div key={prov} className="flex min-h-12 items-center justify-center rounded-2xl bg-gradient-to-br from-olive to-forest px-4 py-3 text-center font-sans text-sm text-cream shadow-pill">
                 {prov}
               </div>
             ))}
           </div>
           <div className="flex flex-1 flex-col gap-4">
             {PROVINCES_RIGHT.map((prov) => (
-              <div key={prov} className="flex h-12 items-center justify-center rounded-2xl bg-forest px-4 text-center font-sans text-sm text-cream shadow-pill">
+              <div key={prov} className="flex min-h-12 items-center justify-center rounded-2xl bg-forest px-4 py-3 text-center font-sans text-sm text-cream shadow-pill">
                 {prov}
               </div>
             ))}
@@ -44,43 +43,32 @@ export default function ProvincesMap() {
         </Button>
       </div>
 
-      {/* Right Column: Location Map Grid */}
       <div className="relative z-10 flex flex-1 flex-col items-center">
-        <h2 className="mb-8 font-display text-4xl font-bold text-ink">
+        <h2 className="mb-6 font-display text-3xl font-bold text-ink sm:mb-8 sm:text-4xl">
           Location of Practice
         </h2>
         
-        {/* Changed to items-start to pull everything to the top */}
-        <div className="relative flex w-full max-w-[500px] items-start justify-between gap-12 pt-2">
-          
-          {/* Nationwide Map (Left side) - Fixed overlap by using flex-col and gap-4 */}
+        <div className="relative flex w-full max-w-[500px] flex-col items-center gap-8 pt-2 lg:flex-row lg:items-start lg:justify-between lg:gap-12">
           <div className="relative flex flex-col items-center gap-4">
-            <img src={phMap} alt="Nationwide" className="h-[360px] w-auto object-contain drop-shadow-md" />
-            <span className="font-sans text-[17px] text-ink">Nationwide</span>
+            <img src={phMap} alt="Nationwide" className="h-[260px] w-auto object-contain drop-shadow-md sm:h-[320px] lg:h-[360px]" />
+            <span className="font-sans text-[16px] text-ink sm:text-[17px]">Nationwide</span>
           </div>
 
-          {/* Regional Maps Column (Right side) */}
-          {/* Reduced height from 420px to 360px to pull Mindanao up */}
-          <div className="flex h-[360px] w-[200px] flex-col justify-between">
-            
-            {/* Luzon Map (Top right, staggered right) */}
+          <div className="flex w-full max-w-[200px] flex-col justify-between gap-6 lg:h-[360px]">
             <div className="relative self-end">
-              <img src={luzonMap} alt="Luzon" className="h-[140px] w-auto object-contain drop-shadow-md" />
+              <img src={luzonMap} alt="Luzon" className="h-[120px] w-auto object-contain drop-shadow-md sm:h-[140px]" />
               <span className="absolute -bottom-4 right-0 font-sans text-base text-ink">Luzon</span>
             </div>
 
-            {/* Visayas Map (Middle, staggered left) */}
             <div className="relative self-start pt-2">
-              <img src={visayasMap} alt="Visayas" className="h-[100px] w-auto object-contain drop-shadow-md" />
+              <img src={visayasMap} alt="Visayas" className="h-[90px] w-auto object-contain drop-shadow-md sm:h-[100px]" />
               <span className="absolute -bottom-5 left-2 font-sans text-base text-ink">Visayas</span>
             </div>
 
-            {/* Mindanao Map (Bottom right, staggered right) */}
             <div className="relative self-end pt-2">
-              <img src={mindanaoMap} alt="Mindanao" className="h-[110px] w-auto object-contain drop-shadow-md" />
+              <img src={mindanaoMap} alt="Mindanao" className="h-[100px] w-auto object-contain drop-shadow-md sm:h-[110px]" />
               <span className="absolute -bottom-4 right-4 font-sans text-base text-ink">Mindanao</span>
             </div>
-
           </div>
         </div>
       </div>
