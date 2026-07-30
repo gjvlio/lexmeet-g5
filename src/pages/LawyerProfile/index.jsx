@@ -6,6 +6,7 @@ import {
 import { useState } from "react";
 import { cn } from "@/utils/cn";
 import { LAWYERS, TABS, TOTAL_LAWYERS, PAGE_COUNT } from "./lawyers";
+import LawyerModal from "./components/LawyerModal";
 import orbImage from "@/assets/LawyersProfile/orb.png";
 import searchIcon from "@/assets/LawyersProfile/search-icon.png";
 import callIcon from "@/assets/LawyersProfile/call-icon.png";
@@ -53,8 +54,9 @@ export default function LawyerProfile() {
   const [activeTab, setActiveTab] = useState(0);
   const [page, setPage] = useState(1);
   /** Kerr owns the shared lawyer modal — see docs/PROGRESS.md. */
+  const [openLawyer, setOpenLawyer] = useState(null);
   const handleSeeMore = (lawyer) => {
-    console.info("Open lawyer modal for", lawyer.name);
+    setOpenLawyer(lawyer);
   };
   return _jsxs("section", {
     className: "relative overflow-hidden bg-parchment pb-8 pt-7",
@@ -73,6 +75,11 @@ export default function LawyerProfile() {
           _jsx(LawyerTable, { activeTab: activeTab, onSeeMore: handleSeeMore }),
           _jsx(Pagination, { page: page, onPageChange: setPage }),
           _jsx(ResultCount, {}),
+          _jsx(LawyerModal, {
+            lawyer: openLawyer,
+            isOpen: openLawyer !== null,
+            onClose: () => setOpenLawyer(null),
+          }),
         ],
       }),
     ],
