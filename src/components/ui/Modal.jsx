@@ -7,6 +7,7 @@ const SIZES = {
   sm: "max-w-md",
   md: "max-w-lg",
   lg: "max-w-3xl",
+  xl: "max-w-5xl",
 };
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';

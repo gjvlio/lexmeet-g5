@@ -59,7 +59,7 @@ Status legend: `[x]` done · `[~]` in progress · `[ ]` not started
 |---|---|
 | Modal primitive (see Shared Components above) | [x] |
 | Article primitives (see Shared Components above) | [ ] |
-| Lawyers Profile (see more): Curriculum Vitae, Ratings & Feedbacks | [ ] |
+| Lawyers Profile (see more): Curriculum Vitae, Ratings & Feedbacks | [x] |
 | Contact Us | [x] |
 | About Us: Main section, Values we live by, Our mission, Our vision, Our promise | [ ] |
 
