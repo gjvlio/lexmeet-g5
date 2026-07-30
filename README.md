@@ -27,5 +27,5 @@ photo slot renders a palette-tinted gradient placeholder so layout is intact.
 
 ## Next pages
 
-`App.tsx` has routes stubbed for Login, Lawyer Profile, Blogs, and Updates —
+`App.jsx` has routes stubbed for Login, Lawyer Profile, Blogs, and Updates —
 build each under `src/pages/<Name>/` reusing the `ui/` components.
