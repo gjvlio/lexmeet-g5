@@ -1,3 +1,8 @@
+import slippy from '@/assets/LPfeedback/slippy.png';
+import yus from '@/assets/LPfeedback/yus.png';
+import yusa from '@/assets/LPfeedback/yusa.png';
+import yuso from '@/assets/LPfeedback/yuso.png';
+
 /**
  * Curriculum Vitae content for the "See more" modal.
  *
@@ -57,31 +62,32 @@ const ANNA_CV = {
   ],
 };
 
-/**
- * Client feedback shown on the Ratings & Feedback tab. Reviewer avatars are
- * not exported from Figma yet, so the cards fall back to initials.
- */
+/** Client feedback shown on the Ratings & Feedback tab. */
 const ANNA_FEEDBACK = [
   {
     name: 'Mr. Yuso',
+    avatar: yuso,
     rating: 5.0,
     date: '10/22/2022, 2:48 PM',
     body: 'The video consultation was scheduled within two days of my initial inquiry. Atty. Bermudez explained the process clearly and answered every question I had about the required documents.',
   },
   {
     name: 'Ms. Yusa',
+    avatar: yusa,
     rating: 5.0,
     date: '10/22/2022, 2:48 PM',
     body: 'Consultation took place over video call as scheduled. Follow up questions by email were answered within a day, and the document review was completed within the quoted timeframe.',
   },
   {
     name: 'Mrs. Slippy',
+    avatar: slippy,
     rating: 5.0,
     date: '10/22/2022, 2:48 PM',
     body: 'I appreciated being able to attend the consultation from home while working abroad. Atty. Bermudez confirmed pricing before the session started, which matched what was listed on the platform.',
   },
   {
     name: 'Mr. Yus',
+    avatar: yus,
     rating: 5.0,
     date: '10/22/2022, 2:48 PM',
     body: 'Rescheduling was handled quickly once I reached out about a calendar conflict. The consultation itself covered everything I needed to move forward with my documents.',

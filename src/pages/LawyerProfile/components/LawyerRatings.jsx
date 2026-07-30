@@ -21,8 +21,18 @@ function Stars({ rating }) {
   );
 }
 
-/** Reviewer initials — stands in until avatar assets are exported. */
-function Avatar({ name }) {
+/** Reviewer photo, falling back to initials if the asset is missing. */
+function Avatar({ name, src }) {
+  if (src) {
+    return (
+      <img
+        src={src}
+        alt=""
+        className="h-11 w-11 shrink-0 rounded-full object-cover"
+      />
+    );
+  }
+
   const initials = name
     .replace(/^(Mr|Mrs|Ms|Atty)\.?\s+/i, '')
     .split(' ')
@@ -56,7 +66,7 @@ export default function LawyerRatings({ lawyer }) {
             className="rounded-2xl border border-white/80 bg-white/55 p-3 sm:p-4"
           >
             <div className="flex gap-3">
-              <Avatar name={review.name} />
+              <Avatar name={review.name} src={review.avatar} />
 
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
