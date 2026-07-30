@@ -88,8 +88,11 @@ export default function LawyerModal({ lawyer, isOpen, onClose }) {
          needs a calmer surface than the roster showing through. */
       className="!bg-white/80 p-6 sm:p-8"
     >
-      <header className="flex flex-col gap-5 pr-8 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex items-center gap-3 sm:gap-4">
+      {/* Stacked, the close button only overlaps the name row, so the padding
+          that clears it moves there — otherwise it narrows the full-width CTA
+          below and throws it off centre against the tabs. */}
+      <header className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between sm:pr-8">
+        <div className="flex items-center gap-3 pr-8 sm:gap-4 sm:pr-0">
           <div className="relative shrink-0">
             <img
               src={lawyer.photo}
