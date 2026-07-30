@@ -20,7 +20,7 @@ Status legend: `[x]` done · `[~]` in progress · `[ ]` not started
 - [x] SectionLabel
 - [x] Header
 - [x] Footer
-- [ ] Modal (base — backdrop, close-on-esc, close-on-backdrop-click, focus trap)
+- [x] Modal (base — backdrop, close-on-esc, close-on-backdrop-click, focus trap)
 - [ ] ArticleCard / ArticleList / ArticleDetail (shared by Everyday Law, Law Updates, Law Blogs)
 
 ## Justin
@@ -45,7 +45,7 @@ Status legend: `[x]` done · `[~]` in progress · `[ ]` not started
 |---|---|
 | Home Page: Main hero | [x] |
 | Home Page: Sign-in (modal) | [ ] |
-| Lawyers Profile (landing): List of Lawyers, Ratings & Feedback, Lawyer Schedule | [ ] |
+| Lawyers Profile (landing): List of Lawyers, Ratings & Feedback, Lawyer Schedule | [x] |
 | Lawyers Profile (see more): Lawyer Schedule | [ ] |
 | Law Updates + Law Updates (see more) | [ ] |
 | Law Blogs + Law Blogs (see more) | [ ] |
@@ -57,20 +57,26 @@ Status legend: `[x]` done · `[~]` in progress · `[ ]` not started
 
 | Section | Status |
 |---|---|
-| Modal primitive (see Shared Components above) | [ ] |
+| Modal primitive (see Shared Components above) | [x] |
 | Article primitives (see Shared Components above) | [ ] |
 | Lawyers Profile (see more): Curriculum Vitae, Ratings & Feedbacks | [ ] |
-| Contact Us | [ ] |
+| Contact Us | [x] |
 | About Us: Main section, Values we live by, Our mission, Our vision, Our promise | [ ] |
 
-## Responsive (optional)
+## Responsive — required
 
-- [ ] Mobile nav (hamburger + slide-out menu)
-- [ ] Mobile pass — Home
-- [ ] Mobile pass — Lawyer Profile
-- [ ] Mobile pass — Law Practice
-- [ ] Mobile pass — Law Office
+Mobile-first is now enforced project-wide; see the Responsive section of
+[`DEV_GUIDE.md`](DEV_GUIDE.md) before adding any new page. Comp-exact geometry
+goes behind the custom `desktop:` (1440px) breakpoint, **not** `lg:`.
+
+- [x] Mobile nav (hamburger + drawer)
+- [x] Mobile pass — Header & Footer
+- [x] Mobile pass — Home (hero, services, practice, updates, everyday law)
+- [x] Mobile pass — Lawyer Profile (rows become stacked cards)
+- [x] Mobile pass — page stubs (Law Practice, Law Office, Our Services, Everyday Law)
+- [ ] Mobile pass — Contact Us / About Us (owner: Kerr)
 - [ ] Mobile pass — Article pages (Everyday Law / Law Updates / Law Blogs)
+- [ ] Browser check at 375px on every page
 
 ## QA
 

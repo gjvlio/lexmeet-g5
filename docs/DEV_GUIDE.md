@@ -101,6 +101,60 @@ introduce a third naming scheme.
 - **Gradients** (`bg-hero-fade`, `bg-service-card`, `bg-olive-pill`, …) are
   defined in the Tailwind theme, not written inline.
 
+## Responsive — mobile first (required)
+
+The Figma frames are drawn at 1440px, but **1440 is the last breakpoint we
+build, not the first.** Write the phone layout as the unprefixed base, then add
+`sm:` / `md:` / `lg:` to *add* complexity as the viewport grows. Tailwind's
+prefixes are min-width, so an unprefixed class applies everywhere and a
+prefixed one only kicks in at that width and up.
+
+Refs: [Tailwind responsive design](https://tailwindcss.com/docs/responsive-design)
+· [MDN: mobile first](https://developer.mozilla.org/en-US/docs/Glossary/Mobile_First)
+
+### Breakpoints
+
+| Prefix | Min width | Stands for |
+|---|---|---|
+| *(none)* | 0 | phone — the default |
+| `sm:` | 640px | large phone / small tablet |
+| `md:` | 768px | tablet |
+| `lg:` | 1024px | laptop |
+| `xl:` | 1280px | wide desktop |
+| `desktop:` | **1440px** | the Figma frame — custom, see below |
+
+`desktop:` is ours, added in `tailwind.config.js`. It exists because the comps'
+absolute layouts are ~1296px wide and so do **not** fit inside `lg:` (1024px) —
+using `lg:` for them clipped the table between 1024 and 1440.
+
+Split the two jobs:
+
+- **`lg:` and below** — fluid steps that work at any width: padding ramps, type
+  scales, 1-col → 2-col grids.
+- **`desktop:`** — pixel-exact comp geometry: absolute offsets, fixed widths
+  from Figma, the uneven footer column template.
+
+Below `desktop:` you are designing, not transcribing — collapse columns, stack
+rows, and drop decorative pieces.
+
+### Rules
+
+- **Never write an unprefixed fixed width** wider than a phone. `w-[1440px]`
+  is wrong; `w-full max-w-[1440px]` is right.
+- **Page padding** uses the shared ramp: `px-4 sm:px-6 lg:px-16`.
+- **Absolute pixel offsets are a desktop-only tool.** Lay out with flex/grid
+  and `gap` at the base size, then switch to `desktop:absolute
+  desktop:left-[567px]` where a comp demands exact placement. Inline
+  `style={{ left: … }}` cannot be scoped to a breakpoint — put the value in an
+  arbitrary class instead, or it will leak onto phones. (The exception is a
+  block that is already `hidden desktop:block`; nothing inside it renders on a
+  phone, so inline offsets there are safe.)
+- **Type scales down**: `text-3xl lg:text-[48px]`, not one fixed size.
+- **Tables become cards.** A row that positions cells by x-coordinate has no
+  phone equivalent; stack the same fields vertically instead.
+- **Test at 375px** (small phone) before calling anything done. The page body
+  must never scroll horizontally.
+
 ## Naming conventions
 
 ### Files

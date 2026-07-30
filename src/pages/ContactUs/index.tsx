@@ -1,8 +1,20 @@
-/** Placeholder — build per docs/PROGRESS.md (Kerr). */
+import GlassCard from '@/components/ui/GlassCard';
+import ContactDetails from './components/ContactDetails';
+import ContactForm from './components/ContactForm';
+
+/**
+ * Contact Us page — office details beside a message form on one glass panel.
+ * Header/Footer come from Layout, so this renders content only.
+ */
 export default function ContactUs() {
   return (
-    <div className="mx-auto max-w-[1440px] px-16 py-24">
-      <h1 className="font-display text-4xl text-carbon-black">Contact Us</h1>
-    </div>
+    <section className="bg-services-fade py-20">
+      <div className="mx-auto max-w-[1440px] px-6 md:px-16">
+        <GlassCard className="grid gap-12 p-8 md:p-12 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:gap-16">
+          <ContactDetails />
+          <ContactForm />
+        </GlassCard>
+      </div>
+    </section>
   );
 }

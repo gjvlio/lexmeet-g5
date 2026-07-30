@@ -9,7 +9,10 @@ import Footer from './Footer';
  */
 export default function Layout() {
   return (
-    <div className="min-h-screen bg-cream">
+    /* `overflow-x-clip` rather than `hidden`: it stops a stray wide element
+       from scrolling the page sideways without creating a scroll container,
+       so `position: sticky` still works inside. */
+    <div className="min-h-screen overflow-x-clip bg-cream">
       <Header />
       <main>
         <Outlet />
