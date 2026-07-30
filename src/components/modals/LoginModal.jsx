@@ -1,0 +1,136 @@
+import googleIcon from '@/assets/modals/login/google-icon.png';
+import fbIcon from '@/assets/modals/login/fb-icon.png';
+import appleIcon from '@/assets/modals/login/apple-icon.png';
+import poweredByLexMeet from '@/assets/modals/login/powered-by-lexmeet-green-icon.png';
+import { cn } from '@/utils/cn';
+
+export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, className }) {
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className={cn(
+        'relative w-full max-w-[420px] sm:max-w-[450px] rounded-[28px] sm:rounded-[32px] overflow-hidden',
+        'bg-white/60 backdrop-blur-2xl border border-white/80 shadow-2xl',
+        'p-6 sm:p-7 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95',
+        className
+      )}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="login-modal-title"
+    >
+      {/* Header Title - Spectral Light 25px */}
+      <h2
+        id="login-modal-title"
+        className="font-display font-light text-[22px] sm:text-[25px] tracking-[0.1em] text-carbon-black text-center uppercase mb-4"
+      >
+        SIGN IN
+      </h2>
+
+      <form onSubmit={(e) => e.preventDefault()} className="flex flex-col items-start w-full">
+        {/* Email Input - Left Aligned */}
+        <label className="font-sans text-[11px] sm:text-xs font-medium text-carbon-black/80 mb-1 text-left w-full pl-1">
+          E-mail
+        </label>
+        <input
+          type="email"
+          placeholder="example@gmail.com"
+          className="w-full rounded-xl bg-white/75 border border-white/90 px-4 py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white/90 focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all mb-3"
+        />
+
+        {/* Password Input - Left Aligned */}
+        <label className="font-sans text-[11px] sm:text-xs font-medium text-carbon-black/80 mb-1 text-left w-full pl-1">
+          Password
+        </label>
+        <input
+          type="password"
+          placeholder="••••••••••"
+          className="w-full rounded-xl bg-white/75 border border-white/90 px-4 py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white/90 focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all mb-3"
+        />
+
+        {/* Checkbox and Forgot Password Row */}
+        <div className="flex items-center justify-between w-full px-1 mt-0.5 mb-3.5 text-[11px] sm:text-xs font-medium text-carbon-black/80">
+          <label className="flex items-center gap-1.5 cursor-pointer select-none">
+            <input
+              type="checkbox"
+              className="rounded border-carbon-black/30 text-olive-leaf focus:ring-olive-leaf h-3.5 w-3.5"
+            />
+            <span>Remember Me</span>
+          </label>
+          <button
+            type="button"
+            className="text-[11px] sm:text-xs font-medium text-carbon-black/70 hover:text-carbon-black transition-colors"
+          >
+            Forgot Password
+          </button>
+        </div>
+
+        {/* Sign In Button */}
+        <button
+          type="submit"
+          className="w-full rounded-full bg-[#3D4223] h-11 text-center font-sans text-xs sm:text-sm font-bold text-parchment shadow-pill hover:bg-[#2B2D19] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center"
+        >
+          Sign In
+        </button>
+      </form>
+
+      {/* Or Divider */}
+      <div className="my-4 flex items-center gap-3 w-full">
+        <div className="h-px flex-1 bg-carbon-black/20" />
+        <span className="font-sans text-[10px] font-medium text-carbon-black/60">or</span>
+        <div className="h-px flex-1 bg-carbon-black/20" />
+      </div>
+
+      {/* Social Logins - Standard Height & Equal Proportions */}
+      <div className="flex flex-col items-center gap-2.5 w-full">
+        <div className="flex w-full gap-2.5 sm:gap-3 justify-center">
+          <button
+            type="button"
+            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-3.5 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap"
+          >
+            <img src={googleIcon} alt="" className="h-3.5 w-3.5 object-contain" />
+            <span>Log in with Google</span>
+          </button>
+          <button
+            type="button"
+            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-3.5 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap"
+          >
+            <img src={fbIcon} alt="" className="h-3.5 w-3.5 object-contain" />
+            <span>Log in with Facebook</span>
+          </button>
+        </div>
+
+        <button
+          type="button"
+          className="flex items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-6 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap"
+        >
+          <img src={appleIcon} alt="" className="h-3.5 w-3.5 object-contain" />
+          <span>Log in with Apple</span>
+        </button>
+      </div>
+
+      {/* Create Account Link */}
+      <p className="mt-5 sm:mt-6 text-center font-sans text-[11px] sm:text-xs text-carbon-black/90">
+        Don't have an Account?{' '}
+        <button
+          type="button"
+          onClick={() => {
+            if (onOpenCreateAccount) onOpenCreateAccount();
+          }}
+          className="font-bold text-carbon-black underline hover:text-olive-leaf transition-colors cursor-pointer"
+        >
+          Create an Account
+        </button>
+      </p>
+
+      {/* Powered by LexMeet Footer Logo */}
+      <div className="mt-3.5 sm:mt-4 flex justify-center">
+        <img
+          src={poweredByLexMeet}
+          alt="Powered by LexMeet"
+          className="h-3.5 sm:h-4 w-auto object-contain opacity-90"
+        />
+      </div>
+    </div>
+  );
+}
