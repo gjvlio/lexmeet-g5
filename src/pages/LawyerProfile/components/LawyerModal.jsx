@@ -4,6 +4,7 @@ import { cn } from '@/utils/cn';
 import { getCv } from '../cv';
 import LawyerCV from './LawyerCV';
 import LawyerRatings from './LawyerRatings';
+import LawyerSchedule from './LawyerSchedule';
 
 const TABS = ['Curriculum Vitae', 'Ratings & Feedback', 'Lawyer Schedule'];
 
@@ -164,7 +165,7 @@ export default function LawyerModal({ lawyer, isOpen, onClose }) {
         {/* key resets the See More toggles when a different lawyer is opened */}
         {activeTab === 0 && <LawyerCV key={lawyer.name} lawyer={lawyer} />}
         {activeTab === 1 && <LawyerRatings lawyer={lawyer} />}
-        {activeTab === 2 && <TabPlaceholder>Lawyer Schedule</TabPlaceholder>}
+        {activeTab === 2 && <LawyerSchedule lawyer={lawyer} />}
       </div>
     </Modal>
   );
