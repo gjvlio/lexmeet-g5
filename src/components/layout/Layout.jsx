@@ -1,21 +1,38 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
+
 /**
  * Shared page shell. Every route renders inside this via App.tsx's nested
  * route — pages never import Header/Footer themselves, so the active-nav
  * pill (driven by the current route in Header) stays correct everywhere.
  */
 export default function Layout() {
-  // `overflow-x-clip` stops stray wide elements from scrolling the page sideways
-  // without creating a scroll container.
-  return _jsxs("div", {
-    className: "min-h-screen overflow-x-clip bg-cream",
-    children: [
-      _jsx(Header, {}),
-      _jsx("main", { children: _jsx(Outlet, {}) }),
-      _jsx(Footer, {}),
-    ],
-  });
+  // activeModal: 'none' | 'login' | 'create-account'
+  const [activeModal, setActiveModal] = useState("none");
+
+  // Lock body scroll when Create Account modal is active
+  useEffect(() => {
+    if (activeModal === "create-account") {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [activeModal]);
+
+  return (
+    <div className="min-h-screen overflow-x-clip bg-cream relative">
+      <Header onOpenLogin={() => setActiveModal("login")} />
+
+      <main className="relative z-10">
+        <Outlet context={{ activeModal, setActiveModal }} />
+      </main>
+
+      <Footer />
+    </div>
+  );
 }
