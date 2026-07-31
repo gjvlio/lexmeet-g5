@@ -6,6 +6,9 @@ import ShareModal from "./ShareModal";
 import ArticleHeader from "./ArticleHeader";
 import Orb from "@/components/ui/Orb";
 
+import likeIcon from '@/assets/ELassets/likebutton.png';
+import shareIcon from '@/assets/ELassets/share.png';
+
 export default function ArticleDetail() {
   const { category, slug } = useParams();
   const navigate = useNavigate();
@@ -16,7 +19,6 @@ export default function ArticleDetail() {
 
   return (
     <div className="relative w-full pb-20">
-      {/* Background Orbs */}
       <Orb color="sage" className="-left-[200px] top-[10%] h-[500px] w-[500px]" opacity={0.35} />
       <Orb color="olive" className="-right-[150px] top-[40%] h-[600px] w-[600px]" opacity={0.25} />
 
@@ -41,26 +43,28 @@ export default function ArticleDetail() {
             {article.title}
           </h1>
           <div className="flex items-center gap-3 shrink-0">
-            <button className="flex items-center gap-2 rounded-full bg-forest px-4 py-2 font-sans text-xs font-semibold text-cream shadow-pill hover:brightness-110 transition-all">
-              ♡ Like
+            {/* Replaced solid bg with gradient from olive to forest */}
+            <button className="flex items-center gap-2 rounded-full bg-gradient-to-r from-olive to-forest pl-2.5 pr-4 py-1.5 font-sans text-[13px] font-semibold text-cream shadow-pill hover:brightness-110 hover:scale-105 transition-all">
+              <img src={likeIcon} alt="Like" className="w-5 h-5 object-contain" />
+              Like
             </button>
             <button 
               onClick={() => setShareModalOpen(true)}
-              className="flex items-center gap-2 rounded-full bg-forest px-4 py-2 font-sans text-xs font-semibold text-cream shadow-pill hover:brightness-110 transition-all"
+              className="flex items-center gap-2 rounded-full bg-gradient-to-r from-olive to-forest pl-2.5 pr-4 py-1.5 font-sans text-[13px] font-semibold text-cream shadow-pill hover:brightness-110 hover:scale-105 transition-all"
             >
-              ⤴ Share
+              <img src={shareIcon} alt="Share" className="w-[18px] h-[18px] object-contain" />
+              Share
             </button>
           </div>
         </div>
 
         <ArticleHeader article={article} />
 
-        {/* Removed border-t and pt-4 here since ArticleHeader now provides the divider */}
         <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex flex-wrap items-center gap-2">
             <span className="font-sans text-xs font-bold text-ink/80 mr-1">TAGS:</span>
             {article.tags.map(tag => (
-              <span key={tag} className="rounded-full bg-forest px-3 py-1 font-sans text-[10px] font-semibold text-cream">
+              <span key={tag} className="rounded-full bg-olive px-4 py-1.5 font-sans text-[11px] font-semibold text-cream">
                 {tag}
               </span>
             ))}

@@ -2,9 +2,19 @@ import { Link } from "react-router-dom";
 import GlassCard from "@/components/ui/GlassCard";
 import Button from "@/components/ui/Button";
 
-export default function ArticleCardVertical({ article }) {
+export default function ArticleCardVertical({ article, index }) {
+  // Determine the card's position in the 3-column grid (0 = Left, 1 = Middle, 2 = Right)
+  const position = index % 3;
+  
+  let cornerClass = "";
+  if (position === 0) {
+    cornerClass = "lg:!rounded-br-[64px]"; // Leftmost card gets custom bottom-right
+  } else if (position === 2) {
+    cornerClass = "lg:!rounded-bl-[64px]"; // Rightmost card gets custom bottom-left
+  }
+
   return (
-    <GlassCard tone="light" className="flex flex-col p-4 border border-white/90 h-full">
+    <GlassCard tone="light" className={`flex flex-col p-4 border border-white/90 h-full ${cornerClass}`}>
       <div className="w-full h-[180px] mb-4 shrink-0">
         <img src={article.image} alt={article.title} className="w-full h-full rounded-2xl object-cover ring-1 ring-sage/90" />
       </div>
@@ -24,9 +34,10 @@ export default function ArticleCardVertical({ article }) {
       <p className="font-sans text-[13px] text-ink/80 line-clamp-3 mb-5 flex-1">
         {article.excerpt}
       </p>
-      <div className="mt-auto self-center w-full">
-        <Link to={`/everyday-law/${article.category}/${article.slug}`} className="w-full block">
-          <Button variant="olive" className="w-full !h-10 !text-xs">Read More</Button>
+      
+      <div className="mt-auto flex justify-center w-full">
+        <Link to={`/everyday-law/${article.category}/${article.slug}`}>
+          <Button variant="olive" className="!px-10 !h-10 !text-xs">Read More</Button>
         </Link>
       </div>
     </GlassCard>
