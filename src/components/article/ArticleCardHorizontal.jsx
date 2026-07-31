@@ -7,7 +7,7 @@ export default function ArticleCardHorizontal({ article }) {
   const categoryListUrl = `/everyday-law/${article.category}`;
 
   return (
-    <GlassCard tone="light" className="flex flex-col p-5 gap-0 border border-white/90">
+    <GlassCard tone="light" className="flex flex-col p-5 gap-0 border border-white/90 hover-lift">
       <Link to={categoryListUrl} className="w-full h-[150px] shrink-0 mb-4 block group">
         <img src={article.image} alt={article.title} className="w-full h-full rounded-2xl object-cover ring-1 ring-sage/90 group-hover:opacity-95 transition-opacity" />
       </Link>

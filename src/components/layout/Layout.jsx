@@ -39,7 +39,8 @@ export default function Layout() {
     <div className="min-h-screen overflow-x-clip bg-cream relative">
       <Header onOpenLogin={() => setActiveModal("login")} />
 
-      <main className="relative z-10">
+      {/* Main page view with smooth global route transition animation */}
+      <main className="relative z-10 animate-page-fade-in" key={location.pathname}>
         <Outlet context={{ activeModal, setActiveModal }} />
       </main>
 
