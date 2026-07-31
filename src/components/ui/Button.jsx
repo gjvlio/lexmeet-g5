@@ -14,7 +14,7 @@ export default function Button({
   ...props
 }) {
   const base =
-    "inline-flex items-center justify-center rounded-full font-sans font-bold transition-transform active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-olive/60";
+    "inline-flex items-center justify-center rounded-full font-sans font-bold transition-all duration-300 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-olive/60 btn-glow-pulse cursor-pointer";
   const sizes = {
     md: "px-5 h-11 text-sm lg:px-6",
     lg: "px-6 h-12 text-base sm:h-14 sm:text-lg lg:px-8 lg:h-[58px] lg:text-[22px]",

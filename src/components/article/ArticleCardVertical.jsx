@@ -14,7 +14,7 @@ export default function ArticleCardVertical({ article, index }) {
   }
 
   return (
-    <GlassCard tone="light" className={`flex flex-col p-4 border border-white/90 h-full ${cornerClass}`}>
+    <GlassCard tone="light" className={`flex flex-col p-4 border border-white/90 h-full hover-lift ${cornerClass}`}>
       <div className="w-full h-[180px] mb-4 shrink-0">
         <img src={article.image} alt={article.title} className="w-full h-full rounded-2xl object-cover ring-1 ring-sage/90" />
       </div>

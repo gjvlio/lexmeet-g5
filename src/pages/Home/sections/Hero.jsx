@@ -149,6 +149,7 @@ export default function Hero() {
             {activeModal === 'login' && (
               <LoginModal
                 isOpen={true}
+                usePortal={false}
                 onClose={() => setActiveModal('none')}
                 onOpenCreateAccount={() => setActiveModal('create-account')}
               />
@@ -156,6 +157,7 @@ export default function Hero() {
             {activeModal === 'create-account' && (
               <CreateAccountModal
                 isOpen={true}
+                usePortal={false}
                 onClose={() => setActiveModal('none')}
                 onOpenLogin={() => setActiveModal('login')}
               />
