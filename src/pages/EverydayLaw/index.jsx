@@ -5,7 +5,7 @@ import ArticleDetail from "@/components/article/ArticleDetail";
 
 export default function EverydayLaw() {
   return (
-    <div className="relative min-h-screen bg-parchment pb-24">
+    <div className="relative min-h-screen overflow-x-clip">
       <Routes>
         <Route path="/" element={<Hub />} />
         <Route path=":category" element={<ArticleList />} />

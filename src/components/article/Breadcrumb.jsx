@@ -1,35 +1,34 @@
 import { Link } from "react-router-dom";
 import { ARTICLE_CATEGORIES } from "@/utils/articles";
 
-export default function Breadcrumb({ category, title }) {
-  const categoryName = ARTICLE_CATEGORIES[category];
-  
-  // Dynamic routing: If we are on an "everyday-law" article detail page, 
-  // "Everyday Law" links to the Category List. Otherwise, it links to the Hub.
-  const everydayLawLink = (category === 'everyday-law' && title) 
-    ? "/everyday-law/everyday-law" 
-    : "/everyday-law";
+const CATEGORY_LIST_NAMES = {
+  'everyday-law': 'Everyday Law List',
+  'law-updates': 'Law Updates List',
+  'law-blogs': 'Law Blogs List',
+};
 
-  // We omit the middle category segment only if the category is 'everyday-law' 
-  // to avoid "Home / Everyday Law / Everyday Law / Title"
-  const showCategory = category && category !== 'everyday-law';
+export default function Breadcrumb({ category, title }) {
+  const categoryListName = CATEGORY_LIST_NAMES[category] || `${ARTICLE_CATEGORIES[category] || "Everyday Law"} List`;
 
   return (
     <nav className="font-sans text-xs text-ink/80 flex items-center gap-2 font-medium overflow-hidden">
       <Link to="/" className="font-bold text-ink hover:underline">Home</Link>
       <span>/</span>
       
-      {/* Dynamic Link applied here */}
-      <Link to={everydayLawLink} className="font-bold text-ink hover:underline">
+      <Link to="/everyday-law" className="font-bold text-ink hover:underline">
         Everyday Law
       </Link>
       
-      {showCategory && (
+      {category && (
         <>
           <span>/</span>
-          <Link to={`/everyday-law/${category}`} className="font-bold text-ink hover:underline">
-            {categoryName}
-          </Link>
+          {title ? (
+            <Link to={`/everyday-law/${category}`} className="font-bold text-ink hover:underline">
+              {categoryListName}
+            </Link>
+          ) : (
+            <span className="font-bold text-ink">{categoryListName}</span>
+          )}
         </>
       )}
       

@@ -1,24 +1,35 @@
+import { createPortal } from 'react-dom';
 import googleIcon from '@/assets/modals/login/google-icon.png';
 import fbIcon from '@/assets/modals/login/fb-icon.png';
 import appleIcon from '@/assets/modals/login/apple-icon.png';
 import poweredByLexMeet from '@/assets/modals/login/powered-by-lexmeet-green-icon.png';
 import { cn } from '@/utils/cn';
 
-export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, className }) {
+export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, className, usePortal = true }) {
   if (!isOpen) return null;
 
-  return (
+  const content = (
     <div
       className={cn(
-        'relative w-full max-w-[420px] sm:max-w-[450px] rounded-[28px] sm:rounded-[32px] overflow-hidden',
+        'relative z-20 w-full max-w-[420px] sm:max-w-[450px] rounded-[28px] sm:rounded-[32px] overflow-hidden',
         'bg-white/60 backdrop-blur-2xl border border-white/80 shadow-2xl',
-        'p-6 sm:p-7 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95',
+        'p-6 sm:p-7 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95 max-h-[calc(100vh-60px)] overflow-y-auto',
         className
       )}
       role="dialog"
       aria-modal="true"
       aria-labelledby="login-modal-title"
     >
+      {/* Exit Button X */}
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close modal"
+        className="absolute right-5 top-5 sm:right-6 sm:top-6 text-carbon-black/60 hover:text-carbon-black font-semibold text-lg sm:text-xl transition-colors cursor-pointer z-10"
+      >
+        ✕
+      </button>
+
       {/* Header Title - Spectral Light 25px */}
       <h2
         id="login-modal-title"
@@ -59,7 +70,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
           </label>
           <button
             type="button"
-            className="text-[11px] sm:text-xs font-medium text-carbon-black/70 hover:text-carbon-black transition-colors"
+            className="text-[11px] sm:text-xs font-medium text-carbon-black/70 hover:text-carbon-black transition-colors cursor-pointer"
           >
             Forgot Password
           </button>
@@ -81,19 +92,19 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
         <div className="h-px flex-1 bg-carbon-black/20" />
       </div>
 
-      {/* Social Logins - Standard Height & Equal Proportions */}
+      {/* Social Logins */}
       <div className="flex flex-col items-center gap-2.5 w-full">
         <div className="flex w-full gap-2.5 sm:gap-3 justify-center">
           <button
             type="button"
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-3.5 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap"
+            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-3.5 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
           >
             <img src={googleIcon} alt="" className="h-3.5 w-3.5 object-contain" />
             <span>Log in with Google</span>
           </button>
           <button
             type="button"
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-3.5 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap"
+            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-3.5 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
           >
             <img src={fbIcon} alt="" className="h-3.5 w-3.5 object-contain" />
             <span>Log in with Facebook</span>
@@ -102,7 +113,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
 
         <button
           type="button"
-          className="flex items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-6 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap"
+          className="flex items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-6 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
         >
           <img src={appleIcon} alt="" className="h-3.5 w-3.5 object-contain" />
           <span>Log in with Apple</span>
@@ -132,5 +143,22 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
         />
       </div>
     </div>
+  );
+
+  if (!usePortal) {
+    return content;
+  }
+
+  return createPortal(
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Dark Backdrop Blur Overlay BEHIND the modal */}
+      <div
+        aria-hidden={true}
+        onClick={onClose}
+        className="absolute inset-0 bg-carbon-black/60 backdrop-blur-md animate-in fade-in duration-300 cursor-pointer"
+      />
+      {content}
+    </div>,
+    document.body
   );
 }
