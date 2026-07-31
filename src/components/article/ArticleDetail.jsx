@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { EVERYDAY_LAW_ARTICLES } from "../data";
+import { ARTICLES } from "@/utils/articles";
 import Breadcrumb from "./Breadcrumb";
 import ShareModal from "./ShareModal";
 import ArticleHeader from "./ArticleHeader";
@@ -14,11 +14,11 @@ export default function ArticleDetail() {
   const navigate = useNavigate();
   const [isShareModalOpen, setShareModalOpen] = useState(false);
 
-  const article = EVERYDAY_LAW_ARTICLES.find(a => a.slug === slug);
+  const article = ARTICLES.find(a => a.slug === slug);
   if (!article) return <div className="p-20 text-center">Article not found.</div>;
 
   return (
-    <div className="relative w-full pb-20">
+    <div className="relative w-full overflow-hidden pb-20">
       <Orb color="sage" className="-left-[200px] top-[10%] h-[500px] w-[500px]" opacity={0.35} />
       <Orb color="olive" className="-right-[150px] top-[40%] h-[600px] w-[600px]" opacity={0.25} />
 
