@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { EVERYDAY_LAW_CATEGORIES, EVERYDAY_LAW_ARTICLES } from "../data";
+import { ARTICLE_CATEGORIES, ARTICLES } from "@/utils/articles";
 import SearchBar from "./SearchBar";
 import Breadcrumb from "./Breadcrumb";
 import ArticleCardVertical from "./ArticleCardVertical";
 import Pagination from "./Pagination";
 import Orb from "@/components/ui/Orb";
 
-export default function CategoryList() {
+/** Article list for one category — the same view serves all three. */
+export default function ArticleList() {
   const { category } = useParams();
   const [currentPage, setCurrentPage] = useState(1);
 
-  const categoryName = EVERYDAY_LAW_CATEGORIES[category] || "Everyday Law";
-  const allArticlesInCategory = EVERYDAY_LAW_ARTICLES.filter(a => a.category === category);
+  const categoryName = ARTICLE_CATEGORIES[category] || "Everyday Law";
+  const allArticlesInCategory = ARTICLES.filter(a => a.category === category);
 
   // Pagination Logic: strictly 3 items per page
   const itemsPerPage = 3;

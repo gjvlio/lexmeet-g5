@@ -1,3 +1,10 @@
+/**
+ * Every article on the site, across all three categories — Everyday Law,
+ * Law Updates and Law Blogs. They share one shape and one set of components
+ * in src/components/article/; `category` is what separates them.
+ *
+ * In production these would come from a CMS / API.
+ */
 import startupImg from '@/assets/ELassets/startup.jpg';
 import ofwImg from '@/assets/ELassets/ofw.jpg';
 import homeownerAssocImg from '@/assets/ELassets/homeowner assoc.jpg';
@@ -12,13 +19,13 @@ import attyAnthonyImg from '@/assets/ELassets/Atty Anthony.png';
 import attyAntonetteImg from '@/assets/ELassets/Atty. Antonette.png';
 import attySilversImg from '@/assets/ELassets/Atty. Silvers.png';
 
-export const EVERYDAY_LAW_CATEGORIES = {
+export const ARTICLE_CATEGORIES = {
   'everyday-law': 'Everyday Law',
   'law-updates': 'Law Updates',
   'law-blogs': 'Law Blogs'
 };
 
-export const EVERYDAY_LAW_ARTICLES = [
+export const ARTICLES = [
   {
     slug: 'online-startup-msme-registration',
     category: 'everyday-law',

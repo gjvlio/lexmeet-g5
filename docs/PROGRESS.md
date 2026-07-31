@@ -21,7 +21,7 @@ Status legend: `[x]` done · `[~]` in progress · `[ ]` not started
 - [x] Header
 - [x] Footer
 - [x] Modal (base — backdrop, close-on-esc, close-on-backdrop-click, focus trap)
-- [ ] ArticleCard / ArticleList / ArticleDetail (shared by Everyday Law, Law Updates, Law Blogs)
+- [x] ArticleCard / ArticleList / ArticleDetail (shared by Everyday Law, Law Updates, Law Blogs)
 
 ## Justin
 
@@ -58,7 +58,7 @@ Status legend: `[x]` done · `[~]` in progress · `[ ]` not started
 | Section | Status |
 |---|---|
 | Modal primitive (see Shared Components above) | [x] |
-| Article primitives (see Shared Components above) | [ ] |
+| Article primitives (see Shared Components above) | [x] |
 | Lawyers Profile (see more): Curriculum Vitae, Ratings & Feedbacks | [x] |
 | Contact Us | [x] |
 | About Us: Main section, Values we live by, Our mission, Our vision, Our promise | [ ] |

@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
-import { EVERYDAY_LAW_ARTICLES } from "../data";
+import { ARTICLES } from "@/utils/articles";
 import Orb from "@/components/ui/Orb";
 import GlassCard from "@/components/ui/GlassCard";
 import Button from "@/components/ui/Button";
 import SectionLabel from "@/components/ui/SectionLabel";
-import ArticleCardHorizontal from "./ArticleCardHorizontal";
-import FeaturedBlogCard from "./FeaturedBlogCard";
-import SearchBar from "./SearchBar";
+import ArticleCardHorizontal from "@/components/article/ArticleCardHorizontal";
+import FeaturedBlogCard from "@/components/article/FeaturedBlogCard";
+import SearchBar from "@/components/article/SearchBar";
 
 export default function Hub() {
-  const latestEverydayLaw = EVERYDAY_LAW_ARTICLES.find(a => a.slug === 'online-startup-msme-registration');
-  const latestLawUpdates = EVERYDAY_LAW_ARTICLES.find(a => a.slug === 'expanded-maternity-leave-now-in-effect');
-  const latestLawBlogs = EVERYDAY_LAW_ARTICLES.find(a => a.slug === 'can-your-employer-really-withhold-your-final-pay');
-  const featuredBlog = EVERYDAY_LAW_ARTICLES.find(a => a.slug === 'e-commerce-data-protection');
+  const latestEverydayLaw = ARTICLES.find(a => a.slug === 'online-startup-msme-registration');
+  const latestLawUpdates = ARTICLES.find(a => a.slug === 'expanded-maternity-leave-now-in-effect');
+  const latestLawBlogs = ARTICLES.find(a => a.slug === 'can-your-employer-really-withhold-your-final-pay');
+  const featuredBlog = ARTICLES.find(a => a.slug === 'e-commerce-data-protection');
 
   return (
     <div className="relative w-full">

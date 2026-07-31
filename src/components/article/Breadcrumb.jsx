@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { EVERYDAY_LAW_CATEGORIES } from "../data";
+import { ARTICLE_CATEGORIES } from "@/utils/articles";
 
 export default function Breadcrumb({ category, title }) {
-  const categoryName = EVERYDAY_LAW_CATEGORIES[category];
+  const categoryName = ARTICLE_CATEGORIES[category];
   
   // Dynamic routing: If we are on an "everyday-law" article detail page, 
   // "Everyday Law" links to the Category List. Otherwise, it links to the Hub.
