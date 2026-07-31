@@ -1,46 +1,46 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { EVERYDAY_LAW } from "@/utils/content";
-import { PHOTOS } from "@/utils/images";
-/** EVERYDAY LAW band — centered title, body copy + custom-corner photo. */
+import { Link } from "react-router-dom";
+import Button from "@/components/ui/Button";
+import Orb from "@/components/ui/Orb";
+import elImg from "@/assets/homeAssets/EL.png";
+
 export default function EverydayLaw() {
-  const photo = PHOTOS["practice-civil"];
-  return _jsx("section", {
-    id: "everyday",
-    className: "relative bg-everyday-fade py-14 lg:py-20",
-    children: _jsxs("div", {
-      className: "mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-16",
-      children: [
-        _jsx("h2", {
-          className:
-            "text-center font-display text-3xl font-bold text-ink sm:text-4xl lg:text-[56px]",
-          children: "EVERYDAY LAW",
-        }),
-        _jsxs("div", {
-          className:
-            "mt-8 flex flex-col items-start gap-8 lg:mt-10 lg:flex-row lg:gap-12",
-          children: [
-            _jsx("p", {
-              className:
-                "max-w-[660px] font-sans text-[15px] leading-[1.55] text-deep lg:text-[17px]",
-              children: EVERYDAY_LAW,
-            }),
-            _jsx("div", {
-              className:
-                "h-[200px] w-full shrink-0 overflow-hidden rounded-tl-[64px] rounded-br-[64px] rounded-tr-[20px] rounded-bl-[20px] ring-1 ring-sage/90 lg:h-[246px] lg:w-[460px] lg:rounded-tl-[100px] lg:rounded-br-[100px]",
-              children: photo
-                ? _jsx("img", {
-                    src: photo,
-                    alt: "Everyday law",
-                    className: "h-full w-full object-cover",
-                  })
-                : _jsx("div", {
-                    className:
-                      "h-full w-full bg-gradient-to-br from-sage to-olive",
-                  }),
-            }),
-          ],
-        }),
-      ],
-    }),
-  });
+  return (
+    // Removed bg-parchment and z-20 so it doesn't clip the Law Updates orb
+    <section id="everyday" className="relative py-16 lg:py-24 pb-28 lg:pb-36">
+      {/* Ambient Background Orb */}
+      <Orb color="sage" className="-right-[150px] top-[10%] h-[400px] w-[400px] lg:h-[550px] lg:w-[550px]" opacity={0.3} />
+
+      <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-16">
+        
+        <h2 className="text-left font-display text-4xl sm:text-5xl lg:text-[64px] font-bold text-carbon-black mb-10 tracking-tight">
+          Everyday Law
+        </h2>
+        
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
+          <div className="w-full lg:w-1/2 flex flex-col items-start text-left lg:pr-6">
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-carbon-black leading-snug mb-5">
+              Your Legal Partner, Online and On Your Time
+            </h3>
+            <p className="font-sans text-sm sm:text-base lg:text-[17px] text-carbon-black/85 leading-relaxed mb-8 max-w-[600px]">
+              Navigating the legalities of daily life is now as easy as checking your email. We've transformed traditional, slow legal hurdles into streamlined digital experiences. From document reviews and basic dispute resolution to securing your business agreements, we handle the legal heavy lifting entirely online.
+            </p>
+            <Link to="/everyday-law" className="outline-none">
+              <Button variant="olive" className="!px-10 !h-12 !text-[13px] tracking-wide shadow-card">
+                Read more
+              </Button>
+            </Link>
+          </div>
+
+          <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
+            <img 
+              src={elImg} 
+              alt="Everyday Law" 
+              className="w-full max-w-[500px] lg:max-w-[600px] h-auto object-contain" 
+            />
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
 }
