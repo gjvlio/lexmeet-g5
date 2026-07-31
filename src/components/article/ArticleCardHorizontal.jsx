@@ -5,10 +5,12 @@ import Button from "@/components/ui/Button";
 export default function ArticleCardHorizontal({ article }) {
   const categoryLabel = article.category === 'law-updates' ? 'Law Updates' : article.category === 'law-blogs' ? 'Law Blogs' : 'Everyday Law';
   const categoryListUrl = `/everyday-law/${article.category}`;
+  const articleUrl = `/everyday-law/${article.category}/${article.slug}`;
 
   return (
     <GlassCard tone="light" className="flex flex-col p-5 gap-0 border border-white/90 hover-lift">
-      <Link to={categoryListUrl} className="w-full h-[150px] shrink-0 mb-4 block group">
+      {/* Clickable Image Thumbnail -> Article Detail */}
+      <Link to={articleUrl} className="w-full h-[150px] shrink-0 mb-4 block group">
         <img src={article.image} alt={article.title} className="w-full h-full rounded-2xl object-cover ring-1 ring-sage/90 group-hover:opacity-95 transition-opacity" />
       </Link>
       
@@ -21,12 +23,14 @@ export default function ArticleCardHorizontal({ article }) {
               <span className="font-sans text-[11px] text-ink/60 mt-0.5">{article.author.role}</span>
             </div>
           </div>
+          {/* Category Pill -> Category List */}
           <Link to={categoryListUrl} className="bg-white/60 border border-sage/30 px-3 py-1.5 rounded-full font-sans text-[10px] font-bold text-ink shadow-sm hover:bg-white transition-colors">
             {categoryLabel}
           </Link>
         </div>
         
-        <Link to={categoryListUrl}>
+        {/* Title Link -> Article Detail */}
+        <Link to={articleUrl}>
           <h3 className="font-display text-[18px] sm:text-[20px] font-bold text-ink leading-tight mb-2 mt-1 line-clamp-2 hover:text-forest transition-colors">
             {article.title}
           </h3>
@@ -39,8 +43,8 @@ export default function ArticleCardHorizontal({ article }) {
         </p>
         
         <div className="mt-auto flex justify-center">
-          <Link to={categoryListUrl}>
-            <Button variant="olive" className="!h-9 !px-8 !text-[12px]">View all</Button>
+          <Link to={articleUrl}>
+            <Button variant="olive" className="!h-9 !px-8 !text-[12px]">Read Article</Button>
           </Link>
         </div>
       </div>
