@@ -18,7 +18,7 @@ export default function ArticleDetail() {
   if (!article) return <div className="p-20 text-center">Article not found.</div>;
 
   return (
-    <div className="relative w-full pb-20">
+    <div className="relative w-full overflow-hidden pb-20">
       <Orb color="sage" className="-left-[200px] top-[10%] h-[500px] w-[500px]" opacity={0.35} />
       <Orb color="olive" className="-right-[150px] top-[40%] h-[600px] w-[600px]" opacity={0.25} />
 

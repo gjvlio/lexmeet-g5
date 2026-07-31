@@ -23,8 +23,10 @@ export default function ArticleList() {
     currentPage * itemsPerPage
   );
 
+  // overflow-hidden clips the orbs — they overhang both edges and would
+  // otherwise scroll the page sideways on a phone.
   return (
-    <div className="relative w-full pb-16">
+    <div className="relative w-full overflow-hidden pb-16">
       {/* Background Orbs */}
       <Orb color="sage" className="-left-[200px] top-[10%] h-[500px] w-[500px]" opacity={0.35} />
       <Orb color="olive" className="-right-[150px] top-[40%] h-[600px] w-[600px]" opacity={0.25} />

@@ -15,7 +15,7 @@ export default function Hub() {
   const featuredBlog = ARTICLES.find(a => a.slug === 'e-commerce-data-protection');
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full overflow-hidden">
       <Orb color="sage" className="-left-[200px] top-[10%] h-[500px] w-[500px]" opacity={0.35} />
       <Orb color="olive" className="-right-[150px] top-[40%] h-[600px] w-[600px]" opacity={0.25} />
 
