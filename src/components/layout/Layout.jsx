@@ -40,16 +40,25 @@ export default function Layout() {
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.substring(1);
-      setTimeout(() => {
+      let attempts = 0;
+      const interval = setInterval(() => {
         const element = document.getElementById(id);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          clearInterval(interval);
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 30);
+        }
+        attempts++;
+        if (attempts > 30) { // Up to 1.5 seconds
+          clearInterval(interval);
         }
       }, 50);
+      return () => clearInterval(interval);
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo(0, 0);
     }
-  }, [location.pathname, location.hash, location.key]);
+  }, [location.pathname, location.hash]);
 
   return (
     <div className="min-h-screen overflow-x-clip bg-cream relative">
