@@ -14,14 +14,15 @@ const MENU_ITEMS = [
 ];
 
 export default function ProfileDropdown({ isOpen, onClose, onOpenLogin, className }) {
-  if (!isOpen) return null;
-
   return (
     <div
       className={cn(
         'w-[220px] sm:w-[240px] rounded-[22px] overflow-hidden',
         'bg-parchment/70 backdrop-blur-xl border border-white/80 shadow-glass',
-        'p-1.5 transition-all duration-200 animate-in fade-in slide-in-from-top-2',
+        'p-1.5 transition-all duration-200 ease-out origin-top-right z-50',
+        isOpen
+          ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
+          : 'opacity-0 scale-95 -translate-y-2 pointer-events-none',
         className
       )}
       role="menu"
@@ -41,7 +42,7 @@ export default function ProfileDropdown({ isOpen, onClose, onOpenLogin, classNam
                 if (onClose) onClose();
               }}
               className={cn(
-                'group flex items-center gap-3.5 px-4 py-3 sm:px-4.5 sm:py-3.5 w-full text-left rounded-xl transition-colors duration-150',
+                'group flex items-center gap-3.5 px-4 py-3 sm:px-4.5 sm:py-3.5 w-full text-left rounded-xl transition-colors duration-150 cursor-pointer',
                 'hover:bg-carbon-black/5 active:bg-carbon-black/10',
                 !isLast && 'border-b border-carbon-black/10 rounded-b-none'
               )}

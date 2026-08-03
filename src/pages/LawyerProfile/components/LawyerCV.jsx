@@ -4,6 +4,8 @@ import { getCv } from '../cv';
 /** How many entries show before the matching See More is used. */
 const LANGUAGE_PREVIEW = 5;
 const CASES_PREVIEW = 8;
+const WORK_PREVIEW = 1;
+const EDUCATION_PREVIEW = 2;
 
 /** Dark pill that labels each block on the right-hand column. */
 function BlockLabel({ children }) {
@@ -41,11 +43,7 @@ function BulletColumns({ items }) {
 }
 
 function SidebarLabel({ children }) {
-  return (
-    <h3 className="font-sans text-[11px] font-bold tracking-[0.08em] text-carbon-black">
-      {children}
-    </h3>
-  );
+  return <h3 className="font-sans text-[12px] font-bold text-carbon-black">{children}</h3>;
 }
 
 function SidebarList({ items }) {
@@ -85,6 +83,14 @@ export default function LawyerCV({ lawyer }) {
 
   const [showAllLanguages, setShowAllLanguages] = useState(false);
   const [showAllCases, setShowAllCases] = useState(false);
+  const [showAllWork, setShowAllWork] = useState(false);
+  const [showAllEducation, setShowAllEducation] = useState(false);
+
+  const work = showAllWork ? cv.workExperience : cv.workExperience.slice(0, WORK_PREVIEW);
+  const education = showAllEducation ? cv.education : cv.education.slice(0, EDUCATION_PREVIEW);
+
+  const hasMoreWork = cv.workExperience.length > WORK_PREVIEW;
+  const hasMoreEducation = cv.education.length > EDUCATION_PREVIEW;
 
   const languages = showAllLanguages
     ? credentials.languages
@@ -97,9 +103,7 @@ export default function LawyerCV({ lawyer }) {
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,200px)_minmax(0,1fr)] lg:gap-10">
       <aside>
-        <p className="font-sans text-[11px] font-semibold tracking-[0.08em] text-dusty-olive">
-          CREDENTIALS
-        </p>
+        <p className="font-sans text-[13px] font-semibold text-dusty-olive">Credentials</p>
 
         <div className="mt-3">
           <SidebarLabel>ROLL OF ATTORNEY&rsquo;S NUMBER</SidebarLabel>
@@ -145,29 +149,49 @@ export default function LawyerCV({ lawyer }) {
         <section>
           <BlockLabel>Work Experience</BlockLabel>
           <Panel>
-            {cv.workExperience.map((job) => (
-              <div key={job.firm}>
-                <p className="font-display text-[17px] font-bold text-carbon-black">{job.firm}</p>
-                <p className="font-sans text-[13px] italic text-dusty-olive">{job.role}</p>
-                <p className="mt-2 break-words font-sans text-[13px] leading-relaxed text-dark-khaki">
-                  {job.detail}
-                </p>
+            <div id="cv-work">
+              {work.map((job) => (
+                <div key={job.firm} className="mb-4 last:mb-0">
+                  <p className="font-sans text-sm font-bold text-carbon-black">{job.firm}</p>
+                  <p className="font-sans text-[12px] italic text-dusty-olive">{job.role}</p>
+                  <p className="mt-2 break-words font-sans text-[13px] leading-relaxed text-dark-khaki">
+                    {job.detail}
+                  </p>
+                </div>
+              ))}
+            </div>
+            {hasMoreWork && (
+              <div className="mt-4 flex justify-center">
+                <SeeMorePill
+                  isExpanded={showAllWork}
+                  onClick={() => setShowAllWork((prev) => !prev)}
+                  controls="cv-work"
+                />
               </div>
-            ))}
+            )}
           </Panel>
         </section>
 
         <section className="mt-6">
           <BlockLabel>Education</BlockLabel>
           <Panel>
-            {cv.education.map((entry) => (
-              <div key={`${entry.school}-${entry.detail}`} className="mb-3 last:mb-0">
-                <p className="font-display text-[17px] font-bold text-carbon-black">
-                  {entry.school}
-                </p>
-                <p className="font-sans text-[13px] text-dark-khaki">{entry.detail}</p>
+            <div id="cv-education">
+              {education.map((entry) => (
+                <div key={`${entry.school}-${entry.detail}`} className="mb-3 last:mb-0">
+                  <p className="font-sans text-sm font-bold text-carbon-black">{entry.school}</p>
+                  <p className="font-sans text-[12px] text-dark-khaki">{entry.detail}</p>
+                </div>
+              ))}
+            </div>
+            {hasMoreEducation && (
+              <div className="mt-4 flex justify-center">
+                <SeeMorePill
+                  isExpanded={showAllEducation}
+                  onClick={() => setShowAllEducation((prev) => !prev)}
+                  controls="cv-education"
+                />
               </div>
-            ))}
+            )}
           </Panel>
         </section>
 

@@ -22,6 +22,7 @@ const ANNA_CV = {
     // The comp lists five; the rest sit behind the sidebar's See More.
     languages: ['ILOCANO', 'CEBUANO', 'CHAVACANO', 'CHINESE', 'ENGLISH', 'KOREAN'],
   },
+  // The comp details the first entry of each; the rest sit behind See More.
   workExperience: [
     {
       firm: 'Valderama Law Office',
@@ -29,10 +30,18 @@ const ANNA_CV = {
       detail:
         'Valderama Law Office, Unit G 15th floor, Valderama Condominium, Ortigas Center, Pasig City · Tel no: 4561534 Pasig City',
     },
+    {
+      firm: 'Sandoval & Reyes Law Offices',
+      role: 'Junior Associate',
+      detail:
+        'Sandoval & Reyes Law Offices, 8th floor, Pacific Star Building, Makati City · Tel no: 8123456 Makati City',
+    },
+
   ],
   education: [
     { school: 'University of Sto. Tomas Manila', detail: 'July 3, 1991 · AB Philosophy' },
     { school: 'University of Sto. Tomas Manila', detail: 'March 15, 2001 · Doctor of Jurisprudence' },
+    { school: 'Ateneo de Manila University', detail: 'June 12, 2004 · Master of Laws' },
   ],
   locationsOfPractice: ['Nationwide', 'Luzon Wide', 'Visayas Wide', 'Mindanao Wide'],
   concentration: [

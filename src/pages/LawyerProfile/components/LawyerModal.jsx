@@ -54,27 +54,19 @@ function PhoneIcon() {
   );
 }
 
-/** Placeholder for a tab whose content is owned elsewhere or still pending. */
-function TabPlaceholder({ children }) {
-  return (
-    <div className="grid min-h-[240px] place-items-center rounded-2xl border border-white/80 bg-white/40 p-10 text-center font-sans text-sm text-dusty-olive">
-      {children}
-    </div>
-  );
-}
-
 /**
  * "See more" dialog for a lawyer row — profile header, the three comp tabs,
- * and the Curriculum Vitae panel. Ratings and Schedule are stubbed: the
- * Ratings comp hasn't landed yet and Lawyer Schedule is El's section.
+ * and the three panels behind them. Opens on whichever tab the roster was
+ * showing, since the tab orders match.
  */
-export default function LawyerModal({ lawyer, isOpen, onClose }) {
-  const [activeTab, setActiveTab] = useState(0);
+export default function LawyerModal({ lawyer, isOpen, onClose, initialTab = 0 }) {
+  const [activeTab, setActiveTab] = useState(initialTab);
 
-  // A freshly opened lawyer should always start on the CV tab.
+  // Open on whichever tab the roster was showing — the modal's tabs are in
+  // the same order, so Ratings on the table opens Ratings here.
   useEffect(() => {
-    if (isOpen) setActiveTab(0);
-  }, [isOpen, lawyer]);
+    if (isOpen) setActiveTab(initialTab);
+  }, [isOpen, lawyer, initialTab]);
 
   if (!lawyer) return null;
 
@@ -86,8 +78,10 @@ export default function LawyerModal({ lawyer, isOpen, onClose }) {
       onClose={onClose}
       size="xl"
       /* Denser than the default .glass fill — the CV is long-form text and
-         needs a calmer surface than the roster showing through. */
-      className="!bg-white/80 p-6 sm:p-8"
+         needs a calmer surface than the roster showing through. Capped to
+         the viewport so the panel scrolls as one piece, with no section
+         scrolling independently of the rest. */
+      className="max-h-[90dvh] overflow-y-auto !bg-white/80 p-6 sm:p-8"
     >
       {/* Stacked, the close button only overlaps the name row, so the padding
           that clears it moves there — otherwise it narrows the full-width CTA
@@ -161,7 +155,7 @@ export default function LawyerModal({ lawyer, isOpen, onClose }) {
         ))}
       </div>
 
-      <div className="mt-6 max-h-[65vh] overflow-y-auto pr-1 sm:mt-7 sm:max-h-[60vh]">
+      <div className="mt-6 sm:mt-7">
         {/* key resets the See More toggles when a different lawyer is opened */}
         {activeTab === 0 && <LawyerCV key={lawyer.name} lawyer={lawyer} />}
         {activeTab === 1 && <LawyerRatings lawyer={lawyer} />}
