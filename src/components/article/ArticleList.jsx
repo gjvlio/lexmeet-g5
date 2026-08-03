@@ -6,6 +6,10 @@ import Breadcrumb from "./Breadcrumb";
 import ArticleCardVertical from "./ArticleCardVertical";
 import Pagination from "./Pagination";
 import Orb from "@/components/ui/Orb";
+import wideOfficeBanner from '@/assets/ELassets/wide_office_banner.png';
+import wideUpdatesBanner from '@/assets/ELassets/wide_updates_banner.png';
+import wideBlogsBanner from '@/assets/ELassets/wide_blogs_banner.png';
+
 
 /** Article list for one category — serves all category listing routes with live search filtering. */
 export default function ArticleList() {
@@ -14,6 +18,18 @@ export default function ArticleList() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const categoryName = ARTICLE_CATEGORIES[category] || "Everyday Law";
+
+  const getBannerImage = () => {
+    switch (category) {
+      case 'law-updates':
+        return wideUpdatesBanner;
+      case 'law-blogs':
+        return wideBlogsBanner;
+      case 'everyday-law':
+      default:
+        return wideOfficeBanner;
+    }
+  };
 
   // Filter articles by category and live search query
   const allArticlesInCategory = ARTICLES.filter(a => {
@@ -42,8 +58,19 @@ export default function ArticleList() {
       <Orb color="sage" className="-left-[200px] top-[10%] h-[500px] w-[500px]" opacity={0.35} />
       <Orb color="olive" className="-right-[150px] top-[40%] h-[600px] w-[600px]" opacity={0.25} />
 
-      <section className="bg-olive py-8 px-4 text-center relative z-10">
-        <h1 className="font-display text-[32px] sm:text-[40px] text-cream uppercase tracking-wide font-bold">
+      <section
+        className="py-5 sm:py-6 px-4 text-center relative overflow-hidden z-10 shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
+        style={{
+          backgroundColor: '#545a2f',
+          backgroundImage: `linear-gradient(rgba(84, 90, 47, 0.85), rgba(84, 90, 47, 0.88)), url(${getBannerImage()})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <h1 
+          className="font-display text-[26px] sm:text-[32px] text-cream uppercase tracking-wider font-bold"
+          style={{ textShadow: '0 3px 8px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.3)' }}
+        >
           {categoryName}
         </h1>
       </section>
