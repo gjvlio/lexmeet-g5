@@ -26,6 +26,8 @@ export default function SectionCarousel({ items, renderCard, darkTheme = true })
   const prevIndex = (activeIndex - 1 + total) % total;
   const nextIndex = (activeIndex + 1) % total;
 
+
+
   return (
     <div
       className="relative mt-5 sm:mt-8 w-full"
@@ -60,21 +62,26 @@ export default function SectionCarousel({ items, renderCard, darkTheme = true })
         <div className="relative flex items-center justify-center w-full max-w-[800px] mx-auto py-2 sm:py-4 overflow-hidden sm:overflow-visible">
           {/* Previous Card (Left) */}
           <div
+            key={`prev-${items[prevIndex].id}`}
             onClick={() => setActiveIndex(prevIndex)}
-            className="hidden sm:block cursor-pointer w-[28%] lg:w-[30%] shrink-0 transition-all duration-500 ease-out transform scale-90 opacity-75 hover:opacity-100 z-10 -mr-8 lg:-mr-12"
+            className="hidden sm:block cursor-pointer w-[28%] lg:w-[30%] shrink-0 transition-all duration-500 ease-out transform scale-90 opacity-75 hover:opacity-100 z-10 -mr-8 lg:-mr-12 animate-fade-in"
           >
             {renderCard(items[prevIndex], false, prevIndex)}
           </div>
 
           {/* Active Center Card */}
-          <div className="cursor-default w-[85%] sm:w-[48%] lg:w-[44%] shrink-0 transition-all duration-500 ease-out transform scale-100 sm:scale-105 z-20 shadow-xl">
+          <div 
+            key={`active-${items[activeIndex].id}`}
+            className="cursor-default w-[85%] sm:w-[48%] lg:w-[44%] shrink-0 transition-all duration-500 ease-out transform scale-100 sm:scale-105 z-20 shadow-xl animate-fade-in"
+          >
             {renderCard(items[activeIndex], true, activeIndex)}
           </div>
 
           {/* Next Card (Right) */}
           <div
+            key={`next-${items[nextIndex].id}`}
             onClick={() => setActiveIndex(nextIndex)}
-            className="hidden sm:block cursor-pointer w-[28%] lg:w-[30%] shrink-0 transition-all duration-500 ease-out transform scale-90 opacity-75 hover:opacity-100 z-10 -ml-8 lg:-ml-12"
+            className="hidden sm:block cursor-pointer w-[28%] lg:w-[30%] shrink-0 transition-all duration-500 ease-out transform scale-90 opacity-75 hover:opacity-100 z-10 -ml-8 lg:-ml-12 animate-fade-in"
           >
             {renderCard(items[nextIndex], false, nextIndex)}
           </div>

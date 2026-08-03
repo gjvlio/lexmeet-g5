@@ -72,9 +72,9 @@ export default function LawyerProfile() {
             activeTab: activeTab,
             onTabChange: setActiveTab,
           }),
-          _jsx(LawyerTable, { activeTab: activeTab, onSeeMore: handleSeeMore }),
+          _jsx(LawyerTable, { activeTab: activeTab, page: page, onSeeMore: handleSeeMore }),
           _jsx(Pagination, { page: page, onPageChange: setPage }),
-          _jsx(ResultCount, {}),
+          _jsx(ResultCount, { page: page }),
           _jsx(LawyerModal, {
             lawyer: openLawyer,
             isOpen: openLawyer !== null,
@@ -193,7 +193,10 @@ function SearchField() {
     ],
   });
 }
-function LawyerTable({ activeTab, onSeeMore }) {
+function LawyerTable({ activeTab, page, onSeeMore }) {
+  const startIndex = (page - 1) * 8;
+  const paginatedLawyers = LAWYERS.slice(startIndex, startIndex + 8);
+
   return (
     /*
      * Frosted panel, same treatment as the search field, so the orb reads
@@ -207,13 +210,13 @@ function LawyerTable({ activeTab, onSeeMore }) {
         "relative mt-6 overflow-hidden rounded-3xl border border-white/90 bg-[rgba(237,238,236,0.6)] shadow-glass backdrop-blur-glass xl:ml-[146px] xl:mt-[30px] xl:h-[726px] xl:w-[1150px]",
       children: [
         _jsx(ColumnHeaders, { activeTab: activeTab }),
-        LAWYERS.map((lawyer, i) =>
+        paginatedLawyers.map((lawyer, i) =>
           _jsx(
             LawyerRow,
             {
               lawyer: lawyer,
               activeTab: activeTab,
-              isLast: i === LAWYERS.length - 1,
+              isLast: i === paginatedLawyers.length - 1,
               onSeeMore: onSeeMore,
             },
             lawyer.name,
@@ -239,9 +242,10 @@ function ColumnHeaders({ activeTab }) {
         children: "Position",
       }),
       _jsx("span", {
+        key: activeTab,
         className: cn(
           label,
-          "xl:absolute xl:-translate-x-1/2",
+          "xl:absolute xl:-translate-x-1/2 animate-fade-in",
           COLUMN_HEADING_DESKTOP[activeTab],
         ),
         children: TABS[activeTab].column,
@@ -293,10 +297,16 @@ function LawyerRow({ lawyer, activeTab, isLast, onSeeMore }) {
       _jsxs("div", {
         className: "flex items-center justify-between gap-3",
         children: [
-          activeTab === 0 && _jsx(CallButton, {}),
-          activeTab === 1 && _jsx(RatingCell, { rating: lawyer.rating }),
-          activeTab === 2 &&
-            _jsx(AvailabilityPill, { available: lawyer.available }),
+          _jsxs("div", {
+            key: activeTab,
+            className: "animate-fade-in flex items-center xl:contents",
+            children: [
+              activeTab === 0 && _jsx(CallButton, {}),
+              activeTab === 1 && _jsx(RatingCell, { rating: lawyer.rating }),
+              activeTab === 2 &&
+                _jsx(AvailabilityPill, { available: lawyer.available }),
+            ],
+          }),
           _jsx(SeeMoreButton, { onClick: () => onSeeMore(lawyer) }),
         ],
       }),
@@ -437,10 +447,12 @@ function Pagination({ page, onPageChange }) {
     ],
   });
 }
-function ResultCount() {
+function ResultCount({ page }) {
+  const startIndex = (page - 1) * 8;
+  const endIndex = Math.min(startIndex + 8, TOTAL_LAWYERS);
   return _jsxs("p", {
     className:
       "mt-[11px] text-center font-sans text-[13px] leading-[18px] text-carbon-black/60",
-    children: ["Showing 1-", LAWYERS.length, " of ", TOTAL_LAWYERS, " Lawyers"],
+    children: ["Showing ", startIndex + 1, "-", endIndex, " of ", TOTAL_LAWYERS, " Lawyers"],
   });
 }

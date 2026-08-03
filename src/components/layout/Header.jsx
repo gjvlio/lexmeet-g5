@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { NAV_ITEMS } from "@/utils/content";
 import { cn } from "@/utils/cn";
 
@@ -83,9 +83,13 @@ function useActiveMatcher() {
 
   return (href) => {
     const [itemPath, itemHash] = href.split("#");
-    return itemHash
-      ? pathname === (itemPath || "/") && hash === `#${itemHash}`
-      : pathname === href;
+    if (itemHash) {
+      return pathname === (itemPath || "/") && hash === `#${itemHash}`;
+    }
+    if (href === "/law-practice") {
+      return (pathname === "/law-practice" || pathname === "/our-services") && !hash;
+    }
+    return pathname === href && !hash;
   };
 }
 
@@ -140,7 +144,7 @@ function MobileHeader({
       </div>
 
       {/* Smooth Collapsible Mobile Nav Drawer */}
-      <MobileNav isOpen={isMenuOpen} />
+      <MobileNav isOpen={isMenuOpen} onClose={() => onToggleMenu(false)} />
     </div>
   );
 }
@@ -163,19 +167,23 @@ function MenuIcon({ isOpen }) {
   );
 }
 
-function MobileNav({ isOpen }) {
+function MobileNav({ isOpen, onClose }) {
   const isActive = useActiveMatcher();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const handleHashClick = (e, href) => {
-    if (href.startsWith('/#') && pathname === '/') {
+    const [itemPath, itemHash] = href.split("#");
+    if (itemHash && pathname === (itemPath || "/")) {
       e.preventDefault();
-      const id = href.substring(2);
-      const element = document.getElementById(id);
+      const element = document.getElementById(itemHash);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
-        window.history.pushState(null, '', href);
+        navigate(href);
+        if (onClose) onClose();
       }
+    } else if (onClose) {
+      onClose();
     }
   };
 
@@ -195,6 +203,7 @@ function MobileNav({ isOpen }) {
               <li key={item.label}>
                 <NavLink
                   to={item.href}
+                  onClick={(e) => handleHashClick(e, item.href)}
                   className={cn(
                     "block rounded-full px-5 py-2.5 font-sans text-[15px] font-medium transition-all duration-200",
                     active
@@ -277,6 +286,20 @@ function DesktopHeader({
 function DesktopNav() {
   const isActive = useActiveMatcher();
   const activeIndex = NAV_ITEMS.findIndex((item) => isActive(item.href));
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleHashClick = (e, href) => {
+    const [itemPath, itemHash] = href.split("#");
+    if (itemHash && pathname === (itemPath || "/")) {
+      e.preventDefault();
+      const element = document.getElementById(itemHash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        navigate(href);
+      }
+    }
+  };
 
   return (
     <nav className="relative z-10">
@@ -301,6 +324,7 @@ function DesktopNav() {
           <NavLink
             key={item.label}
             to={item.href}
+            onClick={(e) => handleHashClick(e, item.href)}
             className="absolute flex items-center justify-center z-10"
             style={{
               left: NAV_ITEM_START_X + i * NAV_ITEM_WIDTH,

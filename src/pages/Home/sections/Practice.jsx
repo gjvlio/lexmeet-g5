@@ -51,17 +51,14 @@ export default function Practice() {
       {/* Bottom Fade to Parchment */}
       <div className="absolute bottom-0 left-0 right-0 h-8 lg:h-16 bg-gradient-to-b from-transparent to-parchment z-0 pointer-events-none"></div>
 
-      {/* Title Container */}
-      <div className="absolute top-0 left-0 w-full z-30 pointer-events-none">
-        <div className="relative mx-auto max-w-[1280px]">
-          {/* Scaled down the text sizes here */}
-          <h2 className="absolute -left-4 sm:-left-8 lg:-left-16 top-0 -translate-y-1/2 font-['IBM_Plex_Sans'] text-[32px] xs:text-[38px] sm:text-[70px] lg:text-[90px] font-bold leading-none text-transparent [-webkit-text-stroke:1px_theme(colors.dusty-olive)] sm:[-webkit-text-stroke:1.5px_theme(colors.dusty-olive)] tracking-normal whitespace-nowrap sm:whitespace-nowrap">
+      <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 z-10 -mt-10 lg:-mt-20">
+        
+        {/* Outlined Heading - Dynamic Fluid Scale */}
+        <div className="w-full mb-6 lg:mb-8">
+          <h2 className="font-['IBM_Plex_Sans'] text-[clamp(26px,7.5vw,90px)] font-bold leading-none text-transparent [-webkit-text-stroke:1px_theme(colors.dusty-olive)] sm:[-webkit-text-stroke:1.5px_theme(colors.dusty-olive)] tracking-normal whitespace-nowrap">
             PRACTICE AREAS
           </h2>
         </div>
-      </div>
-
-      <div className="relative mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8 z-10">
         
         {/* Strict 6-Column Grid for the 3-2-3 Layout */}
         <div className="w-full grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 pl-[1px] pt-[1px] mt-7 lg:mt-7">
@@ -82,15 +79,15 @@ export default function Practice() {
                 className={`aspect-square flex flex-col items-center justify-center p-3 text-center ${item.bg} border border-white/10 -ml-[1px] -mt-[1px] transition-colors`}
               >
                 {item.type === 'icon' && (
-                  <img src={item.src} alt="" className="h-[95px] w-[95px] lg:h-[145px] lg:w-[145px] object-contain drop-shadow-xl" />
+                  <img src={item.src} alt="" className="w-[50%] h-[50%] lg:w-[60%] lg:h-[60%] max-w-[95px] lg:max-w-[145px] object-contain drop-shadow-xl" />
                 )}
                 
                 {item.type === 'text' && (
                   <>
-                    <h3 className="font-display text-base lg:text-[19px] font-bold text-cream mb-4 lg:mb-5 tracking-wider leading-tight whitespace-pre-line">
+                    <h3 className="font-display text-[12px] sm:text-[14px] lg:text-[19px] font-bold text-cream mb-2 lg:mb-5 tracking-wider leading-tight whitespace-pre-line">
                       {item.title}
                     </h3>
-                    <button className="bg-sage-mist hover:bg-palm-leaf text-dark-khaki rounded-full px-5 py-1.5 lg:py-2 font-sans text-[10px] lg:text-[11px] font-bold transition-all duration-200 ease-out hover:scale-105 active:scale-95 focus:outline-none shadow-sm">
+                    <button className="bg-sage-mist hover:bg-palm-leaf text-dark-khaki rounded-full px-3 py-1 sm:px-5 sm:py-1.5 lg:py-2 font-sans text-[9px] sm:text-[10px] lg:text-[11px] font-bold transition-all duration-200 ease-out hover:scale-105 active:scale-95 focus:outline-none shadow-sm">
                       Learn More
                     </button>
                   </>
