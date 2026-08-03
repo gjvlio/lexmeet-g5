@@ -14,7 +14,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
       className={cn(
         'relative z-20 w-full max-w-[440px] sm:max-w-[480px] rounded-[28px] sm:rounded-[34px] overflow-hidden',
         'bg-white/65 backdrop-blur-2xl border border-white/80 shadow-2xl',
-        'px-5 py-5 sm:px-8 sm:py-6 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95 max-h-[calc(100vh-30px)] overflow-y-auto scrollbar-none',
+        'px-6 py-6 sm:px-8 sm:py-7 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95 max-h-[calc(100vh-30px)] overflow-y-auto scrollbar-none',
         className
       )}
       role="dialog"
@@ -50,7 +50,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
       {/* Wider Divider Line Beneath Title */}
       <div className="h-px w-48 sm:w-64 bg-carbon-black/20 mx-auto mb-3.5 sm:mb-4" />
 
-      <form onSubmit={(e) => e.preventDefault()} className="flex flex-col items-start w-full">
+      <form onSubmit={(e) => e.preventDefault()} className="flex flex-col w-full">
         {/* Email Input */}
         <label className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/80 mb-0.5 text-left w-full pl-1">
           E-mail
@@ -91,7 +91,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
         {/* Sign In Button */}
         <button
           type="submit"
-          className="w-full rounded-full bg-[#3D4223] h-11 sm:h-12 text-center font-sans text-sm sm:text-base font-bold text-parchment shadow-pill hover:bg-[#2B2D19] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center"
+          className="w-full rounded-full bg-[#3D4223] py-2.5 sm:py-3 text-center font-sans text-xs sm:text-sm font-bold text-parchment shadow-pill hover:bg-[#2B2D19] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center"
         >
           Sign In
         </button>
@@ -104,30 +104,30 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
         <div className="h-px flex-1 bg-carbon-black/20" />
       </div>
 
-      {/* Social Logins - Stacked on Mobile, Original 2-row layout on iPad/Desktop */}
-      <div className="flex flex-col items-center gap-2.5 sm:gap-3 w-full">
-        <div className="flex flex-col sm:flex-row w-full gap-2.5 sm:gap-3 justify-center">
+      {/* Social Logins - Slightly lessened py-2 sm:py-2.5 height */}
+      <div className="flex flex-col items-center gap-2 sm:gap-2.5 w-full">
+        <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-2.5 justify-center">
           <button
             type="button"
-            className="flex flex-1 items-center justify-center gap-2 sm:gap-2.5 rounded-full bg-[#2B2D19] h-10.5 sm:h-11 px-4 text-xs sm:text-sm font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
+            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
           >
-            <img src={googleIcon} alt="" className="h-4.5 w-4.5 sm:h-5 sm:w-5 object-contain" />
+            <img src={googleIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
             <span>Log in with Google</span>
           </button>
           <button
             type="button"
-            className="flex flex-1 items-center justify-center gap-2 sm:gap-2.5 rounded-full bg-[#2B2D19] h-10.5 sm:h-11 px-4 text-xs sm:text-sm font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
+            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
           >
-            <img src={fbIcon} alt="" className="h-4.5 w-4.5 sm:h-5 sm:w-5 object-contain" />
+            <img src={fbIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
             <span>Log in with Facebook</span>
           </button>
         </div>
 
         <button
           type="button"
-          className="flex items-center justify-center gap-2 sm:gap-2.5 rounded-full bg-[#2B2D19] h-10.5 sm:h-11 px-6 sm:px-8 text-xs sm:text-sm font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer w-full sm:w-auto"
+          className="flex w-full sm:w-[240px] items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-6 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
         >
-          <img src={appleIcon} alt="" className="h-4.5 w-4.5 sm:h-5 sm:w-5 object-contain" />
+          <img src={appleIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
           <span>Log in with Apple</span>
         </button>
       </div>

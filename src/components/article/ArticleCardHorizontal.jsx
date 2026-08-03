@@ -43,8 +43,11 @@ export default function ArticleCardHorizontal({ article }) {
         </p>
         
         <div className="mt-auto flex justify-center">
-          <Link to={articleUrl}>
-            <Button variant="olive" className="!h-9 !px-8 !text-[12px]">Read Article</Button>
+          <Link to={categoryListUrl}>
+            <Button variant="olive" className="!h-9 !px-8 !text-[12px] !font-bold flex items-center gap-1">
+              <span>View All</span>
+              <span className="text-[13px] leading-none">&rarr;</span>
+            </Button>
           </Link>
         </div>
       </div>

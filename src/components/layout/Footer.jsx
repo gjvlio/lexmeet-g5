@@ -34,18 +34,18 @@ export default function Footer() {
 function BrandRow() {
   return (
     <div className="mx-auto max-w-[1440px] px-4 pt-8 sm:px-6 md:px-8 xl:px-[72px] xl:pt-9">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <div className="flex items-center gap-2.5 sm:gap-3 text-parchment opacity-20">
-          <FooterLogo className="h-[34px] w-[46px] shrink-0 md:h-[48px] md:w-[64px] xl:h-[62px] xl:w-[84px]" />
-          <span className="font-display text-[32px] font-bold leading-none tracking-[-0.08em] sm:text-[46px] md:text-[56px] xl:text-[76px]">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex items-center gap-2.5 sm:gap-3.5 text-parchment opacity-20 max-w-full min-w-0">
+          <FooterLogo className="h-8 w-11 sm:h-10 sm:w-14 md:h-11 md:w-15 xl:h-[46px] xl:w-[62px] shrink-0" />
+          <span className="font-display text-[18px] sm:text-[24px] md:text-[28px] lg:text-[34px] xl:text-[38px] font-bold leading-tight tracking-tight break-words min-w-0">
             Rizal Law Office
           </span>
         </div>
-        <p className="font-display text-sm italic text-parchment sm:mb-2 md:text-base xl:text-[19px]">
+        <p className="font-display text-xs sm:text-sm italic text-parchment lg:text-base xl:text-[17px] opacity-75 lg:max-w-[45%] lg:text-right">
           &ldquo;{CONTACT.quote}&rdquo;
         </p>
       </div>
-      <img src={divider} alt="" className="mt-3 h-[6px] w-full object-cover" />
+      <img src={divider} alt="" className="mt-3.5 h-[6px] w-full object-cover" />
     </div>
   );
 }
