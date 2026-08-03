@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { NAV_ITEMS } from "@/utils/content";
 import { cn } from "@/utils/cn";
+
 import logo from "@/assets/header/header-logo.svg";
 import profileIcon from "@/assets/header/header-profile-icon.svg";
 import chevron from "@/assets/header/header-chevron.svg";
@@ -44,10 +45,12 @@ export default function Header({ onOpenLogin }) {
         setIsProfileOpen(false);
       }
     }
+
     if (isProfileOpen) {
       document.addEventListener("mousedown", handleClickOutside);
       document.addEventListener("keydown", handleKeyDown);
     }
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
@@ -77,6 +80,7 @@ export default function Header({ onOpenLogin }) {
 /** Matches a nav href against the current location, hash links included. */
 function useActiveMatcher() {
   const { pathname, hash } = useLocation();
+
   return (href) => {
     const [itemPath, itemHash] = href.split("#");
     return itemHash
@@ -86,6 +90,7 @@ function useActiveMatcher() {
 }
 
 /* ---------------------------------------------------------------- mobile -- */
+
 function MobileHeader({
   isMenuOpen,
   onToggleMenu,
@@ -107,12 +112,14 @@ function MobileHeader({
         >
           <MenuIcon isOpen={isMenuOpen} />
         </button>
+
         <div className="flex items-center gap-2">
           <img src={logo} alt="" className="h-6 w-auto" />
           <span className="font-display text-base font-medium tracking-[0.1em] text-carbon-black sm:text-lg">
             RIZAL LAW OFFICE
           </span>
         </div>
+
         <div className="relative">
           <button
             type="button"
@@ -158,6 +165,20 @@ function MenuIcon({ isOpen }) {
 
 function MobileNav({ isOpen }) {
   const isActive = useActiveMatcher();
+  const { pathname } = useLocation();
+
+  const handleHashClick = (e, href) => {
+    if (href.startsWith('/#') && pathname === '/') {
+      e.preventDefault();
+      const id = href.substring(2);
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', href);
+      }
+    }
+  };
+
   return (
     <div
       id="mobile-nav"
@@ -246,6 +267,7 @@ function DesktopHeader({
           alt=""
           className="absolute left-[90px] top-[96px] h-[2px] w-[1260px]"
         />
+
         <DesktopNav />
       </div>
     </div>
