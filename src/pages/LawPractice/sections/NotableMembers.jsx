@@ -164,7 +164,7 @@ export default function NotableMembers() {
           _jsx("button", {
             onClick: handleNext,
             disabled: currentIndex >= maxIndex,
-            className: `absolute -right-16 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-olive transition-transform hover:scale-110 active:scale-95 z-20 ${currentIndex >= maxIndex ? "opacity-30 cursor-not-allowed" : ""}`,
+            className: `absolute -right-11 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center text-olive transition-transform hover:scale-110 active:scale-95 z-20 ${currentIndex >= maxIndex ? "opacity-30 cursor-not-allowed" : ""}`,
             "aria-label": "Next members",
             children: _jsx("svg", {
               fill: "none",

@@ -30,7 +30,7 @@ export default function LawPractice() {
           ],
         }),
         _jsxs("div", {
-          className: "flex flex-col gap-20 lg:gap-28",
+          className: "flex flex-col gap-12 lg:gap-16",
           children: [
             _jsx(CategoryGrid, {}),
             _jsx(CasesHandled, {}),

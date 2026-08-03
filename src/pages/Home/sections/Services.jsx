@@ -15,13 +15,6 @@ const SERVICES = [
     buttonLabel: 'Ask Lawyers'
   },
   {
-    key: 'docs',
-    title: 'DOCS',
-    body: 'Create Own Documents With\nLawyer Review',
-    icon: docsIcon,
-    buttonLabel: 'Create Legal Document'
-  },
-  {
     key: 'consult',
     title: 'CONSULT',
     body: 'Paid Online Legal Consultation',
@@ -29,32 +22,39 @@ const SERVICES = [
     buttonLabel: 'Talk to Lawyers'
   },
   {
+    key: 'docs',
+    title: 'DOCS',
+    body: 'Create Own Documents With\nLawyer Review',
+    icon: worksIcon,
+    buttonLabel: 'Create Legal Document'
+  },
+  {
     key: 'works',
     title: 'WORKS',
     body: 'FREE Legal Fee Proposals and\nPaid Legal Works Delivery',
-    icon: worksIcon,
+    icon: docsIcon,
     buttonLabel: 'Request Proposal'
   }
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="relative bg-services-fade py-16 lg:py-24 z-10">
+    <section id="services" className="relative bg-services-fade py-10 lg:py-16 z-10">
       {/* Ambient Background Orbs */}
       <Orb color="sage" className="-left-[150px] top-[10%] h-[400px] w-[400px] lg:h-[500px] lg:w-[500px]" opacity={0.4} />
       <Orb color="olive" className="-right-[150px] top-[50%] h-[450px] w-[450px] lg:h-[600px] lg:w-[600px]" opacity={0.25} />
-
+      
       <div className="relative mx-auto max-w-[1280px] z-10">
         
-        {/* Large Outlined Heading */}
-        <div className="relative mb-12 h-[55px] sm:h-[75px] lg:h-[95px] w-full">
-          <h2 className="absolute -left-4 sm:-left-8 lg:-left-16 top-0 font-display text-[65px] sm:text-[90px] lg:text-[120px] font-bold leading-none text-transparent [-webkit-text-stroke:1.5px_theme(colors.dusty-olive)] tracking-normal whitespace-nowrap">
+        {/* Large Outlined Heading - Scaled Down */}
+        <div className="relative mb-8 h-[35px] xs:h-[42px] sm:h-[60px] lg:h-[80px] w-full">
+          <h2 className="absolute -left-4 sm:-left-8 lg:-left-16 top-0 font-['IBM_Plex_Sans'] text-[32px] xs:text-[38px] sm:text-[70px] lg:text-[90px] font-bold leading-none text-transparent [-webkit-text-stroke:1px_theme(colors.dusty-olive)] sm:[-webkit-text-stroke:1.5px_theme(colors.dusty-olive)] tracking-normal whitespace-nowrap">
             OUR SERVICES
           </h2>
         </div>
 
         {/* 2x2 Grid */}
-        <div className="mx-auto max-w-[980px] px-8 sm:px-12 mt-10 lg:mt-12">
+        <div className="mx-auto max-w-[980px] px-8 sm:px-12 mt-8 lg:mt-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 lg:gap-x-16 lg:gap-y-14">
             {SERVICES.map((s, i) => {
               const isLeft = i % 2 === 0;
@@ -82,7 +82,7 @@ export default function Services() {
                     <p className="mt-1.5 mb-5 font-sans text-[11px] lg:text-xs text-cream/90 max-w-[200px] leading-relaxed whitespace-pre-line">
                       {s.body}
                     </p>
-                    <Button variant="cream" className="!h-[34px] !px-5 !text-[11px] font-bold shadow-md hover:!bg-white">
+                    <Button variant="cream" className="!h-[38px] !px-4 sm:!px-6 !text-[12px] font-bold shadow-md hover:!bg-white whitespace-nowrap">
                       {s.buttonLabel}
                     </Button>
                   </div>

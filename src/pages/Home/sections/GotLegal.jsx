@@ -4,12 +4,11 @@ import lineImg from "@/assets/homeAssets/Line.png";
 
 export default function GotLegal() {
   return (
-    // Removed bg-parchment and z-20 so it sits transparently on the global cream background
-    <section className="relative py-16 lg:py-20 flex flex-col items-center justify-center text-center px-4">
-      <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col items-center gap-7">
+    <section className="relative py-4 lg:py-8 flex flex-col items-center justify-center text-center px-4">
+      <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col items-center gap-4">
         <img src={lineImg} alt="" className="w-full h-auto object-contain opacity-70 max-w-[700px]" aria-hidden="true" />
         
-        <div className="flex flex-col gap-3 my-2">
+        <div className="flex flex-col gap-2 my-1">
           <h2 className="font-display text-4xl sm:text-5xl lg:text-[64px] font-bold text-carbon-black tracking-tight leading-none">
             Got a legal question?
           </h2>
@@ -18,13 +17,13 @@ export default function GotLegal() {
           </p>
         </div>
 
-        <Link to="/contact-us" className="mt-3 outline-none">
+        <Link to="/contact-us" className="mt-1 outline-none">
           <Button variant="olive" className="!px-12 !h-14 !text-base shadow-card border border-[#2A2C19]/20">
             Contact Us
           </Button>
         </Link>
         
-        <img src={lineImg} alt="" className="w-full h-auto object-contain opacity-70 max-w-[700px] mt-6" aria-hidden="true" />
+        <img src={lineImg} alt="" className="w-full h-auto object-contain opacity-70 max-w-[700px] mt-4" aria-hidden="true" />
       </div>
     </section>
   );

@@ -9,7 +9,7 @@ export const NAV_ITEMS = [
   { label: 'Lawyers Profile', href: '/lawyer-profile' },
   { label: 'Law Practice', href: '/law-practice' },
   { label: 'Law Office', href: '/law-office' },
-  { label: 'Our Services', href: '/our-services' },
+  { label: 'Our Services', href: '/#services' },
   { label: 'Everyday Law', href: '/everyday-law' },
   { label: 'Contact Us', href: '/contact-us' },
 ];

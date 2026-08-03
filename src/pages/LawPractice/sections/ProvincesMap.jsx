@@ -39,10 +39,9 @@ export default function ProvincesMap() {
       _jsxs("div", {
         className: "relative z-10 flex flex-1 flex-col items-center",
         children: [
-          _jsx("h2", {
-            className:
-              "mb-6 font-display text-3xl font-bold text-ink sm:mb-8 sm:text-4xl",
-            children: "Provinces",
+          _jsx("h3", {
+        className: "mb-6 font-bold font-display text-[18px] uppercase tracking-widest sm:mb-8 sm:text-[20px]",
+        children: "Provinces",
           }),
           _jsxs("div", {
             className:
