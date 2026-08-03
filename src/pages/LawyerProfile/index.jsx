@@ -79,6 +79,7 @@ export default function LawyerProfile() {
             lawyer: openLawyer,
             isOpen: openLawyer !== null,
             onClose: () => setOpenLawyer(null),
+            initialTab: activeTab,
           }),
         ],
       }),
@@ -273,14 +274,14 @@ function LawyerRow({ lawyer, activeTab, isLast, onSeeMore }) {
             children: [
               _jsx("p", {
                 className: cn(
-                  "font-display text-base font-semibold text-carbon-black xl:text-[20px]",
+                  "font-sans text-sm font-bold text-carbon-black xl:text-[18px]",
                   DESKTOP.name,
                 ),
                 children: lawyer.name,
               }),
               _jsx("p", {
                 className: cn(
-                  "font-sans text-[13px] text-carbon-black/70 xl:whitespace-nowrap xl:text-[18px] xl:text-carbon-black",
+                  "font-sans text-[12px] text-carbon-black/70 xl:whitespace-nowrap xl:text-[14px]",
                   DESKTOP.position,
                 ),
                 children: lawyer.position,
