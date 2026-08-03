@@ -11,6 +11,21 @@ const DEFAULT_SCHEDULE = [
 ];
 
 /**
+ * "8:00 AM - 11:00 AM" reads as "8:00 - 11:00 AM" — the column header already
+ * says which half of the day it is, so the leading meridiem is noise. Ranges
+ * that cross over (AM to PM) keep both.
+ */
+function condenseRange(range) {
+  const match = /^(\d{1,2}:\d{2})\s*(AM|PM)\s*-\s*(\d{1,2}:\d{2})\s*(AM|PM)$/i.exec(range);
+  if (!match) return range;
+
+  const [, start, startMeridiem, end, endMeridiem] = match;
+  if (startMeridiem.toUpperCase() !== endMeridiem.toUpperCase()) return range;
+
+  return `${start} - ${end} ${endMeridiem.toUpperCase()}`;
+}
+
+/**
  * Lawyer Schedule Tab Component
  * Displays a 100% pixel-accurate weekly availability table matching Figma specifications.
  */
@@ -43,8 +58,9 @@ export default function LawyerSchedule({ lawyer }) {
                   isEven ? 'bg-[#F4F5ED]/90' : 'bg-[#EBECE1]/90'
                 )}
               >
-                {/* Days Column - Serif Display Font */}
-                <div className="font-display font-bold text-carbon-black text-sm sm:text-[16px] text-center border-r border-[#D5D7C5]/70 px-2">
+                {/* Days column — sans bold, matching the entry titles on the
+                    CV and Ratings tabs so the three panels read as one. */}
+                <div className="font-sans font-bold text-carbon-black text-[13px] sm:text-sm text-center border-r border-[#D5D7C5]/70 px-2">
                   {item.day}
                 </div>
 
@@ -54,11 +70,11 @@ export default function LawyerSchedule({ lawyer }) {
                     className={cn(
                       'block',
                       isAmAvailable
-                        ? 'font-semibold text-[#3D4223]'
+                        ? 'font-normal text-[#3D4223]'
                         : 'font-normal text-[#8E927A]'
                     )}
                   >
-                    {item.am}
+                    {condenseRange(item.am)}
                   </span>
                 </div>
 
@@ -68,11 +84,11 @@ export default function LawyerSchedule({ lawyer }) {
                     className={cn(
                       'block',
                       isPmAvailable
-                        ? 'font-semibold text-[#3D4223]'
+                        ? 'font-normal text-[#3D4223]'
                         : 'font-normal text-[#8E927A]'
                     )}
                   >
-                    {item.pm}
+                    {condenseRange(item.pm)}
                   </span>
                 </div>
               </div>
