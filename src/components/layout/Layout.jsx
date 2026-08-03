@@ -7,13 +7,14 @@ import CreateAccountModal from "@/components/modals/CreateAccountModal";
 
 /**
  * Shared page shell. Every route renders inside this via App.tsx's nested
- * route — pages never import Header/Footer themselves, so the active-nav
+ * route - pages never import Header/Footer themselves, so the active-nav
  * pill (driven by the current route in Header) stays correct everywhere.
  */
 export default function Layout() {
   // activeModal: 'none' | 'login' | 'create-account'
   const [activeModal, setActiveModal] = useState("none");
   const location = useLocation();
+
   const isHomePage = location.pathname === "/";
 
   // Reset activeModal synchronously during render if location changed to prevent 1-frame portal flash
@@ -35,6 +36,21 @@ export default function Layout() {
     };
   }, [activeModal, isHomePage]);
 
+  // Handle global cross-page hash scrolling
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.substring(1);
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 50);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }, [location.pathname, location.hash, location.key]);
+
   return (
     <div className="min-h-screen overflow-x-clip bg-cream relative">
       <Header onOpenLogin={() => setActiveModal("login")} />
@@ -53,7 +69,6 @@ export default function Layout() {
             onClose={() => setActiveModal("none")}
             onOpenCreateAccount={() => setActiveModal("create-account")}
           />
-
           <CreateAccountModal
             isOpen={activeModal === "create-account"}
             usePortal={true}

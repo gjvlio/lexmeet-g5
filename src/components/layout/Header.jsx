@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { NAV_ITEMS } from "@/utils/content";
 import { cn } from "@/utils/cn";
+
 import logo from "@/assets/header/header-logo.svg";
 import profileIcon from "@/assets/header/header-profile-icon.svg";
 import chevron from "@/assets/header/header-chevron.svg";
@@ -13,7 +14,8 @@ const NAV_ITEM_WIDTH = 180;
 const NAV_ITEM_HEIGHT = 23;
 const NAV_ITEM_Y = 166;
 const NAV_ITEM_START_X = 90;
-/** Selection pill — larger than the link's own box, centred on it. */
+
+/** Selection pill - larger than the link's own box, centred on it. */
 const PILL_WIDTH = 160;
 const PILL_HEIGHT = 43;
 
@@ -47,10 +49,12 @@ export default function Header({ onOpenLogin }) {
         setIsProfileOpen(false);
       }
     }
+
     if (isProfileOpen) {
       document.addEventListener("mousedown", handleClickOutside);
       document.addEventListener("keydown", handleKeyDown);
     }
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleKeyDown);
@@ -80,6 +84,7 @@ export default function Header({ onOpenLogin }) {
 /** Matches a nav href against the current location, hash links included. */
 function useActiveMatcher() {
   const { pathname, hash } = useLocation();
+
   return (href) => {
     const [itemPath, itemHash] = href.split("#");
     return itemHash
@@ -89,6 +94,7 @@ function useActiveMatcher() {
 }
 
 /* ---------------------------------------------------------------- mobile -- */
+
 function MobileHeader({
   isMenuOpen,
   onToggleMenu,
@@ -110,12 +116,14 @@ function MobileHeader({
         >
           <MenuIcon isOpen={isMenuOpen} />
         </button>
+
         <div className="flex items-center gap-2">
           <img src={logo} alt="" className="h-7 w-auto" />
           <span className="font-display text-base font-medium tracking-[0.1em] text-carbon-black sm:text-xl">
             RIZAL LAW OFFICE
           </span>
         </div>
+
         <div className="relative">
           <button
             type="button"
@@ -134,6 +142,7 @@ function MobileHeader({
           />
         </div>
       </div>
+
       {isMenuOpen && <MobileNav />}
     </div>
   );
@@ -159,6 +168,20 @@ function MenuIcon({ isOpen }) {
 
 function MobileNav() {
   const isActive = useActiveMatcher();
+  const { pathname } = useLocation();
+
+  const handleHashClick = (e, href) => {
+    if (href.startsWith('/#') && pathname === '/') {
+      e.preventDefault();
+      const id = href.substring(2);
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', href);
+      }
+    }
+  };
+
   return (
     <nav
       id="mobile-nav"
@@ -169,6 +192,7 @@ function MobileNav() {
           <li key={item.label}>
             <NavLink
               to={item.href}
+              onClick={(e) => handleHashClick(e, item.href)}
               className={cn(
                 "block rounded-full px-4 py-3 font-sans text-[15px] font-medium transition-colors",
                 isActive(item.href)
@@ -186,6 +210,7 @@ function MobileNav() {
 }
 
 /* --------------------------------------------------------------- desktop -- */
+
 /** The 1440px comp, reproduced to the pixel. Hidden below `lg`. */
 function DesktopHeader({
   isProfileOpen,
@@ -239,6 +264,7 @@ function DesktopHeader({
           alt=""
           className="absolute left-[90px] top-[144px] h-[3px] w-[1260px]"
         />
+
         <DesktopNav />
       </div>
     </div>
@@ -247,12 +273,27 @@ function DesktopHeader({
 
 function DesktopNav() {
   const isActive = useActiveMatcher();
+  const { pathname } = useLocation();
+
+  const handleHashClick = (e, href) => {
+    if (href.startsWith('/#') && pathname === '/') {
+      e.preventDefault();
+      const id = href.substring(2);
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', href);
+      }
+    }
+  };
+
   return (
     <nav>
       {NAV_ITEMS.map((item, i) => (
         <NavLink
           key={item.label}
           to={item.href}
+          onClick={(e) => handleHashClick(e, item.href)}
           className="absolute flex items-center justify-center"
           style={{
             left: NAV_ITEM_START_X + i * NAV_ITEM_WIDTH,
