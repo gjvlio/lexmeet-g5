@@ -4,7 +4,7 @@ import lineImg from "@/assets/homeAssets/Line.png";
 
 export default function GotLegal() {
   return (
-    <section className="relative py-4 lg:py-8 flex flex-col items-center justify-center text-center px-4">
+    <section className="relative pt-4 pb-2 lg:pt-8 lg:pb-4 flex flex-col items-center justify-center text-center px-4">
       <div className="relative z-10 w-full max-w-3xl mx-auto flex flex-col items-center gap-4">
         <img src={lineImg} alt="" className="w-full h-auto object-contain opacity-70 max-w-[700px]" aria-hidden="true" />
         
@@ -16,7 +16,7 @@ export default function GotLegal() {
             Get in touch with us!
           </p>
         </div>
-
+        
         <Link to="/contact-us" className="mt-1 outline-none">
           <Button variant="olive" className="!px-12 !h-14 !text-base shadow-card border border-[#2A2C19]/20">
             Contact Us

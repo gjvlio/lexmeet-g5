@@ -9,12 +9,12 @@ export default function LawUpdates() {
   const featuredArticle = ARTICLES.find(a => a.category === 'law-updates');
 
   return (
-    <section id="updates" className="relative py-10 lg:py-16">
+    <section id="updates" className="relative pt-4 pb-8 lg:pt-6 lg:pb-12">
       <Orb color="olive" className="-left-[150px] top-[20%] h-[400px] w-[400px] lg:h-[600px] lg:w-[600px]" opacity={0.25} />
       
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-16">
         
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
             <img 
               src={luImg} 
@@ -25,7 +25,8 @@ export default function LawUpdates() {
           
           <div className="w-full lg:w-1/2 flex flex-col items-start text-left lg:pl-6">
             
-            <h2 className="w-full text-right font-display text-4xl sm:text-5xl lg:text-[56px] font-bold text-carbon-black mb-4 tracking-tight">
+            {/* Left-aligned on mobile, Right-aligned on desktop for responsiveness */}
+            <h2 className="w-full text-left lg:text-right font-display text-4xl sm:text-5xl lg:text-[56px] font-bold text-carbon-black mb-4 tracking-tight">
               Law Updates
             </h2>
             

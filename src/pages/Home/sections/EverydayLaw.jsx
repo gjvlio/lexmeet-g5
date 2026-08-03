@@ -9,20 +9,20 @@ export default function EverydayLaw() {
   const featuredArticle = ARTICLES.find(a => a.category === 'everyday-law');
 
   return (
-    <section id="everyday" className="relative py-10 lg:py-16 pb-20 lg:pb-24">
+    <section id="everyday" className="relative pt-2 pb-12 lg:pt-0 lg:pb-16">
       <Orb color="sage" className="-right-[150px] top-[10%] h-[400px] w-[400px] lg:h-[550px] lg:w-[550px]" opacity={0.3} />
       
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-16">
         
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-12">
           <div className="w-full lg:w-1/2 flex flex-col items-start text-left lg:pr-6">
             
-            <h2 className="w-full text-left font-display text-4xl sm:text-5xl lg:text-[56px] font-bold text-carbon-black mb-4 tracking-tight">
+            <h2 className="w-full text-left font-display text-4xl sm:text-5xl lg:text-[56px] font-bold text-carbon-black mb-3 lg:mb-4 tracking-tight">
               Everyday Law
             </h2>
             
             {/* Dynamically render the article's title */}
-            <h3 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-carbon-black leading-snug mb-5">
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-carbon-black leading-snug mb-4 lg:mb-5">
               {featuredArticle?.title}
             </h3>
             
@@ -33,7 +33,7 @@ export default function EverydayLaw() {
 
             {/* Injected the matching Author block here */}
             {featuredArticle && (
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-3 mb-6 lg:mb-8">
                 <img src={featuredArticle.author.avatar} alt={featuredArticle.author.name} className="w-10 h-10 rounded-full object-cover" />
                 <div className="flex flex-col">
                   <span className="font-sans text-[14px] font-bold text-ink leading-tight">{featuredArticle.author.name}</span>
