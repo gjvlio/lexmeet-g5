@@ -8,6 +8,9 @@ import SectionLabel from "@/components/ui/SectionLabel";
 import ArticleCardHorizontal from "@/components/article/ArticleCardHorizontal";
 import FeaturedBlogCard from "@/components/article/FeaturedBlogCard";
 import SearchBar from "@/components/article/SearchBar";
+import wideOfficeBanner from '@/assets/ELassets/wide_office_banner.png';
+
+
 
 const POPULAR_TOPICS = [
   "All",
@@ -111,8 +114,19 @@ export default function Hub() {
       <Orb color="olive" className="-right-[150px] top-[40%] h-[600px] w-[600px]" opacity={0.25} />
 
       {/* Hero Band */}
-      <section className="bg-olive py-8 px-4 text-center">
-        <h1 className="font-display text-[32px] sm:text-[40px] text-cream uppercase tracking-wide font-bold">
+      <section
+        className="py-5 sm:py-6 px-4 text-center relative overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
+        style={{
+          backgroundColor: '#545a2f',
+          backgroundImage: `linear-gradient(rgba(84, 90, 47, 0.85), rgba(84, 90, 47, 0.88)), url(${wideOfficeBanner})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <h1 
+          className="font-display text-[26px] sm:text-[32px] text-cream uppercase tracking-wider font-bold"
+          style={{ textShadow: '0 3px 8px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.3)' }}
+        >
           EVERYDAY LAW
         </h1>
       </section>

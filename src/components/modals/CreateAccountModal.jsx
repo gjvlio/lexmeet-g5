@@ -1,4 +1,5 @@
 import { createPortal } from 'react-dom';
+import logo from '@/assets/header/header-logo.svg';
 import googleIcon from '@/assets/modals/login/google-icon.png';
 import fbIcon from '@/assets/modals/login/fb-icon.png';
 import appleIcon from '@/assets/modals/login/apple-icon.png';
@@ -11,9 +12,9 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
   const content = (
     <div
       className={cn(
-        'relative z-20 w-full max-w-[540px] sm:max-w-[580px] rounded-[28px] sm:rounded-[32px] overflow-hidden',
-        'bg-white/60 backdrop-blur-2xl border border-white/80 shadow-2xl',
-        'p-5 sm:p-7 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95 max-h-[calc(100vh-90px)] overflow-y-auto',
+        'relative z-20 w-full max-w-[480px] sm:max-w-[540px] rounded-[28px] sm:rounded-[34px] overflow-hidden',
+        'bg-white/65 backdrop-blur-2xl border border-white/80 shadow-2xl',
+        'px-6 py-6 sm:px-8 sm:py-7 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95 max-h-[calc(100vh-30px)] overflow-y-auto scrollbar-none',
         className
       )}
       role="dialog"
@@ -25,89 +26,100 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
         type="button"
         onClick={onClose}
         aria-label="Close modal"
-        className="absolute right-5 top-5 sm:right-6 sm:top-6 text-carbon-black/60 hover:text-carbon-black font-semibold text-lg sm:text-xl transition-colors cursor-pointer z-10"
+        className="absolute right-5 top-5 sm:right-6 sm:top-6 text-carbon-black/60 hover:text-carbon-black font-semibold text-base sm:text-lg transition-colors cursor-pointer z-10"
       >
         ✕
       </button>
 
-      {/* Header Title - Spectral Light 25px */}
+      {/* Header Logo + Brand Name */}
+      <div className="flex items-center justify-center gap-1.5 pt-0.5 sm:pt-1 mb-1">
+        <img src={logo} alt="" className="h-3.5 sm:h-4 w-auto opacity-80" />
+        <span className="font-display text-[10px] sm:text-[11px] font-medium tracking-[0.12em] text-carbon-black/65 uppercase">
+          RIZAL LAW OFFICE
+        </span>
+      </div>
+
+      {/* Header Title - Spectral Bold 29px */}
       <h2
         id="create-account-modal-title"
-        className="font-display font-light text-[22px] sm:text-[25px] tracking-[0.1em] text-carbon-black text-center uppercase mb-4"
+        className="font-display font-bold text-[25px] sm:text-[29px] tracking-normal text-carbon-black text-center mt-1 mb-2"
       >
-        CREATE AN ACCOUNT
+        Create an Account
       </h2>
 
-      {/* Form Fields */}
+      {/* Wider Divider Line Beneath Title */}
+      <div className="h-px w-48 sm:w-64 bg-carbon-black/20 mx-auto mb-3.5 sm:mb-4" />
+
+      {/* Form Fields - 2-Column Grid Layout for Names & Passwords to Economize Vertical Height */}
       <form onSubmit={(e) => e.preventDefault()} className="flex flex-col w-full">
         {/* Row 1: First Name & Last Name Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 w-full">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full">
           <div>
-            <label className="font-sans text-[11px] sm:text-xs font-medium text-carbon-black/80 mb-1 text-left block pl-1">
+            <label className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/80 mb-0.5 text-left block pl-1">
               First Name
             </label>
             <input
               type="text"
               placeholder="e.g. Juan"
-              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
+              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
             />
           </div>
           <div>
-            <label className="font-sans text-[11px] sm:text-xs font-medium text-carbon-black/80 mb-1 text-left block pl-1">
+            <label className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/80 mb-0.5 text-left block pl-1">
               Last Name
             </label>
             <input
               type="text"
               placeholder="e.g. Dela Cruz"
-              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
+              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
             />
           </div>
         </div>
 
         {/* Row 2: Full Width Email */}
-        <div className="w-full mt-2.5">
-          <label className="font-sans text-[11px] sm:text-xs font-medium text-carbon-black/80 mb-1 text-left block pl-1">
+        <div className="w-full mt-1.5 sm:mt-2">
+          <label className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/80 mb-0.5 text-left block pl-1">
             E-mail
           </label>
           <input
             type="email"
             placeholder="example@gmail.com"
-            className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
+            className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
           />
         </div>
 
         {/* Row 3: Password & Confirm Password Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 w-full mt-2.5">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full mt-1.5 sm:mt-2">
           <div>
-            <label className="font-sans text-[11px] sm:text-xs font-medium text-carbon-black/80 mb-1 text-left block pl-1">
+            <label className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/80 mb-0.5 text-left block pl-1">
               Password
             </label>
             <input
               type="password"
               placeholder="••••••••••"
-              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
+              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
             />
           </div>
           <div>
-            <label className="font-sans text-[11px] sm:text-xs font-medium text-carbon-black/80 mb-1 text-left block pl-1">
+            <label className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/80 mb-0.5 text-left block pl-1">
               Confirm Password
             </label>
             <input
               type="password"
               placeholder="••••••••••"
-              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
+              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
             />
           </div>
         </div>
 
         {/* Terms and Conditions Checkbox */}
-        <div className="flex items-center gap-2 my-3 w-full pl-1">
+        <div className="flex items-center gap-2 my-2.5 sm:my-3 w-full pl-1">
           <input
             type="checkbox"
-            className="rounded border-carbon-black/30 text-olive-leaf focus:ring-olive-leaf h-3.5 w-3.5 cursor-pointer"
+            className="rounded border-carbon-black/30 text-olive-leaf focus:ring-olive-leaf h-3.5 w-3.5 cursor-pointer shrink-0"
           />
-          <span className="font-sans text-[11px] sm:text-xs font-medium text-carbon-black/80">
-            I have read and agree to the{' '}
+          <span className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/80 leading-tight">
+            I agree to the{' '}
             <a
               href="#"
               onClick={(e) => e.preventDefault()}
@@ -115,56 +127,56 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
             >
               Terms and Conditions
             </a>{' '}
-            set by LexMeet
+            by LexMeet
           </span>
         </div>
 
         {/* Create Account Button */}
         <button
           type="submit"
-          className="w-full rounded-full bg-[#3D4223] h-11 text-center font-sans text-xs sm:text-sm font-bold text-parchment shadow-pill hover:bg-[#2B2D19] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center mt-1"
+          className="w-full rounded-full bg-[#3D4223] py-2.5 sm:py-3 text-center font-sans text-xs sm:text-sm font-bold text-parchment shadow-pill hover:bg-[#2B2D19] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center mt-0.5"
         >
           Create Account
         </button>
       </form>
 
       {/* Or Divider */}
-      <div className="my-3.5 flex items-center gap-3 w-full">
+      <div className="my-3 sm:my-3.5 flex items-center gap-3 w-full">
         <div className="h-px flex-1 bg-carbon-black/20" />
-        <span className="font-sans text-[10px] font-medium text-carbon-black/60">or</span>
+        <span className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/60">or</span>
         <div className="h-px flex-1 bg-carbon-black/20" />
       </div>
 
-      {/* Social Sign-up Buttons */}
-      <div className="flex flex-col items-center gap-2.5 w-full">
-        <div className="flex w-full gap-2.5 sm:gap-3 justify-center">
+      {/* Social Sign-up Buttons - Slightly lessened py-2 sm:py-2.5 height */}
+      <div className="flex flex-col items-center gap-2 sm:gap-2.5 w-full">
+        <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-2.5 justify-center">
           <button
             type="button"
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-3.5 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap"
+            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
           >
-            <img src={googleIcon} alt="" className="h-3.5 w-3.5 object-contain" />
+            <img src={googleIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
             <span>Sign-up with Google</span>
           </button>
           <button
             type="button"
-            className="flex flex-1 items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-3.5 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap"
+            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
           >
-            <img src={fbIcon} alt="" className="h-3.5 w-3.5 object-contain" />
+            <img src={fbIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
             <span>Sign-up with Facebook</span>
           </button>
         </div>
 
         <button
           type="button"
-          className="flex items-center justify-center gap-2 rounded-full bg-[#2B2D19] h-10 px-6 text-[10px] sm:text-[11px] font-normal font-sans text-white hover:bg-black transition-colors whitespace-nowrap"
+          className="flex w-full sm:w-[240px] items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-6 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
         >
-          <img src={appleIcon} alt="" className="h-3.5 w-3.5 object-contain" />
+          <img src={appleIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
           <span>Sign-up with Apple</span>
         </button>
       </div>
 
       {/* Already Registered / Log-in here Link */}
-      <p className="mt-5 sm:mt-6 text-center font-sans text-[11px] sm:text-xs text-carbon-black/90">
+      <p className="mt-3.5 sm:mt-4 text-center font-sans text-[11px] sm:text-xs text-carbon-black/90">
         Already registered?{' '}
         <button
           type="button"
@@ -178,7 +190,7 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
       </p>
 
       {/* Powered by LexMeet Footer Logo */}
-      <div className="mt-3.5 sm:mt-4 flex justify-center">
+      <div className="mt-2.5 sm:mt-3 flex justify-center">
         <img
           src={poweredByLexMeet}
           alt="Powered by LexMeet"
@@ -193,7 +205,7 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
   }
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
       {/* Dark Backdrop Blur Overlay BEHIND the modal */}
       <div
         aria-hidden={true}

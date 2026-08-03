@@ -5,6 +5,10 @@ import Breadcrumb from "./Breadcrumb";
 import ShareModal from "./ShareModal";
 import ArticleHeader from "./ArticleHeader";
 import Orb from "@/components/ui/Orb";
+import wideOfficeBanner from '@/assets/ELassets/wide_office_banner.png';
+import wideUpdatesBanner from '@/assets/ELassets/wide_updates_banner.png';
+import wideBlogsBanner from '@/assets/ELassets/wide_blogs_banner.png';
+
 
 import likeIcon from '@/assets/ELassets/likebutton.png';
 import shareIcon from '@/assets/ELassets/share.png';
@@ -15,6 +19,19 @@ export default function ArticleDetail() {
   const [isShareModalOpen, setShareModalOpen] = useState(false);
 
   const article = ARTICLES.find(a => a.slug === slug);
+
+  const getBannerImage = () => {
+    if (!article) return wideOfficeBanner;
+    switch (article.category) {
+      case 'law-updates':
+        return wideUpdatesBanner;
+      case 'law-blogs':
+        return wideBlogsBanner;
+      case 'everyday-law':
+      default:
+        return wideOfficeBanner;
+    }
+  };
 
   // Horizontal scroll & drag state for Tags (Naked View)
   const tagsScrollRef = useRef(null);
@@ -100,8 +117,19 @@ export default function ArticleDetail() {
       <Orb color="sage" className="-left-[200px] top-[10%] h-[500px] w-[500px]" opacity={0.35} />
       <Orb color="olive" className="-right-[150px] top-[40%] h-[600px] w-[600px]" opacity={0.25} />
 
-      <section className="bg-olive py-8 px-4 text-center relative z-10">
-        <h1 className="font-display text-2xl sm:text-3xl text-cream uppercase tracking-wide font-bold">
+      <section
+        className="py-5 sm:py-6 px-4 text-center relative overflow-hidden z-10 shadow-[0_4px_16px_rgba(0,0,0,0.25)]"
+        style={{
+          backgroundColor: '#545a2f',
+          backgroundImage: `linear-gradient(rgba(84, 90, 47, 0.85), rgba(84, 90, 47, 0.88)), url(${getBannerImage()})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        <h1 
+          className="font-display text-[26px] sm:text-[32px] text-cream uppercase tracking-wider font-bold"
+          style={{ textShadow: '0 3px 8px rgba(0,0,0,0.45), 0 1px 3px rgba(0,0,0,0.3)' }}
+        >
           {article.category === 'law-updates' ? 'LAW UPDATES' : article.category === 'law-blogs' ? 'LAW BLOGS' : 'EVERYDAY LAW'}
         </h1>
       </section>

@@ -81,41 +81,49 @@ export default function Hero() {
 
         {/* Content Wrapper */}
         <div className="relative z-20 mx-auto flex w-full max-w-[1050px] flex-col items-center justify-center px-4 text-center">
-          {/* Animated Hero Headline - Perfectly Centered Stacked Lines */}
+          {/* Animated Hero Headline - Extended width for up to 2 long lines */}
           <h1
             className={cn(
-              'font-display italic font-medium text-parchment tracking-tight transition-all duration-500 ease-in-out drop-shadow-md text-center',
+              'font-display italic font-medium text-parchment tracking-tight transition-all duration-500 ease-in-out drop-shadow-md text-center w-full max-w-[1140px]',
               isModalActive
                 ? 'text-lg sm:text-2xl lg:text-[30px] leading-tight mt-2 sm:mt-3'
-                : 'text-4xl sm:text-6xl lg:text-[68px] leading-tight'
+                : 'text-3xl sm:text-5xl lg:text-[58px] xl:text-[64px] leading-[1.12]'
             )}
           >
-            <div className="whitespace-nowrap">Skip the traffic.</div>
-            <div className="whitespace-nowrap mt-0.5 sm:mt-1">Skip the billable hours.</div>
+            Legal services in the <br /> comfort of your home!
           </h1>
 
-          {/* Subtitle Section */}
-          <div className="mt-2.5 sm:mt-3.5 transition-all duration-500 ease-in-out flex flex-col items-center">
-            {isModalActive ? (
-              /* Condensed subtitle vertically centered under headline inside cropped photo banner */
-              <p className="max-w-[640px] font-sans text-xs sm:text-sm font-normal text-parchment/95 leading-relaxed px-4 animate-in fade-in duration-300">
+          {/* Subtitle Section - Unified container to enable smooth collapse transition */}
+          <div
+            className={cn(
+              'transition-all duration-500 ease-in-out flex flex-col items-center w-full',
+              isModalActive ? 'mt-1.5 sm:mt-2' : 'mt-5 sm:mt-7'
+            )}
+          >
+            <div
+              className={cn(
+                'max-w-[660px] w-full text-center transition-all duration-500 ease-in-out',
+                isModalActive
+                  ? 'bg-transparent border-transparent px-4 py-0 shadow-none border-0'
+                  : 'rounded-[24px] sm:rounded-[30px] bg-parchment/15 backdrop-blur-xl border border-white/30 px-6 py-5 sm:px-8 sm:py-6 shadow-lg hover:bg-parchment/20'
+              )}
+            >
+              <p
+                className={cn(
+                  'font-sans transition-all duration-500 ease-in-out text-parchment/95 leading-relaxed mx-auto',
+                  isModalActive
+                    ? 'text-[11px] sm:text-xs font-normal max-w-[640px]'
+                    : 'text-sm sm:text-base font-normal max-w-none'
+                )}
+              >
                 Say goodbye to waiting rooms and surprise billable hours. Our secure platform
                 gives you instant, flat-rate access to top-tier attorneys from anywhere in the
                 world, on your schedule.
               </p>
-            ) : (
-              /* Opaque Glass Subtitle Pill (100% identical to Photo 1 reference) */
-              <div className="max-w-[660px] rounded-[24px] sm:rounded-[30px] bg-parchment/15 backdrop-blur-xl border border-white/30 px-6 py-5 sm:px-8 sm:py-6 text-center shadow-lg transition-all duration-500 hover:bg-parchment/20">
-                <p className="font-sans text-sm sm:text-base font-normal text-parchment/95 leading-relaxed">
-                  Say goodbye to waiting rooms and surprise billable hours. Our secure platform
-                  gives you instant, flat-rate access to top-tier attorneys from anywhere in the
-                  world, on your schedule.
-                </p>
-              </div>
-            )}
+            </div>
           </div>
 
-          {/* CTA Button: Get Started Online (Visible in default view, hidden when modal active) */}
+          {/* CTA Button: Get Legal Help (Visible in default view, hidden when modal active) */}
           <div
             className={cn(
               'transition-all duration-300 ease-in-out mt-6 sm:mt-8',
@@ -126,9 +134,9 @@ export default function Hero() {
               id="get-started-btn"
               type="button"
               onClick={() => setActiveModal('login')}
-              className="h-12 sm:h-14 px-8 sm:px-12 rounded-full bg-gradient-to-r from-[#CAD0B1] via-[#E2E4D4] to-[#F0F1E4] text-carbon-black font-sans font-bold text-base sm:text-lg shadow-pill hover:opacity-95 active:scale-98 transition-all cursor-pointer"
+              className="relative overflow-hidden h-14 sm:h-17 min-w-[280px] sm:min-w-[380px] px-14 sm:px-20 rounded-full bg-gradient-to-r from-[#CAD0B1] via-[#E2E4D4] to-[#F0F1E4] before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#3D4223] before:via-[#2F331A] before:to-[#1C1F11] before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 before:z-0 text-carbon-black hover:text-white font-sans font-bold text-lg sm:text-xl tracking-wide shadow-lg hover:shadow-xl hover:shadow-[#3d4223]/20 hover:scale-[1.05] active:scale-[0.98] transition-all duration-500 cursor-pointer border border-white/40 hover:border-white/10"
             >
-              Get Started Online
+              <span className="relative z-10">Get Legal Help</span>
             </button>
           </div>
         </div>
