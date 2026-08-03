@@ -209,7 +209,7 @@ export default function Hub() {
         {/* Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
           
-          {/* Left Column: Stacked Cards (Narrower) */}
+          {/* Left Column: Stacked Category Cards */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             {latestEverydayLaw && <ArticleCardHorizontal article={latestEverydayLaw} />}
             {latestLawUpdates && <ArticleCardHorizontal article={latestLawUpdates} />}
@@ -220,28 +220,32 @@ export default function Hub() {
           <div className="lg:col-span-7 flex flex-col gap-6 h-full">
             {featuredBlog && <FeaturedBlogCard article={featuredBlog} />}
             
-            {/* Need Legal Help CTA - Added flex-1 to auto-stretch and align with the bottom of the left column */}
-            <GlassCard tone="light" className="py-14 px-10 sm:px-12 text-center flex flex-col items-center justify-center gap-5 border border-white/90 flex-1">
-              <h3 className="font-display text-[36px] sm:text-[42px] font-bold text-ink">Need legal help?</h3>
-              <p className="font-sans text-[16px] sm:text-[18px] text-ink/80 leading-relaxed mb-4 max-w-md">
-                Talk to a lawyer for legal advice on your specific concern. Get clear next steps before taking action
+            {/* Need Legal Help CTA - Symmetrical with other cards */}
+            <GlassCard tone="light" className="py-6 sm:py-8 px-6 sm:px-10 text-center flex flex-col items-center justify-center gap-3 border border-white/90 flex-[1.4]">
+              <h3 className="font-display text-[18px] sm:text-[20px] font-bold text-ink leading-tight mb-2 mt-1">
+                Need legal help?
+              </h3>
+              <p className="font-sans text-[12px] sm:text-[13px] text-ink/80 leading-relaxed mb-2 max-w-md">
+                Talk to a lawyer for legal advice on your specific concern. Get clear next steps before taking action.
               </p>
               <Link to="/lawyer-profile">
-                <Button variant="olive" className="!h-14 !px-12 !text-[16px]">
+                <Button variant="olive" className="!h-9 !px-6 !text-[13px]">
                   Talk to a Lawyer
                 </Button>
               </Link>
             </GlassCard>
+
+            {/* Editorial Standard Card - Stretched card with matched fonts */}
+            <GlassCard tone="light" className="py-6 px-6 text-center flex flex-col items-center justify-center gap-3 border border-white/90 flex-1">
+              <h3 className="font-display text-[18px] sm:text-[20px] font-bold text-ink leading-tight mb-2 mt-1">
+                Editorial Standard
+              </h3>
+              <p className="font-sans text-[12px] sm:text-[13px] text-ink/80 leading-relaxed max-w-md">
+                Articles are reviewed for legal accuracy and updated as laws and jurisprudence change.
+              </p>
+            </GlassCard>
           </div>
 
-        </div>
-
-        {/* Editorial Standard */}
-        <div className="mt-24 text-center max-w-2xl mx-auto">
-          <h2 className="font-display text-3xl font-bold text-ink mb-3">Editorial Standard</h2>
-          <p className="font-sans text-[16px] text-ink/80">
-            Articles are reviewed for legal accuracy and updated as laws and jurisprudence change.
-          </p>
         </div>
       </section>
     </div>
