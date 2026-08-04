@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "@/components/ui/Button";
 import Orb from "@/components/ui/Orb";
-import luImg from "@/assets/homeAssets/LU.png";
+import luJpg from "@/assets/homeAssets/LU.jpg";
 import { ARTICLES } from "@/utils/articles";
 
 export default function LawUpdates() {
@@ -14,22 +14,15 @@ export default function LawUpdates() {
       
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-16">
         
-        {/* No gap while stacked — spacing under the image is set by the
-            image's own negative margin, so it scales with the artwork. */}
-        <div className="flex flex-col lg:flex-row items-center gap-0 lg:gap-16">
+        {/* Responsive layout with a clean gap on mobile and desktop */}
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-            {/* Wrapper matches the image's own width so the negative margin
-                below resolves against it rather than the column. */}
-            <div className="w-full max-w-[500px] lg:max-w-[600px]">
+            {/* Dynamic frame placeholder copying outline, dimensions, and corner radius of EL.png */}
+            <div className="w-full max-w-[563px] aspect-[563/276] rounded-tl-[48px] rounded-br-[48px] rounded-tr-[16px] rounded-bl-[16px] md:rounded-tl-[96px] md:rounded-br-[96px] md:rounded-tr-[24px] md:rounded-bl-[24px] border-[1.5px] border-[#878C60] overflow-hidden shadow-xl">
               <img
-                src={luImg}
+                src={luJpg}
                 alt="Law Updates"
-                /* LU.png bakes ~23px of shadow padding below the artwork
-                   (4.9% of its 470px width). Pulling up 7% clears that and
-                   lets the heading sit slightly over the shadow's fade —
-                   the only knob for the gap here, and it scales with the
-                   image. Larger = tighter. */
-                className="w-full h-auto object-contain -mb-[7%] lg:mb-0"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
@@ -37,12 +30,12 @@ export default function LawUpdates() {
           <div className="w-full lg:w-1/2 flex flex-col items-start text-left lg:pl-6">
             
             {/* Left-aligned on mobile, Right-aligned on desktop for responsiveness */}
-            <h2 className="w-full text-left lg:text-right font-display text-4xl sm:text-5xl lg:text-[56px] font-bold text-carbon-black mb-4 tracking-tight">
+            <h2 className="w-full text-left lg:text-right font-display text-4xl sm:text-5xl lg:text-[56px] font-bold text-carbon-black mb-4 tracking-tight [text-shadow:0_4px_12px_rgba(0,0,0,0.08)] hover:-translate-y-1 transition-transform duration-300 cursor-default">
               Law Updates
             </h2>
             
             {/* Dynamically render the article's title */}
-            <h3 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-bold text-carbon-black leading-snug mb-5">
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-[34px] font-semibold text-carbon-black leading-snug mb-5">
               {featuredArticle?.title}
             </h3>
             
