@@ -39,15 +39,19 @@ export default function Layout() {
   // Handle global cross-page hash scrolling
   useEffect(() => {
     if (location.hash) {
+      // Instantly reset scroll to top so the page starts from a consistent state
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+
       const id = location.hash.substring(1);
       let attempts = 0;
       const interval = setInterval(() => {
         const element = document.getElementById(id);
         if (element) {
           clearInterval(interval);
+          // Small timeout to allow render to settle before starting smooth scroll
           setTimeout(() => {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }, 30);
+            element.scrollIntoView({ behavior: "smooth" });
+          }, 100);
         }
         attempts++;
         if (attempts > 30) { // Up to 1.5 seconds
@@ -56,7 +60,7 @@ export default function Layout() {
       }, 50);
       return () => clearInterval(interval);
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     }
   }, [location.pathname, location.hash]);
 

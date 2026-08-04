@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Modal from '@/components/ui/Modal';
 import { cn } from '@/utils/cn';
 import { getCv } from '../cv';
@@ -62,11 +62,48 @@ function PhoneIcon() {
 export default function LawyerModal({ lawyer, isOpen, onClose, initialTab = 0 }) {
   const [activeTab, setActiveTab] = useState(initialTab);
 
-  // Open on whichever tab the roster was showing — the modal's tabs are in
-  // the same order, so Ratings on the table opens Ratings here.
+  const scrollRef = useRef(null);
+  const [showTopFade, setShowTopFade] = useState(false);
+  const [showBottomFade, setShowBottomFade] = useState(false);
+
+  const tickingRef = useRef(false);
+  const checkScroll = () => {
+    if (!tickingRef.current) {
+      window.requestAnimationFrame(() => {
+        if (scrollRef.current) {
+          const { scrollTop, scrollHeight, clientHeight } = scrollRef.current;
+          const nextTop = scrollTop > 5;
+          const nextBottom = scrollTop < scrollHeight - clientHeight - 5;
+          setShowTopFade((prev) => (prev !== nextTop ? nextTop : prev));
+          setShowBottomFade((prev) => (prev !== nextBottom ? nextBottom : prev));
+        }
+        tickingRef.current = false;
+      });
+      tickingRef.current = true;
+    }
+  };
+
+  // Reset tab to initialTab only when modal opens or lawyer profile changes
   useEffect(() => {
-    if (isOpen) setActiveTab(initialTab);
+    if (isOpen) {
+      setActiveTab(initialTab);
+    }
   }, [isOpen, lawyer, initialTab]);
+
+  // Re-run scroll check whenever activeTab, lawyer or modal open state changes
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(checkScroll, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, lawyer, activeTab]);
+
+  useEffect(() => {
+    if (isOpen) {
+      window.addEventListener("resize", checkScroll);
+      return () => window.removeEventListener("resize", checkScroll);
+    }
+  }, [isOpen]);
 
   if (!lawyer) return null;
 
@@ -81,85 +118,108 @@ export default function LawyerModal({ lawyer, isOpen, onClose, initialTab = 0 })
          needs a calmer surface than the roster showing through. Capped to
          the viewport so the panel scrolls as one piece, with no section
          scrolling independently of the rest. */
-      className="max-h-[90dvh] overflow-y-auto !bg-white/80 p-6 sm:p-8"
+      className="max-h-[90dvh] overflow-hidden !bg-white/80 !p-0"
     >
-      {/* Stacked, the close button only overlaps the name row, so the padding
-          that clears it moves there — otherwise it narrows the full-width CTA
-          below and throws it off centre against the tabs. */}
-      <header className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between sm:pr-8">
-        <div className="flex items-center gap-3 pr-8 sm:gap-4 sm:pr-0">
-          <div className="relative shrink-0">
-            <img
-              src={lawyer.photo}
-              alt=""
-              className="h-14 w-14 rounded-full object-cover sm:h-[72px] sm:w-[72px]"
-            />
-            {lawyer.online && (
-              <span
-                className="absolute bottom-1 right-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-green-500"
-                aria-label="Online"
-              />
-            )}
+      <div className="relative h-full max-h-[90dvh] flex flex-col overflow-hidden">
+        {/* Top Gradient Shadow Fade (Visible when scrolled down) */}
+        <div 
+          className={`absolute left-0 right-0 top-0 h-10 bg-gradient-to-b from-black/[0.06] to-transparent pointer-events-none z-30 transition-opacity duration-500 ease-in-out [will-change:opacity] rounded-t-2xl ${
+            showTopFade ? "opacity-100" : "opacity-0"
+          }`} 
+        />
+        
+        {/* Bottom Gradient Shadow Fade (Visible when there is more content to scroll down) */}
+        <div 
+          className={`absolute left-0 right-0 bottom-0 h-10 bg-gradient-to-t from-black/[0.06] to-transparent pointer-events-none z-30 transition-opacity duration-500 ease-in-out [will-change:opacity] rounded-b-2xl ${
+            showBottomFade ? "opacity-100" : "opacity-0"
+          }`} 
+        />
+
+        <div
+          ref={scrollRef}
+          onScroll={checkScroll}
+          className="flex-1 overflow-y-auto p-6 sm:p-8 [&::-webkit-scrollbar]:hidden"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {/* Stacked, the close button only overlaps the name row, so the padding
+              that clears it moves there — otherwise it narrows the full-width CTA
+              below and throws it off centre against the tabs. */}
+          <header className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between sm:pr-8">
+            <div className="flex items-center gap-3 pr-8 sm:gap-4 sm:pr-0">
+              <div className="relative shrink-0">
+                <img
+                  src={lawyer.photo}
+                  alt=""
+                  className="h-14 w-14 rounded-full object-cover sm:h-[72px] sm:w-[72px]"
+                />
+                {lawyer.online && (
+                  <span
+                    className="absolute bottom-1 right-1 h-3.5 w-3.5 rounded-full border-2 border-white bg-green-500"
+                    aria-label="Online"
+                  />
+                )}
+              </div>
+
+              <div className="min-w-0">
+                <h2 className="font-display text-xl font-bold text-carbon-black sm:text-[28px]">
+                  {lawyer.name}
+                </h2>
+                <p className="font-sans text-[13px] text-dusty-olive">{lawyer.position}</p>
+                <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-[12px] text-dark-khaki">
+                  <span className="inline-flex items-center gap-1">
+                    <PinIcon />
+                    {cv.location}
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <CaseIcon />
+                    {cv.caseCount}
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <StarIcon />
+                    {lawyer.rating.toFixed(1)}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="button"
+              className="inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-full bg-olive-pill px-5 font-sans text-sm font-bold text-parchment shadow-pill transition-[filter] hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-olive-leaf/60 sm:w-auto"
+            >
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-parchment/20">
+                <PhoneIcon />
+              </span>
+              Talk to this Lawyer
+            </button>
+          </header>
+
+          <div role="tablist" className="mt-6 grid gap-3 sm:grid-cols-3">
+            {TABS.map((label, i) => (
+              <button
+                key={label}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === i}
+                onClick={() => setActiveTab(i)}
+                className={cn(
+                  'h-11 rounded-full border px-3 font-sans text-[13px] font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olive-leaf/60 sm:text-sm',
+                  activeTab === i
+                    ? 'border-transparent bg-olive-pill text-parchment shadow-pill'
+                    : 'border-sage-mist/80 bg-white/60 text-carbon-black hover:bg-white/80',
+                )}
+              >
+                {label}
+              </button>
+            ))}
           </div>
 
-          <div className="min-w-0">
-            <h2 className="font-display text-xl font-bold text-carbon-black sm:text-[28px]">
-              {lawyer.name}
-            </h2>
-            <p className="font-sans text-[13px] text-dusty-olive">{lawyer.position}</p>
-            <div className="mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 font-sans text-[12px] text-dark-khaki">
-              <span className="inline-flex items-center gap-1">
-                <PinIcon />
-                {cv.location}
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <CaseIcon />
-                {cv.caseCount}
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <StarIcon />
-                {lawyer.rating.toFixed(1)}
-              </span>
-            </div>
+          <div className="mt-6 sm:mt-7">
+            {/* key resets the See More toggles when a different lawyer is opened */}
+            {activeTab === 0 && <LawyerCV key={lawyer.name} lawyer={lawyer} />}
+            {activeTab === 1 && <LawyerRatings lawyer={lawyer} />}
+            {activeTab === 2 && <LawyerSchedule lawyer={lawyer} />}
           </div>
         </div>
-
-        <button
-          type="button"
-          className="inline-flex h-11 w-full shrink-0 items-center justify-center gap-2 rounded-full bg-olive-pill px-5 font-sans text-sm font-bold text-parchment shadow-pill transition-[filter] hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-olive-leaf/60 sm:w-auto"
-        >
-          <span className="grid h-7 w-7 place-items-center rounded-full bg-parchment/20">
-            <PhoneIcon />
-          </span>
-          Talk to this Lawyer
-        </button>
-      </header>
-
-      <div role="tablist" className="mt-6 grid gap-3 sm:grid-cols-3">
-        {TABS.map((label, i) => (
-          <button
-            key={label}
-            type="button"
-            role="tab"
-            aria-selected={activeTab === i}
-            onClick={() => setActiveTab(i)}
-            className={cn(
-              'h-11 rounded-full border px-3 font-sans text-[13px] font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olive-leaf/60 sm:text-sm',
-              activeTab === i
-                ? 'border-transparent bg-olive-pill text-parchment shadow-pill'
-                : 'border-sage-mist/80 bg-white/60 text-carbon-black hover:bg-white/80',
-            )}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
-
-      <div className="mt-6 sm:mt-7">
-        {/* key resets the See More toggles when a different lawyer is opened */}
-        {activeTab === 0 && <LawyerCV key={lawyer.name} lawyer={lawyer} />}
-        {activeTab === 1 && <LawyerRatings lawyer={lawyer} />}
-        {activeTab === 2 && <LawyerSchedule lawyer={lawyer} />}
       </div>
     </Modal>
   );

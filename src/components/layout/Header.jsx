@@ -174,11 +174,23 @@ function MobileNav({ isOpen, onClose }) {
 
   const handleHashClick = (e, href) => {
     const [itemPath, itemHash] = href.split("#");
+    
+    // Smooth scroll to top when clicking the active link of the current page
+    if (!itemHash && pathname === href) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (hash) {
+        navigate(href);
+      }
+      if (onClose) onClose();
+      return;
+    }
+
     if (itemHash && pathname === (itemPath || "/")) {
       e.preventDefault();
       const element = document.getElementById(itemHash);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
         navigate(href);
         if (onClose) onClose();
       }
@@ -286,16 +298,27 @@ function DesktopHeader({
 function DesktopNav() {
   const isActive = useActiveMatcher();
   const activeIndex = NAV_ITEMS.findIndex((item) => isActive(item.href));
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const navigate = useNavigate();
 
   const handleHashClick = (e, href) => {
     const [itemPath, itemHash] = href.split("#");
+    
+    // Smooth scroll to top when clicking the active link of the current page
+    if (!itemHash && pathname === href) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (hash) {
+        navigate(href);
+      }
+      return;
+    }
+
     if (itemHash && pathname === (itemPath || "/")) {
       e.preventDefault();
       const element = document.getElementById(itemHash);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
         navigate(href);
       }
     }

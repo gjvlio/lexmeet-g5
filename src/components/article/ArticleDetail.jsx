@@ -134,7 +134,7 @@ export default function ArticleDetail() {
         </h1>
       </section>
 
-      <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-8">
+      <section className="relative z-10 max-w-5xl mx-auto px-6 sm:px-6 pt-8">
         <button 
           onClick={() => navigate(-1)} 
           className="mb-6 flex items-center justify-center rounded-full border border-sage/50 bg-white/50 px-4 py-1.5 font-sans text-[11px] font-bold text-ink shadow-sm backdrop-blur-glass transition-colors hover:bg-white/80 active:scale-95"
