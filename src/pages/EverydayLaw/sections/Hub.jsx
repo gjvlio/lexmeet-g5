@@ -132,7 +132,7 @@ export default function Hub() {
       </section>
 
       {/* Main Content */}
-      <section className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-16">
+      <section className="relative z-10 max-w-6xl mx-auto px-6 sm:px-6 pt-10 pb-16">
         <p className="max-w-2xl mx-auto font-sans text-[15px] sm:text-[16px] text-ink/80 text-center mb-8">
           Practical perspectives from our lawyers on the cases, questions, and everyday legal problems Filipinos face.
         </p>

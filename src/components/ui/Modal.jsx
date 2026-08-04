@@ -127,7 +127,7 @@ export default function Modal({
                 onClick: onClose,
                 "aria-label": "Close dialog",
                 className:
-                  "absolute right-5 top-5 inline-flex h-9 w-9 items-center justify-center rounded-full text-forest transition-colors hover:bg-white/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-olive/60",
+                  "absolute right-5 top-5 z-50 inline-flex h-9 w-9 items-center justify-center rounded-full text-forest transition-colors hover:bg-white/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-olive/60",
                 children: _jsx("svg", {
                   viewBox: "0 0 24 24",
                   fill: "none",
