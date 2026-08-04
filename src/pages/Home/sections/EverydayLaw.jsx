@@ -14,7 +14,9 @@ export default function EverydayLaw() {
       
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-16">
         
-        <div className="flex flex-col-reverse lg:flex-row items-center gap-8 lg:gap-12">
+        {/* No gap while stacked — spacing under the image is set by the
+            image's own negative margin, so it scales with the artwork. */}
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-0 lg:gap-12">
           <div className="w-full lg:w-1/2 flex flex-col items-start text-left lg:pr-6">
             
             <h2 className="w-full text-left font-display text-4xl sm:text-5xl lg:text-[56px] font-bold text-carbon-black mb-3 lg:mb-4 tracking-tight">
@@ -51,11 +53,19 @@ export default function EverydayLaw() {
           </div>
           
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-            <img 
-              src={elImg} 
-              alt="Everyday Law" 
-              className="w-full max-w-[500px] lg:max-w-[600px] h-auto object-contain" 
-            />
+            {/* Wrapper matches the image's own width so the negative margin
+                below resolves against it rather than the column. */}
+            <div className="w-full max-w-[500px] lg:max-w-[600px]">
+              <img
+                src={elImg}
+                alt="Everyday Law"
+                /* Same shadow padding as LU.png — 23px on a 570px-wide
+                   source, so 4%. col-reverse puts the image above the text
+                   on mobile, so it's the bottom edge that needs pulling up;
+                   6% clears the padding and sits the heading on the fade. */
+                className="w-full h-auto object-contain -mb-[6%] lg:mb-0"
+              />
+            </div>
           </div>
         </div>
       </div>

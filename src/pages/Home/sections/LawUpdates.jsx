@@ -14,13 +14,24 @@ export default function LawUpdates() {
       
       <div className="relative z-10 mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-16">
         
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+        {/* No gap while stacked — spacing under the image is set by the
+            image's own negative margin, so it scales with the artwork. */}
+        <div className="flex flex-col lg:flex-row items-center gap-0 lg:gap-16">
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-            <img 
-              src={luImg} 
-              alt="Law Updates" 
-              className="w-full max-w-[500px] lg:max-w-[600px] h-auto object-contain" 
-            />
+            {/* Wrapper matches the image's own width so the negative margin
+                below resolves against it rather than the column. */}
+            <div className="w-full max-w-[500px] lg:max-w-[600px]">
+              <img
+                src={luImg}
+                alt="Law Updates"
+                /* LU.png bakes ~23px of shadow padding below the artwork
+                   (4.9% of its 470px width). Pulling up 7% clears that and
+                   lets the heading sit slightly over the shadow's fade —
+                   the only knob for the gap here, and it scales with the
+                   image. Larger = tighter. */
+                className="w-full h-auto object-contain -mb-[7%] lg:mb-0"
+              />
+            </div>
           </div>
           
           <div className="w-full lg:w-1/2 flex flex-col items-start text-left lg:pl-6">
