@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import { NAV_ITEMS } from "@/utils/content";
 import { cn } from "@/utils/cn";
 
@@ -117,12 +117,12 @@ function MobileHeader({
           <MenuIcon isOpen={isMenuOpen} />
         </button>
 
-        <div className="flex items-center gap-2">
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center gap-2" aria-label="Home">
           <img src={logo} alt="" className="h-6 w-auto" />
           <span className="font-display text-base font-medium tracking-[0.1em] text-carbon-black sm:text-lg">
             RIZAL LAW OFFICE
           </span>
-        </div>
+        </Link>
 
         <div className="relative">
           <button
@@ -245,14 +245,12 @@ function DesktopHeader({
   return (
     <div className="hidden h-[160px] xl:block">
       <div className="relative mx-auto h-full w-[1440px]">
-        <img
-          src={logo}
-          alt=""
-          className="absolute left-1/2 top-[14px] h-7 w-auto -translate-x-1/2"
-        />
-        <span className="absolute left-1/2 top-[48px] -translate-x-1/2 whitespace-nowrap font-display text-[26px] font-medium tracking-[0.1em] text-carbon-black">
-          RIZAL LAW OFFICE
-        </span>
+        <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="absolute left-1/2 top-[14px] -translate-x-1/2 flex flex-col items-center hover:opacity-80 transition-opacity z-50 cursor-pointer" aria-label="Home">
+          <img src={logo} alt="Rizal Law Office" className="h-7 w-auto" />
+          <span className="mt-1.5 whitespace-nowrap font-display text-[26px] font-medium tracking-[0.1em] text-carbon-black">
+            RIZAL LAW OFFICE
+          </span>
+        </Link>
 
         {/* Profile Button + Dropdown Container */}
         <div className="absolute right-[90px] top-[18px] z-50 flex flex-col items-end">

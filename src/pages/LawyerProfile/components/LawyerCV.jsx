@@ -6,6 +6,8 @@ const LANGUAGE_PREVIEW = 5;
 const CASES_PREVIEW = 8;
 const WORK_PREVIEW = 1;
 const EDUCATION_PREVIEW = 2;
+const LOCATIONS_PREVIEW = 2;
+const CONCENTRATION_PREVIEW = 6;
 
 /** Dark pill that labels each block on the right-hand column. */
 function BlockLabel({ children }) {
@@ -85,6 +87,8 @@ export default function LawyerCV({ lawyer }) {
   const [showAllCases, setShowAllCases] = useState(false);
   const [showAllWork, setShowAllWork] = useState(false);
   const [showAllEducation, setShowAllEducation] = useState(false);
+  const [showAllLocations, setShowAllLocations] = useState(false);
+  const [showAllConcentration, setShowAllConcentration] = useState(false);
 
   const work = showAllWork ? cv.workExperience : cv.workExperience.slice(0, WORK_PREVIEW);
   const education = showAllEducation ? cv.education : cv.education.slice(0, EDUCATION_PREVIEW);
@@ -96,9 +100,13 @@ export default function LawyerCV({ lawyer }) {
     ? credentials.languages
     : credentials.languages.slice(0, LANGUAGE_PREVIEW);
   const cases = showAllCases ? cv.casesHandled : cv.casesHandled.slice(0, CASES_PREVIEW);
+  const locations = showAllLocations ? cv.locationsOfPractice : cv.locationsOfPractice.slice(0, LOCATIONS_PREVIEW);
+  const concentration = showAllConcentration ? cv.concentration : cv.concentration.slice(0, CONCENTRATION_PREVIEW);
 
   const hasMoreLanguages = credentials.languages.length > LANGUAGE_PREVIEW;
   const hasMoreCases = cv.casesHandled.length > CASES_PREVIEW;
+  const hasMoreLocations = cv.locationsOfPractice.length > LOCATIONS_PREVIEW;
+  const hasMoreConcentration = cv.concentration.length > CONCENTRATION_PREVIEW;
 
   return (
     <div className="grid gap-8 lg:grid-cols-[minmax(0,200px)_minmax(0,1fr)] lg:gap-10">
@@ -198,14 +206,36 @@ export default function LawyerCV({ lawyer }) {
         <section className="mt-6">
           <BlockLabel>Location of Practice</BlockLabel>
           <Panel>
-            <BulletColumns items={cv.locationsOfPractice} />
+            <div id="cv-locations">
+              <BulletColumns items={locations} />
+            </div>
+            {hasMoreLocations && (
+              <div className="mt-4 flex justify-center">
+                <SeeMorePill
+                  isExpanded={showAllLocations}
+                  onClick={() => setShowAllLocations((prev) => !prev)}
+                  controls="cv-locations"
+                />
+              </div>
+            )}
           </Panel>
         </section>
 
         <section className="mt-6">
           <BlockLabel>Concentration of Law Practice</BlockLabel>
           <Panel>
-            <BulletColumns items={cv.concentration} />
+            <div id="cv-concentration">
+              <BulletColumns items={concentration} />
+            </div>
+            {hasMoreConcentration && (
+              <div className="mt-4 flex justify-center">
+                <SeeMorePill
+                  isExpanded={showAllConcentration}
+                  onClick={() => setShowAllConcentration((prev) => !prev)}
+                  controls="cv-concentration"
+                />
+              </div>
+            )}
           </Panel>
         </section>
 

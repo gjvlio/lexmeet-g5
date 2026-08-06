@@ -7,7 +7,7 @@ import PromiseSection from "./sections/Promise";
 export default function OurServices() {
   return _jsx("div", {
     className:
-      "relative min-h-screen overflow-hidden bg-practice-fade pb-24 pt-8",
+      "relative min-h-screen overflow-hidden bg-practice-fade pb-10 lg:pb-14 pt-8",
     children: _jsxs("div", {
       className: "relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-16",
       children: [
@@ -29,7 +29,7 @@ export default function OurServices() {
           ],
         }),
         _jsxs("div", {
-          className: "flex flex-col gap-16 lg:gap-24",
+          className: "flex flex-col gap-10 lg:gap-14",
           children: [
             _jsx(AboutHero, {}),
             _jsx(Values, {}),

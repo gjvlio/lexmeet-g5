@@ -13,7 +13,9 @@ export default function ContactUs() {
           form inputs end up ~400px wide for a first name, and the two
           columns drift far apart. */}
       <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
-        <GlassCard className="grid items-center gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-12">
+        {/* Negative top margin kept from #29 — closes the last of the gap
+            under the header without cutting the section's own padding. */}
+        <GlassCard className="-mt-2 grid items-center gap-8 p-6 md:p-8 lg:-mt-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-12">
           <ContactDetails />
           <ContactForm />
         </GlassCard>

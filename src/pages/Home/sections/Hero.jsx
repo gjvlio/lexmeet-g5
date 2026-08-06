@@ -144,7 +144,7 @@ export default function Hero() {
 
       {/* Modal View Overlay Area (Login or Create Account) */}
       {isModalActive && (
-        <div className="relative z-40 -mt-[210px] sm:-mt-[250px] lg:-mt-[270px] pb-10 w-full flex flex-col items-center justify-center px-4">
+        <div className="relative z-40 -mt-[260px] sm:-mt-[250px] lg:-mt-[270px] pb-10 w-full flex flex-col items-center justify-center px-4 scale-90 sm:scale-100 origin-top">
           {/* Ambient Glowing Orb Component centered behind modal */}
           <Orb
             color="sage"
