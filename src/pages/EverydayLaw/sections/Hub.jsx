@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ARTICLES } from "@/utils/articles";
+import { ARTICLES, POPULAR_TOPICS } from "@/utils/articles";
 import Orb from "@/components/ui/Orb";
 import GlassCard from "@/components/ui/GlassCard";
 import Button from "@/components/ui/Button";
@@ -10,28 +10,8 @@ import FeaturedBlogCard from "@/components/article/FeaturedBlogCard";
 import SearchBar from "@/components/article/SearchBar";
 import wideOfficeBanner from '@/assets/ELassets/wide_office_banner.png';
 
-
-
-const POPULAR_TOPICS = [
-  "All",
-  "Human Rights",
-  "Family Law",
-  "Marriage",
-  "Annulment",
-  "Labor & Employment",
-  "Property & Real Estate",
-  "Business & Corporate",
-  "Criminal Law",
-  "Data Privacy",
-  "E-Commerce",
-  "Taxation",
-  "Wills & Inheritance",
-  "Intellectual Property",
-  "Contracts",
-  "Consumer Protection",
-];
-
 export default function Hub() {
+
   const latestEverydayLaw = ARTICLES.find(a => a.slug === 'online-startup-msme-registration');
   const latestLawUpdates = ARTICLES.find(a => a.slug === 'expanded-maternity-leave-now-in-effect');
   const latestLawBlogs = ARTICLES.find(a => a.slug === 'can-your-employer-really-withhold-your-final-pay');
@@ -132,7 +112,7 @@ export default function Hub() {
       </section>
 
       {/* Main Content */}
-      <section className="relative z-10 max-w-6xl mx-auto px-6 sm:px-6 pt-10 pb-16">
+      <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16">
         <p className="max-w-2xl mx-auto font-sans text-[15px] sm:text-[16px] text-ink/80 text-center mb-8">
           Practical perspectives from our lawyers on the cases, questions, and everyday legal problems Filipinos face.
         </p>
@@ -141,7 +121,7 @@ export default function Hub() {
           <SearchBar placeholder="Search articles..." className="w-full max-w-xl" />
         </div>
 
-        {/* Popular Topics Bar (Horizontally scrollable like YouTube mobile chips, with swipe support on desktop & mobile arrows) */}
+        {/* Popular Topics Bar */}
         <div className="glass w-full mb-10 rounded-full px-2.5 sm:px-5 py-2 flex items-center gap-2 sm:gap-3 relative shadow-glass border border-white/90">
           <div className="flex items-center shrink-0 pr-2 sm:pr-3 border-r border-ink/15">
             <SectionLabel 
@@ -206,22 +186,27 @@ export default function Hub() {
           )}
         </div>
 
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+        {/* 3-Row Layout Arrangement */}
+        <div className="flex flex-col gap-8">
           
-          {/* Left Column: Stacked Category Cards */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
+          {/* 1st Row: Featured Article */}
+          {featuredBlog && (
+            <div className="w-full">
+              <FeaturedBlogCard article={featuredBlog} />
+            </div>
+          )}
+
+          {/* 2nd Row: 3 Category Cards (Everyday Law, Law Updates, Law Blogs) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {latestEverydayLaw && <ArticleCardHorizontal article={latestEverydayLaw} />}
             {latestLawUpdates && <ArticleCardHorizontal article={latestLawUpdates} />}
             {latestLawBlogs && <ArticleCardHorizontal article={latestLawBlogs} />}
           </div>
 
-          {/* Right Column: Featured & CTA (Wider) */}
-          <div className="lg:col-span-7 flex flex-col gap-6 h-full">
-            {featuredBlog && <FeaturedBlogCard article={featuredBlog} />}
-            
-            {/* Need Legal Help CTA - Symmetrical with other cards */}
-            <GlassCard tone="light" className="py-6 sm:py-8 px-6 sm:px-10 text-center flex flex-col items-center justify-center gap-3 border border-white/90 flex-[1.4]">
+          {/* 3rd Row: Need Legal Help CTA & Editorial Standard Card */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            {/* Need Legal Help CTA */}
+            <GlassCard tone="light" className="py-6 sm:py-8 px-6 sm:px-10 text-center flex flex-col items-center justify-center gap-3 border border-white/90">
               <h3 className="font-display text-[18px] sm:text-[20px] font-bold text-ink leading-tight mb-2 mt-1">
                 Need legal help?
               </h3>
@@ -235,8 +220,8 @@ export default function Hub() {
               </Link>
             </GlassCard>
 
-            {/* Editorial Standard Card - Stretched card with matched fonts */}
-            <GlassCard tone="light" className="py-6 px-6 text-center flex flex-col items-center justify-center gap-3 border border-white/90 flex-1">
+            {/* Editorial Standard Card */}
+            <GlassCard tone="light" className="py-6 sm:py-8 px-6 sm:px-10 text-center flex flex-col items-center justify-center gap-3 border border-white/90">
               <h3 className="font-display text-[18px] sm:text-[20px] font-bold text-ink leading-tight mb-2 mt-1">
                 Editorial Standard
               </h3>
@@ -248,6 +233,7 @@ export default function Hub() {
 
         </div>
       </section>
+
     </div>
   );
 }

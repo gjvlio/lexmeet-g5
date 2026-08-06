@@ -1,18 +1,17 @@
 import SectionCarousel from '../components/SectionCarousel';
 import lawofficeBg from '../../../assets/OurLawOffice/lawoffice-bg.png';
+import { STAFF_ROSTER } from '../../LawyerProfile/lawyers.js';
 
 import staffImg1 from '../../../assets/OurLawOffice/OurStaff/staff-slide-1.png';
 import staffImg2 from '../../../assets/OurLawOffice/OurStaff/staff-slide-2.png';
 import staffImg3 from '../../../assets/OurLawOffice/OurStaff/staff-slide-3.png';
 
-const STAFF_SLOTS = [
-  { id: 1, title: 'Our Staff 1', image: staffImg1 },
-  { id: 2, title: 'Our Staff 2', image: staffImg2 },
-  { id: 3, title: 'Our Staff 3', image: staffImg3 },
-  { id: 4, title: 'Our Staff 4', image: staffImg1 },
-  { id: 5, title: 'Our Staff 5', image: staffImg2 },
-  { id: 6, title: 'Our Staff 6', image: staffImg3 },
-];
+const STAFF_SLOTS = STAFF_ROSTER.map((s, i) => ({
+  id: i + 1,
+  title: `${s.name} - ${s.position}`,
+  image: i % 3 === 0 ? staffImg1 : i % 3 === 1 ? staffImg2 : staffImg3
+}));
+
 
 export default function OurStaff() {
   const renderCard = (item, isHighlighted) => (

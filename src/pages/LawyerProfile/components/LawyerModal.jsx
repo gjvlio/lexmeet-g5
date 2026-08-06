@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import Modal from '@/components/ui/Modal';
-import { cn } from '@/utils/cn';
+import { cn } from '@/utils/cn.js';
+
 import { getCv } from '../cv';
 import LawyerCV from './LawyerCV';
 import LawyerRatings from './LawyerRatings';

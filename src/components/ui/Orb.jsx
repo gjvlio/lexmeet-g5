@@ -1,5 +1,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils/cn.js";
+
+
 /** Soft blurred ambient orb placed behind section content. */
 export default function Orb({ color = "sage", className, opacity = 0.4 }) {
   return _jsx("span", {

@@ -1,5 +1,6 @@
-import { CONTACT, WEBSITE_AGREEMENTS } from "@/utils/content";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { CONTACT, WEBSITE_AGREEMENTS } from "@/utils/content.js";
 import fb from "@/assets/footer/footer-fb-icon.png";
 import twitter from "@/assets/footer/footer-twitter-icon.png";
 import linkedin from "@/assets/footer/footer-linkedin-icon.png";

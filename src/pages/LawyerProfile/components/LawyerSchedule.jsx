@@ -1,4 +1,5 @@
-import { cn } from '@/utils/cn';
+import { cn } from '@/utils/cn.js';
+
 
 const DEFAULT_SCHEDULE = [
   { day: 'Monday', am: '8:00 AM - 11:00 AM', pm: '3:00 PM - 11:00 PM', available: true },

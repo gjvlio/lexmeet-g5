@@ -1,9 +1,12 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Orb from "@/components/ui/Orb";
-// Exact filenames from your AUassets folder
 import missionImg from "@/assets/AUassets/MISSION.png";
 import visionImg from "@/assets/AUassets/VISION.png";
+import { MISSION_VISION_DATA } from "@/utils/services.js";
+
+
 export default function MissionVision() {
+
   return _jsxs("section", {
     className: "relative flex w-full flex-col gap-10 lg:gap-14",
     children: [

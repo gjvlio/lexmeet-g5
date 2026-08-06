@@ -1,7 +1,5 @@
 /**
- * Static page content extracted from the Figma design.
- * In production these would come from a CMS / API; kept here so the
- * Home page renders identically to the hi-fi mockup out of the box.
+ * Static page content extracted from design and site structure.
  */
 
 export const NAV_ITEMS = [
@@ -14,13 +12,7 @@ export const NAV_ITEMS = [
   { label: 'Contact Us', href: '/contact-us' },
 ];
 
-export type Service = {
-  key: string;
-  title: string;
-  body: string;
-};
-
-export const SERVICES: Service[] = [
+export const SERVICES = [
   {
     key: 'assist',
     title: 'ASSIST',
@@ -43,12 +35,7 @@ export const SERVICES: Service[] = [
   },
 ];
 
-export type Practice = {
-  title: string;
-  body: string;
-};
-
-export const PRACTICE_AREAS: Practice[] = [
+export const PRACTICE_AREAS = [
   {
     title: 'FAMILY LAW',
     body: 'Navigate sensitive domestic matters with complete privacy and remote convenience. Our platform securely handles virtual consultations and documentation for marriage, support, and property relations, especially ideal for Overseas Filipino Workers (OFWs).',
@@ -67,7 +54,7 @@ export const PRACTICE_AREAS: Practice[] = [
   },
 ];
 
-export const LAW_UPDATES: string[] = [
+export const LAW_UPDATES = [
   'New Guidelines on Digital OSCA IDs and E-Commerce Discount Compliance',
   'Data Privacy Act Checklist: What Tech Startups & MSMEs Need to Know This Year',
   'E-Signature Validity for OFWs: Securing Real Estate and Contracts from Abroad',
@@ -98,11 +85,32 @@ export const CONTACT = {
   quote: 'Justice you can actually reach',
 };
 
-export const WEBSITE_AGREEMENTS: { label: string; href: string }[] = [
+export const WEBSITE_AGREEMENTS = [
   { label: 'Terms of Use', href: '#' },
   { label: 'Privacy Policy', href: '#' },
   { label: 'Informed Consent for Services Performed', href: '#' },
   { label: 'Disclaimer', href: '#' },
   { label: 'Child Safety Standards Policy', href: '#' },
   { label: 'Subscription Agreement', href: '#' },
+];
+
+export const OFFICE_LOCATIONS = [
+  {
+    region: 'Luzon Main Office',
+    address: 'Unit 608, 6th floor, AIC Burgundy Empire Tower, ADB Ave Cor. Garnet Rd, Ortigas Center, Pasig City',
+    phone: '(02) 8451-1594',
+    email: 'pasig@rizallawoffice.com',
+  },
+  {
+    region: 'Visayas Regional Hub',
+    address: '8th Floor, Cebu Tower Center, Cardinal Rosales Avenue, Cebu Business Park, Cebu City',
+    phone: '(032) 234-8900',
+    email: 'cebu@rizallawoffice.com',
+  },
+  {
+    region: 'Mindanao Regional Hub',
+    address: '12th Floor, Davao Finance Tower, J.P. Laurel Avenue, Bajada, Davao City',
+    phone: '(082) 298-4455',
+    email: 'davao@rizallawoffice.com',
+  },
 ];

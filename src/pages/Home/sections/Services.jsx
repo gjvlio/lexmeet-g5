@@ -1,41 +1,24 @@
 import Button from "@/components/ui/Button";
 import Orb from "@/components/ui/Orb";
+import { SERVICES_LIST } from "@/utils/services.js";
 
 import assistIcon from "@/assets/homeAssets/Assist.png";
 import docsIcon from "@/assets/homeAssets/Docs.png";
 import consultIcon from "@/assets/homeAssets/Consult.png";
 import worksIcon from "@/assets/homeAssets/Works.png";
 
-const SERVICES = [
-  {
-    key: 'assist',
-    title: 'ASSIST',
-    body: 'FREE Online Legal Assessment',
-    icon: assistIcon,
-    buttonLabel: 'Ask Lawyers'
-  },
-  {
-    key: 'consult',
-    title: 'CONSULT',
-    body: 'Paid Online Legal Consultation',
-    icon: consultIcon,
-    buttonLabel: 'Talk to Lawyers'
-  },
-  {
-    key: 'docs',
-    title: 'DOCS',
-    body: 'Create Own Documents With\nLawyer Review',
-    icon: worksIcon,
-    buttonLabel: 'Create Legal Document'
-  },
-  {
-    key: 'works',
-    title: 'WORKS',
-    body: 'FREE Legal Fee Proposals and\nPaid Legal Works Delivery',
-    icon: docsIcon,
-    buttonLabel: 'Request Proposal'
-  }
-];
+const ICON_MAP = {
+  assist: assistIcon,
+  consult: consultIcon,
+  docs: worksIcon,
+  works: docsIcon
+};
+
+const SERVICES = SERVICES_LIST.map(s => ({
+  ...s,
+  icon: ICON_MAP[s.id] || assistIcon,
+  buttonLabel: s.id === 'assist' ? 'Ask Lawyers' : s.id === 'consult' ? 'Talk to Lawyers' : s.id === 'docs' ? 'Create Legal Document' : 'Submit Case'
+}));
 
 export default function Services() {
   return (

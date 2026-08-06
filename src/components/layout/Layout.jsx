@@ -4,6 +4,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import LoginModal from "@/components/modals/LoginModal";
 import CreateAccountModal from "@/components/modals/CreateAccountModal";
+import LoadingScreen from "@/components/ui/LoadingScreen";
 
 /**
  * Shared page shell. Every route renders inside this via App.tsx's nested
@@ -66,7 +67,9 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen overflow-x-clip bg-cream relative">
+      <LoadingScreen />
       <Header onOpenLogin={() => setActiveModal("login")} />
+
 
       {/* Main page view with smooth global route transition animation */}
       <main className="relative z-10 animate-page-fade-in" key={location.pathname}>

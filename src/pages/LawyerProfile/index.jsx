@@ -4,8 +4,9 @@ import {
   Fragment as _Fragment,
 } from "react/jsx-runtime";
 import { useState } from "react";
-import { cn } from "@/utils/cn";
-import { LAWYERS, TABS, TOTAL_LAWYERS, PAGE_COUNT } from "./lawyers";
+import { cn } from "@/utils/cn.js";
+import { LAWYERS, TABS, TOTAL_LAWYERS, PAGE_COUNT } from "./lawyers.js";
+
 import LawyerModal from "./components/LawyerModal";
 import orbImage from "@/assets/LawyersProfile/orb.png";
 import searchIcon from "@/assets/LawyersProfile/search-icon.png";

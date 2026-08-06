@@ -1,15 +1,17 @@
 import LocationCarousel from '../components/LocationCarousel';
 import orbImg from '../../../assets/LawyersProfile/orb.png';
+import { OFFICE_LOCATIONS } from '@/utils/content.js';
 
 import officeBuilding from '../../../assets/OurLawOffice/OfficeLocation/officeAIC.jpg';
 import officeDistrict from '../../../assets/OurLawOffice/OfficeLocation/office-slide-2.jpg';
 import officeCasework from '../../../assets/OurLawOffice/OfficeLocation/office-slide-3.png';
 
 const LOCATION_SLIDES = [
-  { id: 1, title: 'AIC Burgundy Empire Tower', image: officeBuilding },
+  { id: 1, title: OFFICE_LOCATIONS[0]?.region || 'AIC Burgundy Empire Tower', image: officeBuilding },
   { id: 2, title: 'Ortigas Center business district', image: officeDistrict },
   { id: 3, title: 'In-person consultations and case work', image: officeCasework },
 ];
+
 
 function PinIcon() {
   return (

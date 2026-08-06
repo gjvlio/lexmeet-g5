@@ -1,6 +1,8 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import { PHOTOS } from "@/utils/images";
-import { cn } from "@/utils/cn";
+import { PHOTOS } from "@/utils/images.js";
+import { cn } from "@/utils/cn.js";
+
+
 /**
  * Renders a real photo when available, otherwise a palette-tinted gradient
  * placeholder. Applies the signature asymmetric custom-corner frame + sage ring.
