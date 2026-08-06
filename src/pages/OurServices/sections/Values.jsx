@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import GlassCard from '@/components/ui/GlassCard';
 import Orb from '@/components/ui/Orb';
-import { CORE_VALUES_DATA } from '@/utils/services.js';
+import { CORE_VALUES_DATA } from '@/utils/content.js';
 
 import ocImg from '@/assets/AUassets/OC.png';
 import upImg from '@/assets/AUassets/UP.png';
@@ -49,34 +49,34 @@ export default function Values() {
         <div className="xl:hidden w-full flex flex-col items-center">
           <div
             ref={scrollRef}
-            className="w-full flex gap-x-6 px-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 touch-pan-x scroll-smooth items-stretch"
+            className="-mx-4 w-[calc(100%+2rem)] sm:-mx-6 sm:w-[calc(100%+3rem)] flex gap-x-4 px-6 sm:px-8 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 touch-pan-x scroll-smooth items-stretch"
           >
             {VALUES.map((val, i) => (
               <div
                 key={i}
-                className="w-[90vw] max-w-[365px] shrink-0 snap-center relative flex items-stretch pl-[45px]"
+                className="w-[82vw] max-w-[310px] shrink-0 snap-center relative flex items-stretch pl-[36px]"
               >
                 {/* Floating Left Icon Circle */}
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 flex h-[90px] w-[90px] shrink-0 items-center justify-center rounded-full bg-cream shadow-pill drop-shadow-md">
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-full bg-cream shadow-pill drop-shadow-md">
                   <img
                     src={val.icon}
                     alt={val.title.replace('\n', ' ')}
-                    className="h-[50px] w-[50px] object-contain"
+                    className="h-[42px] w-[42px] object-contain"
                   />
                 </div>
 
                 {/* GlassCard with Left Padding for Icon */}
                 <GlassCard
                   tone="dark"
-                  className="flex h-full w-full flex-col justify-start gap-3 rounded-[28px] border border-white/20 !bg-white/10 pt-7 pb-6 pr-5 pl-[58px] text-left text-cream shadow-lg"
+                  className="flex h-full w-full flex-col justify-start gap-2.5 rounded-[24px] border border-white/20 !bg-white/10 pt-6 pb-5 pr-4 pl-[48px] text-left text-cream shadow-lg"
                 >
-                  <div className="min-h-[48px] flex items-center">
-                    <h3 className="whitespace-pre-line font-display text-[19px] font-bold leading-tight text-cream">
+                  <div className="min-h-[44px] flex items-center">
+                    <h3 className="whitespace-pre-line font-display text-[17px] font-bold leading-tight text-cream">
                       {val.title}
                     </h3>
                   </div>
-                  <p className="font-sans text-[13px] leading-relaxed text-cream/90">
-                    {val.desc}
+                  <p className="font-sans text-[12.5px] leading-relaxed text-cream/90">
+                    {val.description || val.desc}
                   </p>
                 </GlassCard>
               </div>
@@ -164,7 +164,7 @@ export default function Values() {
                     </h3>
                   </div>
                   <p className="font-sans text-[13.5px] leading-relaxed text-cream/90">
-                    {val.desc}
+                    {val.description || val.desc}
                   </p>
                 </GlassCard>
               </div>

@@ -1,5 +1,5 @@
 import bgImg from "@/assets/homeAssets/bg.png";
-import { PRACTICE_AREAS_LIST } from "@/utils/services.js";
+import { PRACTICE_AREAS_LIST } from "@/utils/content.js";
 import familyImg from "@/assets/LPassets/family.png";
 import laborImg from "@/assets/LPassets/briefcase.png";
 import civilImg from "@/assets/LPassets/rights.png";

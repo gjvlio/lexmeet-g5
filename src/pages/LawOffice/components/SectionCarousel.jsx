@@ -59,7 +59,7 @@ export default function SectionCarousel({ items, renderCard, darkTheme = true })
         </button>
 
         {/* Overlapping Cards Container */}
-        <div className="relative flex items-center justify-center w-full max-w-[800px] mx-auto py-2 sm:py-4 overflow-hidden sm:overflow-visible">
+        <div className="relative flex items-center justify-center w-full max-w-[800px] mx-auto py-2 sm:py-4 overflow-visible">
           {/* Previous Card (Left) */}
           <div
             key={`prev-${items[prevIndex].id}`}

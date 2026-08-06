@@ -38,10 +38,10 @@ export default function LawyerSchedule({ lawyer }) {
       {/* Table Card Container */}
       <div className="overflow-hidden rounded-[20px] sm:rounded-[24px] border border-[#D5D7C5]/80 bg-white/40 shadow-sm">
         {/* Dark Green to Green Gradient Header Bar */}
-        <div className="grid grid-cols-3 bg-gradient-to-r from-[#2D311A] via-[#383D21] to-[#464B2A] px-4 py-3.5 text-parchment font-sans text-center text-xs sm:text-[15px] font-bold tracking-wide">
-          <div className="text-center sm:text-center pl-2 sm:pl-0">Days</div>
-          <div>AM Schedule</div>
-          <div>PM Schedule</div>
+        <div className="grid grid-cols-3 bg-gradient-to-r from-[#2D311A] via-[#383D21] to-[#464B2A] py-3.5 text-parchment font-sans text-center text-xs sm:text-[15px] font-bold tracking-wide">
+          <div className="border-r border-white/20 px-2 text-center">Days</div>
+          <div className="border-r border-white/20 px-2 text-center">AM Schedule</div>
+          <div className="px-2 text-center">PM Schedule</div>
         </div>
 
         {/* Schedule Table Rows */}
@@ -59,8 +59,7 @@ export default function LawyerSchedule({ lawyer }) {
                   isEven ? 'bg-[#F4F5ED]/90' : 'bg-[#EBECE1]/90'
                 )}
               >
-                {/* Days column — sans bold, matching the entry titles on the
-                    CV and Ratings tabs so the three panels read as one. */}
+                {/* Days column */}
                 <div className="font-sans font-bold text-carbon-black text-[13px] sm:text-sm text-center border-r border-[#D5D7C5]/70 px-2">
                   {item.day}
                 </div>
@@ -75,7 +74,7 @@ export default function LawyerSchedule({ lawyer }) {
                         : 'font-normal text-[#8E927A]'
                     )}
                   >
-                    {condenseRange(item.am)}
+                    {item.am}
                   </span>
                 </div>
 
@@ -89,7 +88,7 @@ export default function LawyerSchedule({ lawyer }) {
                         : 'font-normal text-[#8E927A]'
                     )}
                   >
-                    {condenseRange(item.pm)}
+                    {item.pm}
                   </span>
                 </div>
               </div>

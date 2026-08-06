@@ -1,5 +1,6 @@
 /**
- * Static page content extracted from design and site structure.
+ * Consolidated static page & services content module.
+ * Single source of truth for navigation, hero, services, values, and contact data.
  */
 
 export const NAV_ITEMS = [
@@ -12,47 +13,95 @@ export const NAV_ITEMS = [
   { label: 'Contact Us', href: '/contact-us' },
 ];
 
-export const SERVICES = [
+export const SERVICES_LIST = [
   {
+    id: 'assist',
     key: 'assist',
     title: 'ASSIST',
-    body: 'Get on-demand assistance and clear answers for your everyday legal questions without the hassle of traditional appointments.',
+    subtitle: 'FREE Online Legal Assessment',
+    body: 'FREE Online Legal Assessment',
+    buttonLabel: 'Ask Lawyers',
+    path: '/#services'
   },
   {
+    id: 'docs',
     key: 'docs',
     title: 'DOCS',
-    body: 'Automate and secure your essential business agreements with our intelligent, cloud-based document platform.',
+    subtitle: 'Create Own Documents With Lawyer Review',
+    body: 'Create Own Documents With Lawyer Review',
+    buttonLabel: 'Create Legal Document',
+    path: '/#services'
   },
   {
+    id: 'consult',
     key: 'consult',
     title: 'CONSULT',
-    body: 'Schedule and attend private, encrypted video consultations with specialized lawyers from anywhere in the world.',
+    subtitle: 'Paid Online Legal Consultation',
+    body: 'Paid Online Legal Consultation',
+    buttonLabel: 'Talk to Lawyer',
+    path: '/#services'
   },
   {
+    id: 'works',
     key: 'works',
     title: 'WORKS',
-    body: 'Engage our legal experts for comprehensive, project-based matters backed by transparent, fixed-fee pricing.',
-  },
+    subtitle: 'FREE Legal Fee Proposals and Paid Legal Works Delivery',
+    body: 'FREE Legal Fee Proposals and Paid Legal Works Delivery',
+    buttonLabel: 'Request Proposal',
+    path: '/#services'
+  }
 ];
 
-export const PRACTICE_AREAS = [
+export const SERVICES = SERVICES_LIST;
+
+export const PRACTICE_AREAS_LIST = [
   {
     title: 'FAMILY LAW',
-    body: 'Navigate sensitive domestic matters with complete privacy and remote convenience. Our platform securely handles virtual consultations and documentation for marriage, support, and property relations, especially ideal for Overseas Filipino Workers (OFWs).',
+    subtitle: 'Domestic & OFW Relations',
+    body: 'Navigate sensitive domestic matters with complete privacy and remote convenience. Our platform securely handles virtual consultations and documentation for marriage, support, and property relations, especially ideal for Overseas Filipino Workers (OFWs).'
   },
   {
     title: 'CIVIL LAW',
-    body: "Resolve property disputes, debt claims, and complex contractual issues through our streamlined digital dispute resolution channels. We provide fast, actionable legal strategies to protect the assets of startups, Homeowner's Associations, and foreign investors.",
+    subtitle: 'Property & Contract Disputes',
+    body: "Resolve property disputes, debt claims, and complex contractual issues through our streamlined digital dispute resolution channels. We provide fast, actionable legal strategies to protect the assets of startups, Homeowner's Associations, and foreign investors."
   },
   {
     title: 'CRIMINAL LAW',
-    body: 'Access immediate, highly confidential legal counsel when facing serious accusations or when you need to file a formal complaint. Our secure e-lawyering platform connects you with experienced defense attorneys for urgent virtual consultations and strategic case planning.',
+    subtitle: 'Defense & Case Filings',
+    body: 'Access immediate, highly confidential legal counsel when facing serious accusations or when you need to file a formal complaint. Our secure e-lawyering platform connects you with experienced defense attorneys for urgent virtual consultations and strategic case planning.'
   },
   {
     title: 'LABOR LAW',
-    body: 'Ensure your business remains fully compliant or proactively defend your rights as an employee with our expert online counsel. We simplify complex employment contracts, workplace dispute resolution, and regulatory compliance for modern MSMEs and global workers.',
-  },
+    subtitle: 'Employment & Compliance',
+    body: 'Ensure your business remains fully compliant or proactively defend your rights as an employee with our expert online counsel. We simplify complex employment contracts, workplace dispute resolution, and regulatory compliance for modern MSMEs and global workers.'
+  }
 ];
+
+export const PRACTICE_AREAS = PRACTICE_AREAS_LIST;
+
+export const CORE_VALUES_DATA = [
+  {
+    title: 'Accessibility',
+    description: 'Breaking physical barriers by providing top-tier legal services online 24/7 across Luzon, Visayas, Mindanao, and abroad.'
+  },
+  {
+    title: 'Transparency',
+    description: 'Upfront, fixed-fee pricing with zero surprise billable hours or hidden costs.'
+  },
+  {
+    title: 'Confidentiality',
+    description: 'Bank-grade encryption protecting all virtual consultations, documents, and client communications.'
+  },
+  {
+    title: 'Excellence',
+    description: 'Rigorous legal review standards by experienced Philippine-licensed attorneys.'
+  }
+];
+
+export const MISSION_VISION_DATA = {
+  mission: 'To democratize access to justice for every Filipino worldwide by harnessing technology to make legal assistance convenient, transparent, and reachable.',
+  vision: 'To build the leading, trusted digital legal ecosystem in the Philippines, empowering citizens and businesses to navigate law with confidence.'
+};
 
 export const LAW_UPDATES = [
   'New Guidelines on Digital OSCA IDs and E-Commerce Discount Compliance',

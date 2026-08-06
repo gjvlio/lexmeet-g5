@@ -6,11 +6,14 @@ import lawyerImg1 from '../../../assets/OurLawOffice/OurLawyers/lawyer-slide-1.p
 import lawyerImg2 from '../../../assets/OurLawOffice/OurLawyers/lawyer-slide-2.png';
 import lawyerImg3 from '../../../assets/OurLawOffice/OurLawyers/lawyer-slide-3.png';
 
-const LAWYER_SLOTS = LAWYER_SLIDES.map((l, i) => ({
-  id: i + 1,
-  title: l.name,
-  image: l.photo || (i % 3 === 0 ? lawyerImg1 : i % 3 === 1 ? lawyerImg2 : lawyerImg3)
-}));
+const LAWYER_SLOTS = [
+  { id: 1, title: 'Our Lawyers 1', image: lawyerImg1 },
+  { id: 2, title: 'Our Lawyers 2', image: lawyerImg2 },
+  { id: 3, title: 'Our Lawyers 3', image: lawyerImg3 },
+  { id: 4, title: 'Our Lawyers 4', image: lawyerImg1 },
+  { id: 5, title: 'Our Lawyers 5', image: lawyerImg2 },
+  { id: 6, title: 'Our Lawyers 6', image: lawyerImg3 },
+];
 
 
 export default function OurLawyers() {
