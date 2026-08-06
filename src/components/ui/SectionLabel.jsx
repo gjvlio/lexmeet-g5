@@ -1,5 +1,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils/cn.js";
+
+
 /** Vertical stacked section label (SERVICES / PRACTICE) from the design. */
 export default function SectionLabel({ text, className, tone = "ink" }) {
   return _jsx("span", {

@@ -4,7 +4,8 @@ import googleIcon from '@/assets/modals/login/google-icon.png';
 import fbIcon from '@/assets/modals/login/fb-icon.png';
 import appleIcon from '@/assets/modals/login/apple-icon.png';
 import poweredByLexMeet from '@/assets/modals/login/powered-by-lexmeet-green-icon.png';
-import { cn } from '@/utils/cn';
+import { cn } from '@/utils/cn.js';
+
 
 export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, className, usePortal = true }) {
   if (!isOpen) return null;

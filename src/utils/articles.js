@@ -37,6 +37,26 @@ export const ARTICLE_CATEGORIES = {
   'law-blogs': 'Law Blogs'
 };
 
+export const POPULAR_TOPICS = [
+  "All",
+  "Human Rights",
+  "Family Law",
+  "Marriage",
+  "Annulment",
+  "Labor & Employment",
+  "Property & Real Estate",
+  "Business & Corporate",
+  "Criminal Law",
+  "Data Privacy",
+  "E-Commerce",
+  "Taxation",
+  "Wills & Inheritance",
+  "Intellectual Property",
+  "Contracts",
+  "Consumer Protection",
+];
+
+
 export const ARTICLES = [
   {
     slug: 'online-startup-msme-registration',

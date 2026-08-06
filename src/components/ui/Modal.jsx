@@ -2,7 +2,9 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { useCallback, useEffect, useId, useRef } from "react";
 import { createPortal } from "react-dom";
 import GlassCard from "@/components/ui/GlassCard";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils/cn.js";
+
+
 const SIZES = {
   sm: "max-w-md",
   md: "max-w-lg",

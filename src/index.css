@@ -191,3 +191,38 @@
     opacity: 1;
   }
 }
+
+/* Keyframes & Utilities for Initial Preloader Loading Screen */
+@keyframes moveUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes circularExit {
+  0% {
+    clip-path: circle(150% at 50% 50%);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    clip-path: circle(0% at 50% 50%);
+    opacity: 0;
+  }
+}
+
+.animate-move-up-fade {
+  animation: moveUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-circular-exit {
+  animation: circularExit 0.75s cubic-bezier(0.7, 0, 0.84, 0) forwards;
+}
+

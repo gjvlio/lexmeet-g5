@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
-import { NAV_ITEMS } from "@/utils/content";
-import { cn } from "@/utils/cn";
+import { NAV_ITEMS } from "@/utils/content.js";
+import { cn } from "@/utils/cn.js";
+
 
 import logo from "@/assets/header/header-logo.svg";
 import profileIcon from "@/assets/header/header-profile-icon.svg";

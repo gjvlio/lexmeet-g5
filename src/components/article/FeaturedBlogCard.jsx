@@ -4,10 +4,11 @@ import Button from "@/components/ui/Button";
 
 export default function FeaturedBlogCard({ article }) {
   return (
-    <GlassCard tone="light" className="flex flex-col p-5 sm:p-6 border border-white/90">
-      <div className="w-full h-[200px] sm:h-[220px] shrink-0 mb-4">
+    <GlassCard tone="light" className="flex flex-col p-5 sm:p-6 border border-white/90 hover-lift">
+      <div className="w-full h-[220px] sm:h-[280px] lg:h-[320px] shrink-0 mb-4">
         <img src={article.image} alt={article.title} className="w-full h-full rounded-2xl object-cover ring-1 ring-sage/90" />
       </div>
+
       
       <div className="flex justify-between items-center mb-3">
         <div className="flex items-center gap-3">

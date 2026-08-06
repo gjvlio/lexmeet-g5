@@ -3,7 +3,8 @@ import adminIcon from '@/assets/modals/profile/admin-icon.png';
 import settingIcon from '@/assets/modals/profile/setting-icon.png';
 import loginIcon from '@/assets/modals/profile/login-icon.png';
 import logoutIcon from '@/assets/modals/profile/logout-icon.png';
-import { cn } from '@/utils/cn';
+import { cn } from '@/utils/cn.js';
+
 
 const MENU_ITEMS = [
   { id: 'lexmeet', label: 'Go to LexMeet', icon: dashboardIcon, href: '#' },

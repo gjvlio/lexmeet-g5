@@ -1,6 +1,8 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { forwardRef } from "react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils/cn.js";
+
+
 /**
  * Frosted glass container — the recurring surface across every LexMeet page.
  * Forwards its ref so wrappers (Modal) can focus or measure the surface.

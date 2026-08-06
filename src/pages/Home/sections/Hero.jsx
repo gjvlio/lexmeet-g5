@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useOutletContext } from 'react-router-dom';
+import { HERO } from "@/utils/content.js";
+import Button from "@/components/ui/Button";
 import heroBg from '@/assets/modals/hero/hero-bg.png';
 import LoginModal from '@/components/modals/LoginModal';
 import CreateAccountModal from '@/components/modals/CreateAccountModal';

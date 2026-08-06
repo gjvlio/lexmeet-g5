@@ -1,34 +1,17 @@
 import { useRef, useState } from 'react';
 import GlassCard from '@/components/ui/GlassCard';
 import Orb from '@/components/ui/Orb';
+import { CORE_VALUES_DATA } from '@/utils/services.js';
 
-// Exact filenames from your AUassets folder
 import ocImg from '@/assets/AUassets/OC.png';
 import upImg from '@/assets/AUassets/UP.png';
 import balImg from '@/assets/AUassets/BAL.png';
 
-const VALUES = [
-  {
-    title: 'Online\nConsultations',
-    desc: 'Clients schedule and attend consultations through secure video, from any location with an internet connection.',
-    icon: ocImg,
-  },
-  {
-    title: 'Upfront\nPricing',
-    desc: 'Flat rate and subscription pricing is disclosed before a client commits to a consultation or service.',
-    icon: upImg,
-  },
-  {
-    title: 'Bar Admitted\nLawyers',
-    desc: 'Each lawyer listed on our platform is admitted to the Philippine Bar, with admission year and IBP chapter disclosed on their profile.',
-    icon: balImg,
-  },
-  {
-    title: 'Secure\nPlatform',
-    desc: 'All communications and documents are protected using enterprise-grade encryption standards.',
-    icon: ocImg,
-  },
-];
+const VALUES = CORE_VALUES_DATA.map((v, i) => ({
+  ...v,
+  icon: i === 0 || i === 3 ? ocImg : i === 1 ? upImg : balImg
+}));
+
 
 export default function Values() {
   const [currentIndex, setCurrentIndex] = useState(0);

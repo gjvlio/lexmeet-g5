@@ -7,19 +7,8 @@ import jean from '@/assets/LawyersProfile/Atty. Jean Photo.png';
 import silvers from '@/assets/LawyersProfile/Atty. Silvers Photo.png';
 import kalix from '@/assets/LawyersProfile/Atty. Kalix Photo.png';
 
-export type Lawyer = {
-  name: string;
-  position: string;
-  photo: string;
-  /** Drives the dot on the avatar. */
-  online: boolean;
-  /** Drives the pill on the Lawyer's Schedule tab. */
-  available: boolean;
-  rating: number;
-};
-
-/** Page 1 of the roster — the design shows 8 of 67. */
-export const LAWYERS: Lawyer[] = [
+/** Page 1 of the roster — 24 total entries across 3 pages */
+export const LAWYERS = [
   // Page 1
   { name: 'Atty. Anna C Bermudez',    position: 'Managing Partner', photo: anna,      online: true,  available: true,  rating: 5.0 },
   { name: 'Atty. Anthony E. Lopez',   position: 'Associate Lawyer', photo: anthony,   online: false, available: false, rating: 5.0 },
@@ -51,12 +40,20 @@ export const LAWYERS: Lawyer[] = [
   { name: 'Atty. Wanda Maximoff',     position: 'Associate Lawyer', photo: anna,      online: true,  available: false, rating: 4.7 },
 ];
 
-/** The three views of the same roster; the tab picks the third column. */
+export const LAWYER_SLIDES = LAWYERS.slice(0, 8);
+
+export const STAFF_ROSTER = [
+  { name: 'Maria Santos', position: 'Senior Legal Assistant', photo: anna },
+  { name: 'Juan Dela Cruz', position: 'Paralegal Officer', photo: anthony },
+  { name: 'Elena Reyes', position: 'Administrative Director', photo: antonette },
+  { name: 'Gabriel Torres', position: 'Legal Researcher', photo: joseph },
+];
+
 export const TABS = [
   { label: 'List of Lawyers',    column: 'Action' },
   { label: 'Ratings & Feedback', column: 'Ratings' },
   { label: "Lawyer's Schedule",  column: 'Availability' },
-] as const;
+];
 
 export const TOTAL_LAWYERS = 24;
 export const PAGE_COUNT = 3;
