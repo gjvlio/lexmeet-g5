@@ -77,46 +77,70 @@ export default function LoadingScreen({ onComplete }) {
 
   return (
     <div
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center bg-[#545A2F] text-[#F0F1E4] select-none ${
-        isExiting ? "animate-circular-exit" : ""
+      className={`fixed inset-0 z-[99999] pointer-events-none select-none transition-opacity duration-800 ease-in-out ${
+        isExiting ? "opacity-0" : "opacity-100"
       }`}
+      style={{ backgroundColor: "#545A2F" }}
       aria-label="Loading Website"
     >
-      {/* Foreground Container */}
-      <div className="flex flex-col items-center justify-center max-w-md px-6 text-center">
-
-        {/* 1. Logo Animation (Move Up) */}
+      {/* 
+        Container for Logo & Title Morph Transition into Header:
+        - Mobile/Tablet (< xl): Morph transitions logo + text side-by-side into top header row
+        - Desktop (>= xl): Morph transitions logo + text vertically stacked into top header position
+      */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        
+        {/* Brand Group (Logo + Law Firm Name) */}
         <div
-          className={`transition-all duration-700 ease-out ${
-            showLogo
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
+          className={`flex transition-all duration-800 cubic-bezier(0.16, 1, 0.3, 1) ${
+            isExiting
+              ? "xl:flex-col flex-row items-center gap-2 sm:gap-3 -translate-y-[calc(50vh-28px)] xl:-translate-y-[calc(50vh-50px)] scale-90 xl:scale-100 opacity-90"
+              : "flex-col items-center gap-0 translate-y-0 scale-100 opacity-100"
           }`}
         >
-          <img
-            src={logoSvg}
-            alt="Rizal Law Office Logo"
-            className="w-16 h-16 sm:w-20 sm:h-20 mb-5 brightness-0 invert-[0.95] drop-shadow-md"
-          />
-        </div>
+          {/* 1. Logo Animation (Move Up Entrance & Morph to Header) */}
+          <div
+            className={`transition-all duration-700 ease-out ${
+              showLogo
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
+            <img
+              src={logoSvg}
+              alt="Rizal Law Office Logo"
+              className={`w-auto transition-all duration-800 brightness-0 invert-[0.95] drop-shadow-md ${
+                isExiting
+                  ? "h-6 sm:h-7 xl:h-7 mb-0"
+                  : "h-8 sm:h-10 mb-3"
+              }`}
+            />
+          </div>
 
-        {/* 2. Law Firm Name Animation (Move Up) */}
-        <div
-          className={`transition-all duration-700 ease-out delay-100 ${
-            showFirmName
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h1 className="font-display text-2xl sm:text-3xl font-semibold tracking-[0.18em] text-[#F0F1E4] uppercase drop-shadow-sm">
-            RIZAL LAW OFFICE
-          </h1>
+          {/* 2. Law Firm Name (Exact font styling matching Header: font-medium tracking-[0.1em], unbolded) */}
+          <div
+            className={`transition-all duration-700 ease-out delay-100 ${
+              showFirmName
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
+            <h1
+              className={`font-display font-medium tracking-[0.1em] text-[#F0F1E4] uppercase transition-all duration-800 ${
+                isExiting
+                  ? "text-base sm:text-lg xl:text-[26px] mt-0 text-carbon-black/90"
+                  : "text-[22px] sm:text-[26px] mt-0"
+              }`}
+            >
+              RIZAL LAW OFFICE
+            </h1>
+          </div>
         </div>
 
         {/* 3. Horizontal Dots Loading Animation */}
         <div
-          className={`mt-8 flex items-center justify-center gap-2.5 transition-all duration-600 ${
-            showLoader ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          className={`mt-8 flex items-center justify-center gap-2.5 transition-all duration-400 ${
+            showLoader && !isExiting ? "opacity-100 scale-100" : "opacity-0 scale-90"
           }`}
         >
           <div 
@@ -132,8 +156,11 @@ export default function LoadingScreen({ onComplete }) {
             style={{ animationDelay: "360ms", animationDuration: "1s" }} 
           />
         </div>
+
       </div>
     </div>
   );
 }
+
+
 
