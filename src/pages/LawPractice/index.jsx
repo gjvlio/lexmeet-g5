@@ -13,6 +13,22 @@ export default function LawPractice() {
       className: "relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-16",
       children: [
         _jsxs("div", {
+          className: "mb-8",
+          children: [
+            _jsx("h1", {
+              className:
+                "text-center font-display text-3xl font-bold leading-tight text-carbon-black sm:text-4xl lg:text-[48px] lg:leading-none",
+              children: "Law Practice",
+            }),
+            _jsx("p", {
+              className:
+                "mx-auto mt-4 max-w-[712px] text-center font-sans text-sm leading-relaxed text-charcoal-brown lg:mt-5 lg:text-[15px] lg:leading-[22px]",
+              children:
+                "Explore our specialized areas of law. Browse through our legal expertise, handled cases, and the regions where we practice.",
+            }),
+          ],
+        }),
+        _jsxs("div", {
           className:
             "mb-12 flex flex-col gap-3 sm:mb-16 sm:flex-row sm:justify-center sm:gap-6",
           children: [

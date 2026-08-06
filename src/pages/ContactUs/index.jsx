@@ -8,9 +8,9 @@ import ContactForm from "./components/ContactForm";
  */
 export default function ContactUs() {
   return (
-    <section className="bg-services-fade py-12 lg:py-16">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-16">
-        <GlassCard className="grid gap-10 p-8 md:p-10 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:gap-14">
+    <section className="bg-services-fade py-8 lg:py-10">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 md:px-16">
+        <GlassCard className="-mt-2 lg:-mt-4 grid gap-8 p-6 md:gap-10 md:p-10 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:gap-14">
           <ContactDetails />
           <ContactForm />
         </GlassCard>

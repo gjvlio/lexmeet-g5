@@ -66,15 +66,15 @@ export default function Values() {
         <div className="xl:hidden w-full flex flex-col items-center">
           <div
             ref={scrollRef}
-            className="w-full flex gap-x-[55px] pl-[55px] pr-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 touch-pan-x scroll-smooth"
+            className="w-full flex gap-x-6 px-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 touch-pan-x scroll-smooth items-stretch"
           >
             {VALUES.map((val, i) => (
               <div
                 key={i}
-                className="w-[82vw] max-w-[320px] shrink-0 snap-center relative flex items-center h-full"
+                className="w-[90vw] max-w-[365px] shrink-0 snap-center relative flex items-stretch pl-[45px]"
               >
                 {/* Floating Left Icon Circle */}
-                <div className="absolute -left-[45px] z-20 flex h-[90px] w-[90px] shrink-0 items-center justify-center rounded-full bg-cream shadow-pill drop-shadow-md">
+                <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 flex h-[90px] w-[90px] shrink-0 items-center justify-center rounded-full bg-cream shadow-pill drop-shadow-md">
                   <img
                     src={val.icon}
                     alt={val.title.replace('\n', ' ')}
@@ -85,9 +85,9 @@ export default function Values() {
                 {/* GlassCard with Left Padding for Icon */}
                 <GlassCard
                   tone="dark"
-                  className="flex h-[270px] w-full flex-col justify-start gap-3 rounded-[28px] border border-white/20 !bg-white/10 pt-7 pb-6 pr-5 pl-[58px] text-left text-cream shadow-lg"
+                  className="flex h-full w-full flex-col justify-start gap-3 rounded-[28px] border border-white/20 !bg-white/10 pt-7 pb-6 pr-5 pl-[58px] text-left text-cream shadow-lg"
                 >
-                  <div className="h-[48px] flex items-center">
+                  <div className="min-h-[48px] flex items-center">
                     <h3 className="whitespace-pre-line font-display text-[19px] font-bold leading-tight text-cream">
                       {val.title}
                     </h3>
@@ -160,9 +160,9 @@ export default function Values() {
 
           <div className="grid w-full flex-1 grid-cols-3 gap-x-12 pl-[50px] transition-all duration-300 items-stretch">
             {visibleValues.map((val, i) => (
-              <div key={currentIndex + i} className="relative flex items-center h-full">
+              <div key={currentIndex + i} className="relative flex items-stretch h-full">
                 {/* Floating Left Circle Icon */}
-                <div className="absolute -left-[50px] z-20 flex h-[100px] w-[100px] shrink-0 items-center justify-center rounded-full bg-cream shadow-pill drop-shadow-md">
+                <div className="absolute -left-[50px] top-1/2 -translate-y-1/2 z-20 flex h-[100px] w-[100px] shrink-0 items-center justify-center rounded-full bg-cream shadow-pill drop-shadow-md">
                   <img
                     src={val.icon}
                     alt={val.title.replace('\n', ' ')}
@@ -173,9 +173,9 @@ export default function Values() {
                 {/* Uniform Height & Aligned Baseline GlassCard */}
                 <GlassCard
                   tone="dark"
-                  className="flex h-[280px] w-full flex-col justify-start gap-3.5 !rounded-[32px] border border-white/20 !bg-white/10 pt-8 pb-7 pr-6 pl-[65px] text-left text-cream shadow-lg"
+                  className="flex h-full w-full flex-col justify-start gap-3.5 !rounded-[32px] border border-white/20 !bg-white/10 pt-8 pb-7 pr-6 pl-[65px] text-left text-cream shadow-lg"
                 >
-                  <div className="h-[56px] flex items-center">
+                  <div className="min-h-[56px] flex items-center">
                     <h3 className="whitespace-pre-line font-display text-[22px] font-bold leading-tight text-cream">
                       {val.title}
                     </h3>
