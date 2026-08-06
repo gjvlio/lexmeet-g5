@@ -8,9 +8,12 @@ import ContactForm from "./components/ContactForm";
  */
 export default function ContactUs() {
   return (
-    <section className="bg-services-fade py-12 lg:py-16">
-      <div className="mx-auto max-w-[1440px] px-6 md:px-16">
-        <GlassCard className="grid gap-10 p-8 md:p-10 lg:grid-cols-[minmax(0,400px)_minmax(0,1fr)] lg:gap-14">
+    <section className="bg-services-fade py-6 lg:py-8">
+      {/* Narrower than the usual 1440 shell — stretched to full width the
+          form inputs end up ~400px wide for a first name, and the two
+          columns drift far apart. */}
+      <div className="mx-auto max-w-[1120px] px-4 sm:px-6 lg:px-8">
+        <GlassCard className="grid items-center gap-8 p-6 md:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-12">
           <ContactDetails />
           <ContactForm />
         </GlassCard>

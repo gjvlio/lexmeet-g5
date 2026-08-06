@@ -96,12 +96,12 @@ export default function ContactForm() {
   }
 
   return (
-    <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div className="grid gap-4 sm:grid-cols-2">
+    <form noValidate onSubmit={handleSubmit} className="flex flex-col gap-3">
+      <div className="grid gap-3 sm:grid-cols-2">
         <Field
           label="First name"
           name="firstName"
-          placeholder="Juan"
+          placeholder="First Name"
           value={values.firstName}
           error={errors.firstName}
           onChange={handleChange("firstName")}
@@ -111,7 +111,7 @@ export default function ContactForm() {
         <Field
           label="Last name"
           name="lastName"
-          placeholder="Dela Cruz"
+          placeholder="Last Name"
           value={values.lastName}
           error={errors.lastName}
           onChange={handleChange("lastName")}
@@ -124,7 +124,7 @@ export default function ContactForm() {
         label="Email"
         name="email"
         type="email"
-        placeholder="example@email.com"
+        placeholder="Email"
         value={values.email}
         error={errors.email}
         onChange={handleChange("email")}
@@ -136,7 +136,7 @@ export default function ContactForm() {
         label="Phone number"
         name="phone"
         type="tel"
-        placeholder="+63 912 345 6789"
+        placeholder="Phone Number"
         value={values.phone}
         error={errors.phone}
         onChange={handleChange("phone")}
@@ -147,7 +147,7 @@ export default function ContactForm() {
       <Field
         label="Subject"
         name="subject"
-        placeholder="How can we help?"
+        placeholder="Subject"
         value={values.subject}
         error={errors.subject}
         onChange={handleChange("subject")}
@@ -156,21 +156,21 @@ export default function ContactForm() {
       />
 
       <div>
-        <label htmlFor={fieldId("message")} className="font-sans text-sm font-medium text-carbon-black">
+        <label htmlFor={fieldId("message")} className="sr-only">
           Message
         </label>
         <textarea
           id={fieldId("message")}
           name="message"
-          rows={5}
-          placeholder="Tell us how we can help"
+          rows={4}
+          placeholder="How can we help?"
           value={values.message}
           onChange={handleChange("message")}
           aria-invalid={Boolean(errors.message)}
           aria-describedby={errors.message ? errorId("message") : undefined}
           className={cn(
             FIELD_BASE,
-            "mt-1.5 resize-y py-3",
+            "resize-y py-3",
             errors.message ? "border-red-500/70" : "border-sage-mist/70"
           )}
         />
@@ -201,7 +201,10 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={fieldId(name)} className="font-sans text-sm font-medium text-carbon-black">
+      {/* Label carried by the placeholder to save a line per field. Kept in
+          the DOM for screen readers, since a placeholder alone is not a
+          label and vanishes as soon as the field has content. */}
+      <label htmlFor={fieldId(name)} className="sr-only">
         {label}
       </label>
       <input
@@ -215,7 +218,7 @@ function Field({
         aria-describedby={error ? errorId(name) : undefined}
         className={cn(
           FIELD_BASE,
-          "mt-1.5 h-11",
+          "h-11",
           error ? "border-red-500/70" : "border-sage-mist/70"
         )}
       />
