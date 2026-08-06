@@ -1,4 +1,26 @@
+import LocationCarousel from '../components/LocationCarousel';
 import orbImg from '../../../assets/LawyersProfile/orb.png';
+
+import officeBuilding from '../../../assets/OurLawOffice/OfficeLocation/officeAIC.jpg';
+import officeDistrict from '../../../assets/OurLawOffice/OfficeLocation/office-slide-2.jpg';
+import officeCasework from '../../../assets/OurLawOffice/OfficeLocation/office-slide-3.png';
+
+const LOCATION_SLIDES = [
+  { id: 1, title: 'AIC Burgundy Empire Tower', image: officeBuilding },
+  { id: 2, title: 'Ortigas Center business district', image: officeDistrict },
+  { id: 3, title: 'In-person consultations and case work', image: officeCasework },
+];
+
+function PinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className="h-4 w-4" aria-hidden="true">
+      <g stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" />
+        <circle cx="12" cy="10" r="2.4" />
+      </g>
+    </svg>
+  );
+}
 
 export default function OfficeLocation() {
   const mapQueryUrl =
@@ -7,124 +29,95 @@ export default function OfficeLocation() {
     'https://www.google.com/maps/search/?api=1&query=AIC+Burgundy+Empire+Tower+Ortigas+Center+Pasig+City';
 
   return (
-    <section className="relative overflow-hidden bg-parchment px-4 py-10 sm:px-6 sm:py-12 lg:px-16 lg:py-16">
+    <section className="relative overflow-hidden bg-parchment px-4 pb-6 pt-4 sm:px-6 sm:pb-8 sm:pt-6 lg:px-16 lg:pb-10 lg:pt-8">
       {/* Corner Orb Graphics */}
       <img
         src={orbImg}
         alt=""
-        className="pointer-events-none absolute -top-12 -left-12 w-56 sm:w-80 opacity-40 mix-blend-multiply select-none"
+        className="pointer-events-none absolute -top-12 -left-12 w-56 select-none opacity-40 mix-blend-multiply sm:w-80"
       />
       <img
         src={orbImg}
         alt=""
-        className="pointer-events-none absolute -bottom-12 -right-12 w-56 sm:w-80 opacity-40 mix-blend-multiply select-none rotate-180"
+        className="pointer-events-none absolute -bottom-12 -right-12 w-56 rotate-180 select-none opacity-40 mix-blend-multiply sm:w-80"
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1050px] text-center">
-        {/* h1: "OFFICE LOCATION" */}
-        <h1 className="font-display font-normal text-[14px] sm:text-[16px] lg:text-[18px] tracking-[0.20em] uppercase text-olive-leaf leading-tight">
-          OFFICE LOCATION
-        </h1>
-
-        {/* h2: "Visit us..." */}
-        <h2 className="mt-2 font-display font-bold text-2xl sm:text-3xl lg:text-[38px] tracking-[-0.03em] leading-tight text-carbon-black max-w-[760px] mx-auto">
-          Visit us for in-person legal consultations, document review, and case strategy sessions
-        </h2>
-
-        {/* Outer Dark Container Box */}
-        <div className="mt-6 sm:mt-8 rounded-[24px] bg-[linear-gradient(180deg,#2A2C19_0%,#1D1F10_100%)] p-4 sm:p-6 text-left text-parchment shadow-card border border-white/10">
-          <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1.1fr_1fr_1fr] items-stretch">
-            {/* Box 1: Location Info Details */}
-            <div className="flex flex-col justify-between rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur-sm">
+      <div className="relative z-10 mx-auto w-full max-w-[1050px]">
+        {/* Dark panel holding both columns, matching the sibling sections */}
+        <div className="rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,#2A2C19_0%,#1D1F10_100%)] p-4 text-parchment shadow-card sm:p-6">
+          <div className="grid items-stretch gap-4 lg:grid-cols-2 lg:gap-6">
+            {/* Left: heading, address and map stacked. Ordered second in the
+                DOM so the carousel leads when the columns stack on mobile. */}
+            <div className="flex flex-col gap-4 text-left lg:order-first">
               <div>
-                <h3 className="font-display text-xl sm:text-2xl font-semibold leading-none text-parchment">
+                <p className="font-display text-[13px] uppercase tracking-[0.20em] text-linen-olive/80">
                   Office Location
-                </h3>
-
-                <div className="mt-3 space-y-1 font-sans text-xs sm:text-sm leading-relaxed text-linen-olive">
-                  <p className="font-medium text-parchment">Unit 608, 6th floor</p>
-                  <p>AIC Burgundy Empire Tower</p>
-                  <p>ADB Avenue Corner, Garnet Road</p>
-                  <p>Ortigas Center, Pasig City</p>
-                </div>
-
-                <p className="mt-3 font-sans text-xs text-linen-olive/80 leading-normal">
-                  Drop by for in-person consultations, document review, and case strategy.
+                </p>
+                <h2 className="mt-1 font-display text-2xl font-bold leading-tight tracking-[-0.02em] text-parchment sm:text-3xl">
+                  Visit us for in-person legal consultations
+                </h2>
+                <p className="mt-2 font-sans text-xs leading-relaxed text-linen-olive sm:text-sm">
+                  Document review and case strategy sessions, at our Ortigas Center office.
                 </p>
               </div>
 
-              <div className="mt-4">
+              {/* Address card */}
+              <div className="flex items-start justify-between gap-4 rounded-2xl border border-white/15 bg-white/5 p-4 backdrop-blur-sm">
+                <div className="flex gap-3">
+                  <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/10 text-parchment">
+                    <PinIcon />
+                  </span>
+                  <div className="font-sans text-xs leading-relaxed text-linen-olive sm:text-sm">
+                    <p className="font-semibold tracking-[0.12em] text-parchment">ADDRESS</p>
+                    <p className="mt-1 font-medium text-parchment">Unit 608, 6th floor</p>
+                    <p>AIC Burgundy Empire Tower</p>
+                    <p>ADB Avenue Corner, Garnet Road</p>
+                    <p>Ortigas Center, Pasig City</p>
+                  </div>
+                </div>
+
                 <a
                   href={googleMapsExternalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center h-9 rounded-full bg-parchment px-5 font-sans text-xs font-semibold text-olive-leaf shadow-pill hover:bg-white active:scale-98 transition-all"
+                  className="inline-flex h-9 shrink-0 items-center justify-center rounded-full bg-parchment px-5 font-sans text-xs font-semibold text-olive-leaf shadow-pill transition-all hover:bg-white active:scale-98"
                 >
                   Read More
                 </a>
               </div>
-            </div>
 
-            {/* Box 2: Building Exterior Photo Placeholder */}
-            <div
-              style={{ borderRadius: '20px' }}
-              className="relative min-h-[180px] sm:min-h-[200px] overflow-hidden border-2 border-parchment/90 bg-white/5"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
-                alt="AIC Burgundy Empire Tower Pasig City"
-                className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-carbon-black/70 via-carbon-black/20 to-transparent" />
+              {/* Map */}
+              <div className="relative min-h-[180px] flex-1 overflow-hidden rounded-2xl border-2 border-parchment/90 bg-white/5">
+                <iframe
+                  title="Office Location Map"
+                  src={mapQueryUrl}
+                  className="h-full w-full min-h-[180px] border-0"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
 
-              {/* Red Map Pin Icon Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-red-600 shadow-lg ring-4 ring-white/90 animate-bounce">
-                  <svg className="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                <a
+                  href={googleMapsExternalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute right-2.5 top-2.5 z-10 flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-carbon-black shadow-md backdrop-blur-sm transition-all hover:bg-white"
+                >
+                  <span>Open in Maps</span>
+                  <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
                   </svg>
-                </div>
-              </div>
-
-              {/* Caption Overlay */}
-              <div className="absolute bottom-2.5 left-2.5 right-2.5 rounded-lg bg-carbon-black/60 px-3 py-1 backdrop-blur-md border border-white/10">
-                <p className="font-sans text-[11px] font-medium text-parchment text-center truncate">
-                  AIC Burgundy Empire Tower
-                </p>
+                </a>
               </div>
             </div>
 
-            {/* Box 3: Google Maps Equipped */}
-            <div
-              style={{ borderRadius: '20px' }}
-              className="relative min-h-[180px] sm:min-h-[200px] overflow-hidden border-2 border-parchment/90 bg-white/5"
-            >
-              <iframe
-                title="Office Location Map"
-                src={mapQueryUrl}
-                className="h-full w-full min-h-[180px] sm:min-h-[200px] border-0"
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-
-              <a
-                href={googleMapsExternalUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1.5 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-carbon-black shadow-md hover:bg-white backdrop-blur-sm transition-all"
-              >
-                <span>Open in Maps</span>
-                <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </a>
-            </div>
+            {/* Right: photo carousel */}
+            <LocationCarousel slides={LOCATION_SLIDES} />
           </div>
         </div>
       </div>
