@@ -14,7 +14,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
       className={cn(
         'relative z-20 w-full max-w-[440px] sm:max-w-[480px] rounded-[28px] sm:rounded-[34px] overflow-hidden',
         'bg-white/65 backdrop-blur-2xl border border-white/80 shadow-2xl',
-        'px-6 py-6 sm:px-8 sm:py-7 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95 max-h-[calc(100vh-30px)] overflow-y-auto scrollbar-none',
+        'px-6 py-5 sm:px-8 sm:py-6 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95',
         className
       )}
       role="dialog"

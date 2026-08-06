@@ -25,7 +25,7 @@ export default function PromiseSection() {
         children: [
           _jsx("h3", {
             className:
-              "font-sans text-[16px] font-bold text-forest sm:text-[18px]",
+              "font-sans text-[18px] font-bold text-forest sm:text-[20px]",
             children: "Our promise",
           }),
           _jsx("h2", {

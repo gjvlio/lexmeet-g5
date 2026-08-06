@@ -32,7 +32,7 @@ export default function MissionVision() {
             children: [
               _jsx("h3", {
                 className:
-                  "font-sans text-[15px] font-bold text-cream/90 sm:text-[16px]",
+                  "font-sans text-[18px] font-bold text-cream/90 sm:text-[20px]",
                 children: "Our mission",
               }),
               _jsx("h2", {
@@ -67,7 +67,7 @@ export default function MissionVision() {
             children: [
               _jsx("h3", {
                 className:
-                  "font-sans text-[15px] font-bold text-forest sm:text-[16px]",
+                  "font-sans text-[18px] font-bold text-forest sm:text-[20px]",
                 children: "Our vision",
               }),
               _jsx("h2", {

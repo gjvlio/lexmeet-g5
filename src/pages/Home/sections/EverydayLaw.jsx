@@ -27,9 +27,9 @@ export default function EverydayLaw() {
               {featuredArticle?.title}
             </h3>
             
-            {/* Dynamically render the article's excerpt */}
-            <p className="font-sans text-sm sm:text-base lg:text-[17px] text-carbon-black/85 leading-relaxed mb-6 max-w-[600px]">
-              {featuredArticle?.excerpt}
+            {/* Dynamically render the article's body (clamped to 4 lines) */}
+            <p className="font-sans text-sm sm:text-base lg:text-[17px] text-carbon-black/85 leading-relaxed mb-6 max-w-[600px] line-clamp-4 text-justify">
+              {featuredArticle?.body}
             </p>
 
             {/* Injected the matching Author block here */}
@@ -44,11 +44,18 @@ export default function EverydayLaw() {
             )}
             
             {/* Route directly to the specific article's page */}
-            <Link to={`/everyday-law/${featuredArticle?.category}/${featuredArticle?.slug}`} className="outline-none">
-              <Button variant="olive" className="!px-10 !h-12 !text-[13px] tracking-wide shadow-card">
-                Read more
-              </Button>
-            </Link>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link to={`/everyday-law/${featuredArticle?.category}/${featuredArticle?.slug}`} className="outline-none">
+                <Button variant="olive" className="!px-10 !h-12 !text-[13px] tracking-wide shadow-card">
+                  Read more
+                </Button>
+              </Link>
+              <Link to="/everyday-law/everyday-law" className="outline-none">
+                <Button variant="glass" className="!px-8 !h-12 !text-[13px] tracking-wide shadow-card !border-[#3D4223] !text-[#3D4223] hover:!bg-[#3D4223] hover:!text-parchment">
+                  View Everyday Law List
+                </Button>
+              </Link>
+            </div>
           </div>
           
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
