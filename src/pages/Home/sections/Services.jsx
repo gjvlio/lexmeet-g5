@@ -1,6 +1,6 @@
 import Button from "@/components/ui/Button";
 import Orb from "@/components/ui/Orb";
-import { SERVICES_LIST } from "@/utils/services.js";
+import { SERVICES_LIST } from "@/utils/content.js";
 
 import assistIcon from "@/assets/homeAssets/Assist.png";
 import docsIcon from "@/assets/homeAssets/Docs.png";
@@ -10,14 +10,14 @@ import worksIcon from "@/assets/homeAssets/Works.png";
 const ICON_MAP = {
   assist: assistIcon,
   consult: consultIcon,
-  docs: worksIcon,
-  works: docsIcon
+  docs: docsIcon,
+  works: worksIcon
 };
 
 const SERVICES = SERVICES_LIST.map(s => ({
   ...s,
   icon: ICON_MAP[s.id] || assistIcon,
-  buttonLabel: s.id === 'assist' ? 'Ask Lawyers' : s.id === 'consult' ? 'Talk to Lawyers' : s.id === 'docs' ? 'Create Legal Document' : 'Submit Case'
+  buttonLabel: s.buttonLabel
 }));
 
 export default function Services() {

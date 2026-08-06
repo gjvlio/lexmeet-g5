@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import Orb from "@/components/ui/Orb";
 import missionImg from "@/assets/AUassets/MISSION.png";
 import visionImg from "@/assets/AUassets/VISION.png";
-import { MISSION_VISION_DATA } from "@/utils/services.js";
+import { MISSION_VISION_DATA } from "@/utils/content.js";
 
 
 export default function MissionVision() {
