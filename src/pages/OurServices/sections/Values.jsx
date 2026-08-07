@@ -49,12 +49,18 @@ export default function Values() {
         <div className="xl:hidden w-full flex flex-col items-center">
           <div
             ref={scrollRef}
-            className="-mx-4 w-[calc(100%+2rem)] sm:-mx-6 sm:w-[calc(100%+3rem)] flex gap-x-4 px-6 sm:px-8 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 touch-pan-x scroll-smooth items-stretch"
+            className="-mx-4 w-[calc(100%+2rem)] sm:-mx-6 sm:w-[calc(100%+3rem)] flex gap-x-4 px-4 sm:px-8 overflow-x-auto scrollbar-none snap-x snap-mandatory py-4 touch-pan-x scroll-smooth items-stretch"
           >
             {VALUES.map((val, i) => (
               <div
                 key={i}
-                className="w-[82vw] max-w-[310px] shrink-0 snap-center relative flex items-stretch pl-[36px]"
+                /* w-full is the strip's own content width, so the card fills
+                   the scrollport at any phone size without a sliver of the
+                   next card left clipped at the edge. Deliberately not a vw
+                   calculation — the page wrapper and this strip both add
+                   padding, so viewport width is not what is available here.
+                   The cap lets neighbours peek once there is room. */
+                className="w-full max-w-[360px] shrink-0 snap-center relative flex items-stretch pl-[36px]"
               >
                 {/* Floating Left Icon Circle */}
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 z-20 flex h-[76px] w-[76px] shrink-0 items-center justify-center rounded-full bg-cream shadow-pill drop-shadow-md">

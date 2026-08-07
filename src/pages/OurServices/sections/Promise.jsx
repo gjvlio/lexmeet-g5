@@ -26,7 +26,7 @@ export default function PromiseSection() {
         <h2 className="mb-5 font-display text-[32px] font-bold sm:mb-6 sm:text-[40px] lg:text-[44px]">
           What Can You Expect
         </h2>
-        <div className="space-y-5 font-sans text-[16px] leading-relaxed text-ink/80 sm:space-y-6 sm:text-[18px]">
+        <div className="space-y-5 text-justify font-sans text-[16px] leading-relaxed text-ink/80 sm:space-y-6 sm:text-[18px]">
           <p>
             Clients may choose a lawyer based on disclosed practice areas, admission history, and availability.
           </p>
