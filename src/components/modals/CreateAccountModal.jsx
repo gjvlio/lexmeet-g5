@@ -176,7 +176,7 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
         </button>
       </div>
 
-      {/* Already Registered / Log-in here Link */}
+      {/* Already Registered / Login here Link */}
       <p className="mt-2.5 sm:mt-3 text-center font-sans text-[11px] sm:text-xs text-carbon-black/90">
         Already registered?{' '}
         <button
@@ -186,7 +186,7 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
           }}
           className="font-bold text-carbon-black underline hover:text-olive-leaf transition-colors cursor-pointer"
         >
-          Login here
+          Log-in here
         </button>
       </p>
 
