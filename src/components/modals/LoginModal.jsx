@@ -13,9 +13,9 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
   const content = (
     <div
       className={cn(
-        'relative z-20 w-full max-w-[440px] sm:max-w-[480px] rounded-[28px] sm:rounded-[34px] overflow-hidden',
+        'relative z-20 w-full max-w-[440px] sm:max-w-[480px] max-h-[100dvh] sm:max-h-[95dvh] rounded-[28px] sm:rounded-[34px] overflow-y-auto overflow-x-hidden scrollbar-hide',
         'bg-white/65 backdrop-blur-2xl border border-white/80 shadow-2xl',
-        'px-6 py-5 sm:px-8 sm:py-6 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95',
+        'px-5 py-4 sm:px-8 sm:py-5 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95',
         className
       )}
       role="dialog"
@@ -43,13 +43,13 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
       {/* Header Title - Spectral Bold 29px */}
       <h2
         id="login-modal-title"
-        className="font-display font-bold text-[25px] sm:text-[29px] tracking-normal text-carbon-black text-center mt-1 mb-2"
+        className="font-display font-bold text-[25px] sm:text-[29px] tracking-normal text-carbon-black text-center mt-0 mb-1"
       >
         Sign In
       </h2>
 
       {/* Wider Divider Line Beneath Title */}
-      <div className="h-px w-48 sm:w-64 bg-carbon-black/20 mx-auto mb-3.5 sm:mb-4" />
+      <div className="h-px w-48 sm:w-64 bg-carbon-black/20 mx-auto mb-2 sm:mb-3" />
 
       <form onSubmit={(e) => e.preventDefault()} className="flex flex-col w-full">
         {/* Email Input */}
@@ -59,7 +59,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
         <input
           type="email"
           placeholder="example@gmail.com"
-          className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all mb-2.5 sm:mb-3"
+          className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all mb-2 sm:mb-2.5"
         />
 
         {/* Password Input */}
@@ -69,11 +69,11 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
         <input
           type="password"
           placeholder="••••••••••"
-          className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all mb-2.5 sm:mb-3"
+          className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all mb-2 sm:mb-2.5"
         />
 
         {/* Checkbox and Forgot Password Row */}
-        <div className="flex items-center justify-between w-full px-1 mt-0.5 mb-3 text-[10px] sm:text-[11px] font-medium text-carbon-black/80">
+        <div className="flex items-center justify-between w-full px-1 mt-0 mb-2 text-[10px] sm:text-[11px] font-medium text-carbon-black/80">
           <label className="flex items-center gap-1.5 cursor-pointer select-none">
             <input
               type="checkbox"
@@ -92,32 +92,32 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
         {/* Sign In Button */}
         <button
           type="submit"
-          className="w-full rounded-full bg-[#3D4223] py-2.5 sm:py-3 text-center font-sans text-xs sm:text-sm font-bold text-parchment shadow-pill hover:bg-[#2B2D19] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center"
+          className="w-full rounded-full bg-[#3D4223] py-2 sm:py-2.5 text-center font-sans text-xs sm:text-sm font-bold text-parchment shadow-pill hover:bg-[#2B2D19] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center"
         >
           Sign In
         </button>
       </form>
 
       {/* Or Divider */}
-      <div className="my-3 sm:my-3.5 flex items-center gap-3 w-full">
+      <div className="my-2 sm:my-3 flex items-center gap-3 w-full">
         <div className="h-px flex-1 bg-carbon-black/20" />
         <span className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/60">or</span>
         <div className="h-px flex-1 bg-carbon-black/20" />
       </div>
 
       {/* Social Logins - Slightly lessened py-2 sm:py-2.5 height */}
-      <div className="flex flex-col items-center gap-2 sm:gap-2.5 w-full">
-        <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-2.5 justify-center">
+      <div className="flex flex-col items-center gap-2 w-full">
+        <div className="flex flex-col sm:flex-row w-full gap-2 justify-center">
           <button
             type="button"
-            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
+            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-1.5 sm:py-2 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
           >
             <img src={googleIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
             <span>Log in with Google</span>
           </button>
           <button
             type="button"
-            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
+            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-1.5 sm:py-2 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
           >
             <img src={fbIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
             <span>Log in with Facebook</span>
@@ -126,7 +126,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
 
         <button
           type="button"
-          className="flex w-full sm:w-[240px] items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-6 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
+          className="flex w-full sm:w-[240px] items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-1.5 sm:py-2 px-6 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
         >
           <img src={appleIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
           <span>Log in with Apple</span>
@@ -134,7 +134,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
       </div>
 
       {/* Create Account Link */}
-      <p className="mt-3.5 sm:mt-4 text-center font-sans text-[11px] sm:text-xs text-carbon-black/90">
+      <p className="mt-2.5 sm:mt-3 text-center font-sans text-[11px] sm:text-xs text-carbon-black/90">
         Don&apos;t have an Account?{' '}
         <button
           type="button"
@@ -148,7 +148,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
       </p>
 
       {/* Powered by LexMeet Footer Logo */}
-      <div className="mt-2.5 sm:mt-3 flex justify-center">
+      <div className="mt-2 flex justify-center">
         <img
           src={poweredByLexMeet}
           alt="Powered by LexMeet"
@@ -163,7 +163,7 @@ export default function LoginModal({ isOpen, onClose, onOpenCreateAccount, class
   }
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
       {/* Dark Backdrop Blur Overlay BEHIND the modal */}
       <div
         aria-hidden={true}

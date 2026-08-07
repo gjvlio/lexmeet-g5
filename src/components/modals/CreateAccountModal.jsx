@@ -13,9 +13,9 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
   const content = (
     <div
       className={cn(
-        'relative z-20 w-full max-w-[480px] sm:max-w-[540px] rounded-[28px] sm:rounded-[34px] overflow-hidden',
+        'relative z-20 w-full max-w-[480px] sm:max-w-[540px] max-h-[100dvh] sm:max-h-[95dvh] rounded-[28px] sm:rounded-[34px] overflow-y-auto overflow-x-hidden scrollbar-hide',
         'bg-white/65 backdrop-blur-2xl border border-white/80 shadow-2xl',
-        'px-6 py-5 sm:px-8 sm:py-6 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95',
+        'px-5 py-4 sm:px-8 sm:py-5 text-carbon-black transition-all duration-300 animate-in fade-in zoom-in-95',
         className
       )}
       role="dialog"
@@ -43,13 +43,13 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
       {/* Header Title - Spectral Bold 29px */}
       <h2
         id="create-account-modal-title"
-        className="font-display font-bold text-[25px] sm:text-[29px] tracking-normal text-carbon-black text-center mt-1 mb-2"
+        className="font-display font-bold text-[25px] sm:text-[29px] tracking-normal text-carbon-black text-center mt-0 mb-1"
       >
         Create an Account
       </h2>
 
       {/* Wider Divider Line Beneath Title */}
-      <div className="h-px w-48 sm:w-64 bg-carbon-black/20 mx-auto mb-3.5 sm:mb-4" />
+      <div className="h-px w-48 sm:w-64 bg-carbon-black/20 mx-auto mb-2 sm:mb-3" />
 
       {/* Form Fields - 2-Column Grid Layout for Names & Passwords to Economize Vertical Height */}
       <form onSubmit={(e) => e.preventDefault()} className="flex flex-col w-full">
@@ -62,7 +62,7 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
             <input
               type="text"
               placeholder="e.g. Juan"
-              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
+              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
             />
           </div>
           <div>
@@ -72,25 +72,25 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
             <input
               type="text"
               placeholder="e.g. Dela Cruz"
-              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
+              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
             />
           </div>
         </div>
 
         {/* Row 2: Full Width Email */}
-        <div className="w-full mt-1.5 sm:mt-2">
+        <div className="w-full mt-1 sm:mt-1.5">
           <label className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/80 mb-0.5 text-left block pl-1">
             E-mail
           </label>
           <input
             type="email"
             placeholder="example@gmail.com"
-            className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
+            className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
           />
         </div>
 
         {/* Row 3: Password & Confirm Password Grid */}
-        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full mt-1.5 sm:mt-2">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full mt-1 sm:mt-1.5">
           <div>
             <label className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/80 mb-0.5 text-left block pl-1">
               Password
@@ -98,7 +98,7 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
             <input
               type="password"
               placeholder="••••••••••"
-              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
+              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
             />
           </div>
           <div>
@@ -108,19 +108,19 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
             <input
               type="password"
               placeholder="••••••••••"
-              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-2 sm:py-2.5 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
+              className="w-full rounded-xl bg-white/80 border border-white/90 px-3.5 py-1.5 sm:py-2 text-left text-xs sm:text-sm text-carbon-black placeholder-carbon-black/40 focus:bg-white focus:outline-none focus:ring-2 focus:ring-olive-leaf/40 transition-all"
             />
           </div>
         </div>
 
         {/* Terms and Conditions Checkbox */}
-        <div className="flex items-center gap-2 my-2.5 sm:my-3 w-full pl-1">
+        <div className="flex items-center gap-2 my-2 sm:my-2.5 w-full pl-1">
           <input
             type="checkbox"
             className="rounded border-carbon-black/30 text-olive-leaf focus:ring-olive-leaf h-3.5 w-3.5 cursor-pointer shrink-0"
           />
           <span className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/80 leading-tight">
-            I agree to the{' '}
+            I have read and agree to the{' '}
             <a
               href="#"
               onClick={(e) => e.preventDefault()}
@@ -128,39 +128,39 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
             >
               Terms and Conditions
             </a>{' '}
-            by LexMeet
+            set by LexMeet.
           </span>
         </div>
 
         {/* Create Account Button */}
         <button
           type="submit"
-          className="w-full rounded-full bg-[#3D4223] py-2.5 sm:py-3 text-center font-sans text-xs sm:text-sm font-bold text-parchment shadow-pill hover:bg-[#2B2D19] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center mt-0.5"
+          className="w-full rounded-full bg-[#3D4223] py-2 sm:py-2.5 text-center font-sans text-xs sm:text-sm font-bold text-parchment shadow-pill hover:bg-[#2B2D19] active:scale-[0.99] transition-all cursor-pointer flex items-center justify-center mt-0.5"
         >
           Create Account
         </button>
       </form>
 
       {/* Or Divider */}
-      <div className="my-3 sm:my-3.5 flex items-center gap-3 w-full">
+      <div className="my-2 sm:my-3 flex items-center gap-3 w-full">
         <div className="h-px flex-1 bg-carbon-black/20" />
         <span className="font-sans text-[10px] sm:text-[11px] font-medium text-carbon-black/60">or</span>
         <div className="h-px flex-1 bg-carbon-black/20" />
       </div>
 
       {/* Social Sign-up Buttons - Slightly lessened py-2 sm:py-2.5 height */}
-      <div className="flex flex-col items-center gap-2 sm:gap-2.5 w-full">
-        <div className="flex flex-col sm:flex-row w-full gap-2 sm:gap-2.5 justify-center">
+      <div className="flex flex-col items-center gap-2 w-full">
+        <div className="flex flex-col sm:flex-row w-full gap-2 justify-center">
           <button
             type="button"
-            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
+            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-1.5 sm:py-2 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
           >
             <img src={googleIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
             <span>Sign-up with Google</span>
           </button>
           <button
             type="button"
-            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
+            className="flex sm:flex-1 w-full items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-1.5 sm:py-2 px-4 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
           >
             <img src={fbIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
             <span>Sign-up with Facebook</span>
@@ -169,7 +169,7 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
 
         <button
           type="button"
-          className="flex w-full sm:w-[240px] items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-2 sm:py-2.5 px-6 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
+          className="flex w-full sm:w-[240px] items-center justify-center gap-2.5 rounded-full bg-[#2B2D19] py-1.5 sm:py-2 px-6 text-xs font-medium font-sans text-white hover:bg-black transition-colors whitespace-nowrap cursor-pointer"
         >
           <img src={appleIcon} alt="" className="h-4.5 w-4.5 shrink-0 object-contain" />
           <span>Sign-up with Apple</span>
@@ -177,7 +177,7 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
       </div>
 
       {/* Already Registered / Log-in here Link */}
-      <p className="mt-3.5 sm:mt-4 text-center font-sans text-[11px] sm:text-xs text-carbon-black/90">
+      <p className="mt-2.5 sm:mt-3 text-center font-sans text-[11px] sm:text-xs text-carbon-black/90">
         Already registered?{' '}
         <button
           type="button"
@@ -186,12 +186,12 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
           }}
           className="font-bold text-carbon-black underline hover:text-olive-leaf transition-colors cursor-pointer"
         >
-          Log-in here
+          Login here
         </button>
       </p>
 
       {/* Powered by LexMeet Footer Logo */}
-      <div className="mt-2.5 sm:mt-3 flex justify-center">
+      <div className="mt-2 flex justify-center">
         <img
           src={poweredByLexMeet}
           alt="Powered by LexMeet"
@@ -206,7 +206,7 @@ export default function CreateAccountModal({ isOpen, onClose, onOpenLogin, class
   }
 
   return createPortal(
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
       {/* Dark Backdrop Blur Overlay BEHIND the modal */}
       <div
         aria-hidden={true}
