@@ -44,6 +44,16 @@ export default function Hero() {
     };
   }, [activeModal, setActiveModal]);
 
+  // Smooth scroll to the modal when it opens
+  useEffect(() => {
+    if (isModalActive && modalRef.current) {
+      // Small timeout allows the fade-in animation to start and layout to update
+      setTimeout(() => {
+        modalRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 150);
+    }
+  }, [isModalActive]);
+
   return (
     <section className="relative w-full bg-parchment">
       {/* Background Hero Banner Container - Animates height & crops photo when any modal is active */}
