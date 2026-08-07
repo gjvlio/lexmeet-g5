@@ -2,14 +2,8 @@ import { Link } from "react-router-dom";
 import { ARTICLE_CATEGORIES } from "@/utils/articles";
 import { useState, useRef, useEffect } from "react";
 
-const CATEGORY_LIST_NAMES = {
-  'everyday-law': 'Everyday Law List',
-  'law-updates': 'Law Updates List',
-  'law-blogs': 'Law Blogs List',
-};
-
 export default function Breadcrumb({ category, title }) {
-  const categoryListName = CATEGORY_LIST_NAMES[category] || `${ARTICLE_CATEGORIES[category] || "Everyday Law"} List`;
+  const categoryName = category ? (ARTICLE_CATEGORIES[category] || category) : null;
   
   const navRef = useRef(null);
   const [showLeftFade, setShowLeftFade] = useState(false);
@@ -67,19 +61,23 @@ export default function Breadcrumb({ category, title }) {
         <Link to="/" className="font-bold text-ink hover:underline shrink-0">Home</Link>
         <span className="shrink-0">/</span>
         
-        <Link to="/everyday-law" className="font-bold text-ink hover:underline shrink-0">
-          Everyday Law
-        </Link>
+        {category ? (
+          <Link to="/everyday-law" className="font-bold text-ink hover:underline shrink-0">
+            Everyday Law - Main
+          </Link>
+        ) : (
+          <span className="text-ink/60 shrink-0">Everyday Law - Main</span>
+        )}
         
         {category && (
           <>
             <span className="shrink-0">/</span>
             {title ? (
               <Link to={`/everyday-law/${category}`} className="font-bold text-ink hover:underline shrink-0">
-                {categoryListName}
+                {categoryName}
               </Link>
             ) : (
-              <span className="font-bold text-ink shrink-0">{categoryListName}</span>
+              <span className="text-ink/60 shrink-0">{categoryName}</span>
             )}
           </>
         )}

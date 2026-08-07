@@ -107,7 +107,7 @@ function ContactUsColumn() {
 function ContactLine({ label, value }) {
   return (
     <div className="flex gap-1">
-      <dt className="font-bold text-parchment shrink-0">{label}:</dt>
+      <dt className="text-parchment shrink-0">{label}:</dt>
       <dd className="break-all sm:break-normal">{value}</dd>
     </div>
   );
