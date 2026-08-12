@@ -10,12 +10,30 @@ import FooterLogo from "@/components/ui/FooterLogo";
 import divider from "@/assets/footer/footer-divider.svg";
 import credits from "@/assets/footer/footer-powered-by-lexmeet.svg";
 
+/**
+ * TikTok badge. Drawn rather than imported — there is no exported asset for
+ * it, and an SVG matches the others' cream-circle-with-knockout-glyph
+ * treatment while staying sharp at any size.
+ */
+function TikTokIcon({ className }) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} aria-hidden="true">
+      <circle cx="16" cy="16" r="16" className="fill-parchment" />
+      <path
+        className="fill-charcoal-brown"
+        d="M19.4 8c.28 1.5 1.13 2.72 2.6 3.28.5.2 1.02.3 1.55.32v2.6a6.6 6.6 0 0 1-3.9-1.25v5.35a5.15 5.15 0 1 1-4.44-5.1v2.7a2.5 2.5 0 1 0 1.83 2.4V8h2.36Z"
+      />
+    </svg>
+  );
+}
+
 const SOCIALS = [
   { icon: fb, label: "Facebook" },
   { icon: twitter, label: "Twitter" },
   { icon: linkedin, label: "LinkedIn" },
   { icon: ig, label: "Instagram" },
   { icon: yt, label: "YouTube" },
+  { Icon: TikTokIcon, label: "TikTok" },
 ];
 
 /**
@@ -118,20 +136,23 @@ function FollowUsColumn() {
     <div>
       <ColumnHeading>FOLLOW US</ColumnHeading>
       <div className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 md:gap-1.5 lg:gap-2">
-        {SOCIALS.map((s) => (
-          <a
-            key={s.label}
-            href="#"
-            aria-label={s.label}
-            className="transition-opacity hover:opacity-80"
-          >
-            <img
-              src={s.icon}
-              alt=""
-              className="h-7 w-7 md:h-7 md:w-7 lg:h-8 lg:w-8 xl:h-[34px] xl:w-[34px] object-contain"
-            />
-          </a>
-        ))}
+        {SOCIALS.map((s) => {
+          const sizing = "h-7 w-7 md:h-7 md:w-7 lg:h-8 lg:w-8 xl:h-[34px] xl:w-[34px]";
+          return (
+            <a
+              key={s.label}
+              href="#"
+              aria-label={s.label}
+              className="transition-opacity hover:opacity-80"
+            >
+              {s.Icon ? (
+                <s.Icon className={sizing} />
+              ) : (
+                <img src={s.icon} alt="" className={`${sizing} object-contain`} />
+              )}
+            </a>
+          );
+        })}
       </div>
     </div>
   );
